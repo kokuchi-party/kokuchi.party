@@ -28,7 +28,7 @@ jobs:
       - name: Check if migrations are up to date
         run: |
           yarn gen:migration
-          git status --porcelain | grep 'migrations/' && echo "Unstaged migration detected!" && exit 1
+          git status --porcelain | grep 'migrations/' && echo 'Unstaged migration detected!' && exit 1 || echo 'Migrations are up to date'
 
       - run: yarn check
 
