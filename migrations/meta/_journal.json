@@ -15,6 +15,13 @@
       "when": 1714808269572,
       "tag": "0001_fresh_landau",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1714810417556,
+      "tag": "0002_marvelous_james_howlett",
+      "breakpoints": true
     }
   ]
 }
