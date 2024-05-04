@@ -52,7 +52,7 @@ jobs:
           D1_DATABASE_ID: ${{ secrets.D1_DATABASE_ID }}
 
       - name: Perform migration
-        run: yarn migrate:remote
+        run: yarn wrangler d1 migrations apply ${{ secrets.D1_DATABASE_NAME }} --remote
         env:
-          D1_DATABASE_NAME: ${{ secrets.D1_DATABASE_NAME }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
