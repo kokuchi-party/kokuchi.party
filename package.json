@@ -15,7 +15,7 @@
     "format": "prettier --write .",
     "migrate:remote": "dotenv cross-var 'wrangler d1 migrations apply $D1_DATABASE_NAME --remote'",
     "migrate:local": "dotenv cross-var 'wrangler d1 migrations apply $D1_DATABASE_NAME --local'",
-    "gen:migration": "drizzle-kit generate:sqlite --out migrations --schema src/schema.ts",
+    "gen:migration": "drizzle-kit generate:sqlite",
     "gen:wrangler.toml": "envsub --all --env-file .env wrangler.base.toml wrangler.toml"
   },
   "devDependencies": {
