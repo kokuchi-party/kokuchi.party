@@ -1,6 +1,7 @@
 import { dev } from "$app/environment";
+import type { Handle } from "@sveltejs/kit";
 
-export async function handle({ event, resolve }) {
+export const handle = (async ({ event, resolve }) => {
   if (dev) {
     const { connectD1, waitUntil } = await import("wrangler-proxy");
     event.platform = {
@@ -9,4 +10,4 @@ export async function handle({ event, resolve }) {
     };
   }
   return resolve(event);
-}
+}) satisfies Handle;
