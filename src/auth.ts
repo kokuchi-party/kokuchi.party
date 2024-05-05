@@ -13,6 +13,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth(async ({ platform }) =>
 
   return {
     adapter: UnstorageAdapter(storage),
-    providers: [Google]
+    providers: [Google],
+    trustHost: true
   };
 });
