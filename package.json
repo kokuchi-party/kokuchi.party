@@ -52,10 +52,13 @@
   },
   "type": "module",
   "dependencies": {
+    "@auth/sveltekit": "^1.0.1",
+    "@auth/unstorage-adapter": "^2.0.0",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.30.10",
     "tailwind-merge": "^2.3.0",
-    "tailwind-variants": "^0.2.1"
+    "tailwind-variants": "^0.2.1",
+    "unstorage": "^1.10.2"
   },
   "packageManager": "yarn@4.2.1"
 }

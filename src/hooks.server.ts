@@ -1,4 +1,5 @@
 import { dev } from "$app/environment";
+import { handle as handleAuth } from "./auth";
 import type { Handle } from "@sveltejs/kit";
 
 export const handle = (async ({ event, resolve }) => {
@@ -12,5 +13,5 @@ export const handle = (async ({ event, resolve }) => {
       context: { waitUntil }
     };
   }
-  return resolve(event);
+  return handleAuth({ event, resolve });
 }) satisfies Handle;
