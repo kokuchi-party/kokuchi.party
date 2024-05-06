@@ -61,8 +61,8 @@ export default function emailProviderFactory({ platform }: { platform: App.Platf
         content: [
           {
             type: "text/plain",
-            value: `こちらのURLよりログインしてください。
-Please click here to authenticate.
+            value: `こんにちは！ こちらのURLよりログインしてください。
+Hello! Please click here to authenticate.
 
 ${url}`
           }
