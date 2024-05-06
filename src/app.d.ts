@@ -12,6 +12,7 @@ declare global {
       env: {
         DB: D1Database;
         KV: KVNamespace;
+        DKIM_PRIVATE_KEY: string;
       };
       context: {
         waitUntil(promise: Promise<unknown>): void;

@@ -8,7 +8,8 @@ export const handle = (async ({ event, resolve }) => {
     event.platform = {
       env: {
         DB: connectD1("DB"),
-        KV: connectKV("KV") as unknown as App.Platform["env"]["KV"]
+        KV: connectKV("KV") as unknown as App.Platform["env"]["KV"],
+        DKIM_PRIVATE_KEY: "dummy"
       },
       context: { waitUntil }
     };

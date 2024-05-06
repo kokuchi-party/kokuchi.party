@@ -7,10 +7,10 @@
 
 <header>
   <nav>
-    <SignIn provider="google">
+    <SignIn>
       <span slot="submitButton">Sign In</span>
     </SignIn>
-    <SignOut provider="google">
+    <SignOut>
       <span slot="submitButton">Sign Out</span>
     </SignOut>
   </nav>
