@@ -44,7 +44,7 @@ export default function emailProviderFactory({ platform }: { platform: App.Platf
     url
   }) => {
     // Call the cloud Email provider API for sending emails
-    const response = await fetch("https://api.sendgrid.com/v3/mail/send", {
+    const response = await fetch("https://api.mailchannels.net/tx/v1/send", {
       // The body format will vary depending on provider, please see their documentation
       body: JSON.stringify({
         personalizations: [
