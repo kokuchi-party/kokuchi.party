@@ -35,6 +35,7 @@
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-svelte": "^2.35.1",
+    "file-type": "^19.0.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.32",
     "postcss-load-config": "^5.0.2",
@@ -54,8 +55,12 @@
   "dependencies": {
     "@auth/sveltekit": "^1.0.1",
     "@auth/unstorage-adapter": "^2.0.0",
+    "@scure/base": "^1.1.6",
+    "aws4fetch": "^1.0.18",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.30.10",
+    "image-dimensions": "^2.3.0",
+    "image-type": "^5.2.0",
     "tailwind-merge": "^2.3.0",
     "tailwind-variants": "^0.2.1",
     "unstorage": "^1.10.2"
