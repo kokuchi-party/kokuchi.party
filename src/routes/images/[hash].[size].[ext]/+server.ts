@@ -24,7 +24,7 @@ export const GET: RequestHandler = async ({ params: { hash, size, ext }, request
   if (!sizes[size]) return error(404, "Not found");
   if (!exts[ext]) return error(404, "Not found");
 
-  const url = `https://${S3_BUCKET}.${S3_ENDPOINT}/${imageUploadFolder}/${hash}`;
+  const url = `http://${S3_BUCKET}.${S3_ENDPOINT}/${imageUploadFolder}/${hash}`;
   const req = new Request(url, { headers: request.headers });
 
   const image: NonNullable<RequestInitCfProperties["image"]> = {
