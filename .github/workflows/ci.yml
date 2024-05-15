@@ -30,10 +30,10 @@ jobs:
           yarn gen:migration
           git status --porcelain | grep 'migrations/' && echo 'Unstaged migration detected!' && exit 1 || echo 'Migrations are up to date.'
 
-      - run: yarn check
-
       - name: Copy .env.example to .env for CI build
         run: cp .env.example .env
+
+      - run: yarn check
 
       - run: yarn build
 
