@@ -60,7 +60,6 @@
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.30.10",
     "image-dimensions": "^2.3.0",
-    "image-type": "^5.2.0",
     "tailwind-merge": "^2.3.0",
     "tailwind-variants": "^0.2.1",
     "unstorage": "^1.10.2"
