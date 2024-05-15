@@ -6,11 +6,11 @@ import type { RequestHandler } from "./$types";
 
 const sizes: Record<string, NonNullable<RequestInitCfProperties["image"]>> = {
   thumb: { width: 150, height: 150, fit: "cover" },
-  xs: { width: 300, fit: "contain" },
-  sm: { width: 600, fit: "contain" },
-  md: { width: 840, fit: "contain" },
-  lg: { width: 1080, fit: "contain" },
-  xl: { width: 1200, fit: "contain" },
+  xs: { width: 300, fit: "scale-down" },
+  sm: { width: 600, fit: "scale-down" },
+  md: { width: 840, fit: "scale-down" },
+  lg: { width: 1080, fit: "scale-down" },
+  xl: { width: 1200, fit: "scale-down" },
   orig: {}
 };
 
@@ -24,8 +24,10 @@ export const GET: RequestHandler = async ({ params: { hash, size, ext }, request
   if (!sizes[size]) return error(404, "Not found");
   if (!exts[ext]) return error(404, "Not found");
 
-  const url = `http://${S3_ENDPOINT}/${S3_BUCKET}/${imageUploadFolder}/${hash}`;
-  const req = new Request(url, { headers: request.headers });
+  const url = `https://${S3_ENDPOINT}/${S3_BUCKET}/${imageUploadFolder}/${hash}`;
+  const req = new Request(url, {
+    headers: { ...request.headers, "X-Source": "Cloudflare-Workers" }
+  });
 
   const image: NonNullable<RequestInitCfProperties["image"]> = {
     metadata: "none",
@@ -33,5 +35,13 @@ export const GET: RequestHandler = async ({ params: { hash, size, ext }, request
     ...exts[ext]
   };
 
-  return fetch(req, { cf: { image } });
+  const resp = await fetch(req, { cf: { image } });
+
+  return new Response(resp.body, {
+    status: resp.status,
+    statusText: resp.statusText,
+    headers: {
+      ...resp.headers
+    }
+  });
 };
