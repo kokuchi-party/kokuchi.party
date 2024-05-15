@@ -23,7 +23,7 @@ const client = new AwsClient({
   service: "s3"
 });
 
-export const endpoint = `https://${S3_BUCKET}.${S3_ENDPOINT}`;
+export const endpoint = `https://${S3_ENDPOINT}/${S3_BUCKET}`;
 
 export type S3File = InferSelectModel<typeof files>;
 
