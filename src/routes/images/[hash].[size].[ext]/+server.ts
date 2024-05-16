@@ -20,7 +20,7 @@ const exts: Record<string, NonNullable<RequestInitCfProperties["image"]>> = {
   png: { format: "png" }
 };
 
-export const GET: RequestHandler = async ({ params: { hash, size, ext }, request }) => {
+export const GET: RequestHandler = async ({ params: { hash, size, ext }, request, fetch }) => {
   if (!sizes[size]) return error(404, "Not found");
   if (!exts[ext]) return error(404, "Not found");
 
