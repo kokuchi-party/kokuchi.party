@@ -1,5 +1,6 @@
 <script>
   import { enhance } from "$app/forms";
+  import { getFileUrl } from "$lib/file";
 
   /** @type {import('./$types').ActionData} */
   export let form;
@@ -13,7 +14,7 @@
 
   <div class="space-y-2">
     {#if form?.ok}
-      <a href={`/images/${form.hash}.orig.${form.ext}`}>Uploaded</a>
+      <a href={getFileUrl(form)}>Uploaded</a>
     {/if}
     {JSON.stringify(form)}
   </div>

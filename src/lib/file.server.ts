@@ -7,12 +7,11 @@ import {
 } from "$env/static/private";
 
 import { AwsClient } from "aws4fetch";
-import type { InferSelectModel } from "drizzle-orm";
 import type { DrizzleD1Database } from "drizzle-orm/d1";
 import { base32crockford } from "@scure/base";
 import { imageDimensionsFromStream } from "image-dimensions";
 
-import { getFileType, getUploadFolderName } from "./file";
+import { getUploadFolderName, type MimeType, type S3File } from "./file";
 import { files } from "../schema";
 import type { Result } from "$lib";
 
@@ -25,7 +24,20 @@ const client = new AwsClient({
 
 export const endpoint = `https://${S3_ENDPOINT}/${S3_BUCKET}`;
 
-export type S3File = InferSelectModel<typeof files>;
+const fileTypes = {
+  "image/jpeg": { magic: [0xff, 0xd8, 0xff], ext: "jpg" },
+  "image/png": { magic: [0x89, 0x50, 0x4e, 0x47], ext: "png" },
+  "image/webp": { magic: [0x52, 0x49, 0x46, 0x46], ext: "webp" }
+} as const satisfies Partial<Record<MimeType, { magic: number[]; ext: string }>>;
+
+export async function getFileType(file: File) {
+  const buf = new Uint8Array(await file.slice(0, 64).arrayBuffer());
+  for (const [mime, { magic, ext }] of Object.entries(fileTypes)) {
+    if (magic.every((x, i) => buf[i] === x)) {
+      return { mime: mime as unknown as MimeType, ext };
+    }
+  }
+}
 
 export async function calculateHash(file: File, length: number = 16): Promise<string> {
   const fileBuf = await file.arrayBuffer();
@@ -46,7 +58,8 @@ export async function create(
   if (!mime || !ext) return { ok: false, status: 415, message: "Unsupported file type" };
 
   const folder = getUploadFolderName(mime);
-  const url = folder ? `${endpoint}/${folder}/${hash}` : `${endpoint}/${hash}`;
+  const name = ext ? `${hash}.${ext}` : hash;
+  const url = folder ? `${endpoint}/${folder}/${name}` : `${endpoint}/${name}`;
 
   const res = await client.fetch(url, {
     body: file,
