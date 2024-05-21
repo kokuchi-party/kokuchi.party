@@ -53,8 +53,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@auth/sveltekit": "^1.0.1",
-    "@auth/unstorage-adapter": "^2.0.0",
     "@scure/base": "^1.1.6",
     "aws4fetch": "^1.0.18",
     "clsx": "^2.1.1",

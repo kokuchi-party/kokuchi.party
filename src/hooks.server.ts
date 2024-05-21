@@ -1,6 +1,8 @@
 import { dev } from "$app/environment";
-import { handle as handleAuth } from "./auth";
 import type { Handle } from "@sveltejs/kit";
+import { drizzle } from "drizzle-orm/d1";
+import { createStorage } from "unstorage";
+import cloudflareKVBindingDriver, { type KVOptions } from "unstorage/drivers/cloudflare-kv-binding";
 
 export const handle = (async ({ event, resolve }) => {
   if (dev) {
@@ -14,5 +16,15 @@ export const handle = (async ({ event, resolve }) => {
       context: { waitUntil }
     };
   }
-  return handleAuth({ event, resolve });
+
+  if (event.platform) {
+    event.locals.db = drizzle(event.platform.env.DB);
+    event.locals.kv = createStorage({
+      driver: cloudflareKVBindingDriver({
+        binding: event.platform.env.KV as unknown as KVOptions["binding"]
+      })
+    });
+  }
+
+  return resolve(event);
 }) satisfies Handle;

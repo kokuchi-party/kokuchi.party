@@ -4,13 +4,13 @@ import { drizzle } from "drizzle-orm/d1";
 import { create } from "$lib/file.server";
 
 export const actions: Actions = {
-  upload: async ({ platform, request, locals }) => {
+  upload: async ({ platform, request }) => {
     const d1 = platform?.env.DB;
     if (!d1) return fail(500, { message: "DB initialization failure" });
 
-    const auth = await locals.auth();
-    const user = auth?.user;
-    if (!user) return fail(400, { message: "Not authorized" });
+    // const auth = await locals.auth();
+    // const user = auth?.user;
+    // if (!user) return fail(400, { message: "Not authorized" });
 
     const data = await request.formData();
     const file = data.get("file");

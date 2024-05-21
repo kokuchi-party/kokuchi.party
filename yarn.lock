@@ -22,56 +22,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auth/core@npm:0.30.0":
-  version: 0.30.0
-  resolution: "@auth/core@npm:0.30.0"
-  dependencies:
-    "@panva/hkdf": "npm:^1.1.1"
-    "@types/cookie": "npm:0.6.0"
-    cookie: "npm:0.6.0"
-    jose: "npm:^5.1.3"
-    oauth4webapi: "npm:^2.4.0"
-    preact: "npm:10.11.3"
-    preact-render-to-string: "npm:5.2.3"
-  peerDependencies:
-    "@simplewebauthn/browser": ^9.0.1
-    "@simplewebauthn/server": ^9.0.2
-    nodemailer: ^6.8.0
-  peerDependenciesMeta:
-    "@simplewebauthn/browser":
-      optional: true
-    "@simplewebauthn/server":
-      optional: true
-    nodemailer:
-      optional: true
-  checksum: 10c0/caa94cc9b42c354fef57e337a844bca0c0770ac809ba1cf00b30d7fc2e383d1d42dafeb3e39b9dde92b85a9eb821cde905b662638bfe98d8e2439c6d3e64c8cd
-  languageName: node
-  linkType: hard
-
-"@auth/sveltekit@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@auth/sveltekit@npm:1.0.1"
-  dependencies:
-    "@auth/core": "npm:0.30.0"
-    set-cookie-parser: "npm:^2.6.0"
-  peerDependencies:
-    "@sveltejs/kit": ^1.0.0 || ^2.0.0
-    svelte: ^3.54.0 || ^4.0.0 || ^5
-  checksum: 10c0/8dec3b9f04e7a2a28b3d16b906cc9bb2fdb3a2f083f3c57cff3324c5a4aafbc8c2eddf3643853c24b5daf7fbf6621d314b1a22a41dbbcaec4e54ef1f13e98a15
-  languageName: node
-  linkType: hard
-
-"@auth/unstorage-adapter@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@auth/unstorage-adapter@npm:2.0.0"
-  dependencies:
-    "@auth/core": "npm:0.30.0"
-  peerDependencies:
-    unstorage: ^1.10.1
-  checksum: 10c0/a576aec900277ba560dedb2aa5d1d7b8c355b499994d5143698d0700658a99e6c73483023a9279bc2bcc4e26d248668136dc072945287449b6b04cb1ad751ebd
-  languageName: node
-  linkType: hard
-
 "@babel/runtime@npm:^7.24.1":
   version: 7.24.5
   resolution: "@babel/runtime@npm:7.24.5"
@@ -1018,13 +968,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@panva/hkdf@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@panva/hkdf@npm:1.1.1"
-  checksum: 10c0/34f98068a33c031ba112cdfa0c8e29b28336e173a4f93532a24b3196c9f25b2cbd1477cf54a30293f760f909369a725fb645dabb9ed132aec7dedde263a2263e
-  languageName: node
-  linkType: hard
-
 "@parcel/watcher-android-arm64@npm:2.4.1":
   version: 2.4.1
   resolution: "@parcel/watcher-android-arm64@npm:2.4.1"
@@ -1392,7 +1335,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cookie@npm:0.6.0, @types/cookie@npm:^0.6.0":
+"@types/cookie@npm:^0.6.0":
   version: 0.6.0
   resolution: "@types/cookie@npm:0.6.0"
   checksum: 10c0/5b326bd0188120fb32c0be086b141b1481fec9941b76ad537f9110e10d61ee2636beac145463319c71e4be67a17e85b81ca9e13ceb6e3bb63b93d16824d6c149
@@ -3032,17 +2975,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:0.6.0, cookie@npm:^0.6.0":
-  version: 0.6.0
-  resolution: "cookie@npm:0.6.0"
-  checksum: 10c0/f2318b31af7a31b4ddb4a678d024514df5e705f9be5909a192d7f116cfb6d45cbacf96a473fa733faa95050e7cff26e7832bb3ef94751592f1387b71c8956686
-  languageName: node
-  linkType: hard
-
 "cookie@npm:^0.5.0":
   version: 0.5.0
   resolution: "cookie@npm:0.5.0"
   checksum: 10c0/c01ca3ef8d7b8187bae434434582288681273b5a9ed27521d4d7f9f7928fe0c920df0decd9f9d3bbd2d14ac432b8c8cf42b98b3bdd5bfe0e6edddeebebe8b61d
+  languageName: node
+  linkType: hard
+
+"cookie@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "cookie@npm:0.6.0"
+  checksum: 10c0/f2318b31af7a31b4ddb4a678d024514df5e705f9be5909a192d7f116cfb6d45cbacf96a473fa733faa95050e7cff26e7832bb3ef94751592f1387b71c8956686
   languageName: node
   linkType: hard
 
@@ -4436,8 +4379,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "flyer@workspace:."
   dependencies:
-    "@auth/sveltekit": "npm:^1.0.1"
-    "@auth/unstorage-adapter": "npm:^2.0.0"
     "@cloudflare/workers-types": "npm:^4.20240423.0"
     "@playwright/test": "npm:^1.28.1"
     "@scure/base": "npm:^1.1.6"
@@ -5414,13 +5355,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^5.1.3":
-  version: 5.2.4
-  resolution: "jose@npm:5.2.4"
-  checksum: 10c0/e566417f66c36a8e1e9e899c18a9bf31d4e5a29c0e304e695564c3969b0e44594e62c68ed2b0fe2408fb99237973de95fe6a5cdb9c85ad739bd32fb7025232c0
-  languageName: node
-  linkType: hard
-
 "js-tokens@npm:^3.0.0 || ^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -6210,13 +6144,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"oauth4webapi@npm:^2.4.0":
-  version: 2.10.4
-  resolution: "oauth4webapi@npm:2.10.4"
-  checksum: 10c0/e24f4febc82eae738405038fd8fa27a473b45afe18b01ef939ec328a0a0b47ce4fa7d4fcf1041635372374a9dc9ce6f1e67bbc9b633e26c659d664a9c462898b
-  languageName: node
-  linkType: hard
-
 "object-assign@npm:^4.0.1":
   version: 4.1.1
   resolution: "object-assign@npm:4.1.1"
@@ -6688,24 +6615,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact-render-to-string@npm:5.2.3":
-  version: 5.2.3
-  resolution: "preact-render-to-string@npm:5.2.3"
-  dependencies:
-    pretty-format: "npm:^3.8.0"
-  peerDependencies:
-    preact: ">=10"
-  checksum: 10c0/c7695dd034a2dc50e3fd44621fd55e2d41854ab0abbcbc833a81feb3593a22a011596049de5a2486f71483323467a827adc7d6077cbbb1d154c0089fd8ab4cd7
-  languageName: node
-  linkType: hard
-
-"preact@npm:10.11.3":
-  version: 10.11.3
-  resolution: "preact@npm:10.11.3"
-  checksum: 10c0/44f342de226a89b53a7156fad0d4192bfc8233a5cc3eb46162f53d3c0c1c2956222d997927c7dff20f52c3592f112cefec5adac64f0477cbd8370fb39126ef7b
-  languageName: node
-  linkType: hard
-
 "prelude-ls@npm:^1.2.1":
   version: 1.2.1
   resolution: "prelude-ls@npm:1.2.1"
@@ -6784,13 +6693,6 @@ __metadata:
   bin:
     prettier: bin/prettier.cjs
   checksum: 10c0/ea327f37a7d46f2324a34ad35292af2ad4c4c3c3355da07313339d7e554320f66f65f91e856add8530157a733c6c4a897dc41b577056be5c24c40f739f5ee8c6
-  languageName: node
-  linkType: hard
-
-"pretty-format@npm:^3.8.0":
-  version: 3.8.0
-  resolution: "pretty-format@npm:3.8.0"
-  checksum: 10c0/69f12937bfb7b2a537a7463b9f875a16322401f1e44d7702d643faa0d21991126c24c093217ef6da403b54c15942a834174fa1c016b72e2cb9edaae6bb3729b6
   languageName: node
   linkType: hard
 
