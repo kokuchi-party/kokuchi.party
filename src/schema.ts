@@ -1,4 +1,25 @@
-import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text, integer, primaryKey } from "drizzle-orm/sqlite-core";
+
+export const user = sqliteTable("user", {
+  id: text("id").notNull().primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  role: text("role", { enum: ["user", "admin", "banned"] }).notNull()
+});
+
+export const oauth_account = sqliteTable(
+  "oauth_account",
+  {
+    provider_id: text("provider_id").notNull(),
+    provider_user_id: text("provider_user_id").notNull(),
+    user_id: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" })
+  },
+  (table) => ({
+    primary: primaryKey({ columns: [table.provider_id, table.provider_user_id] })
+  })
+);
 
 export const files = sqliteTable("files", {
   id: integer("id").primaryKey(),

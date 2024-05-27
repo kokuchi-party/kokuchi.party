@@ -14,7 +14,11 @@ const config = {
         include: ["/*"],
         exclude: ["<all>"]
       }
-    })
+    }),
+
+    alias: {
+      $schema: "src/schema.ts"
+    }
   }
 };
 

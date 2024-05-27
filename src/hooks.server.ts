@@ -1,30 +1,23 @@
 import { dev } from "$app/environment";
 import type { Handle } from "@sveltejs/kit";
-import { drizzle } from "drizzle-orm/d1";
-import { createStorage } from "unstorage";
-import cloudflareKVBindingDriver, { type KVOptions } from "unstorage/drivers/cloudflare-kv-binding";
+import { initialize as initializeDB } from "$lib/server/db";
+import { initialize as initializeAuth } from "$lib/server/auth";
 
 export const handle = (async ({ event, resolve }) => {
-  if (dev) {
+  if (dev && !event.platform) {
     const { connectD1, connectKV, waitUntil } = await import("wrangler-proxy");
     event.platform = {
       env: {
         DB: connectD1("DB"),
-        KV: connectKV("KV") as unknown as App.Platform["env"]["KV"],
+        KV: connectKV("KV"),
         DKIM_PRIVATE_KEY: "dummy"
       },
       context: { waitUntil }
     };
   }
 
-  if (event.platform) {
-    event.locals.db = drizzle(event.platform.env.DB);
-    event.locals.kv = createStorage({
-      driver: cloudflareKVBindingDriver({
-        binding: event.platform.env.KV as unknown as KVOptions["binding"]
-      })
-    });
-  }
+  await initializeDB(event);
+  await initializeAuth(event);
 
   return resolve(event);
 }) satisfies Handle;

@@ -11,8 +11,8 @@ import type { DrizzleD1Database } from "drizzle-orm/d1";
 import { base32crockford } from "@scure/base";
 import { imageDimensionsFromStream } from "image-dimensions";
 
-import { getUploadFolderName, type MimeType, type S3File } from "./file";
-import { files } from "../schema";
+import { getUploadFolderName, type MimeType, type S3File } from "$lib/file";
+import { files } from "$schema";
 import type { Result } from "$lib";
 
 const client = new AwsClient({

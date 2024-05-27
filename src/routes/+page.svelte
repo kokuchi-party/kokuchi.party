@@ -6,20 +6,19 @@
 
 <header>
   <nav>
-    <!--
-    <SignIn>
-      <span slot="submitButton">Sign In</span>
-    </SignIn>
-    <SignOut>
-      <span slot="submitButton">Sign Out</span>
-    </SignOut>
-    -->
+    {#if data.user}
+      <a href="/auth/logout">Signout</a>
+    {:else}
+      <a href="/auth/login/google">Sign In (Google)</a>
+      |
+      <a href="/auth/login/email">Sign In (Email)</a>
+    {/if}
   </nav>
 </header>
 
 <main>
   <ul>
-    <li>Name: {data.session?.user?.name}</li>
-    <li>Email: {data.session?.user?.email}</li>
+    <li>Name: {data.user?.name}</li>
+    <li>Email: {data.user?.email}</li>
   </ul>
 </main>
