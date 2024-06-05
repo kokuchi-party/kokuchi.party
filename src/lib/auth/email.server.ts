@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 import { err, ok } from "$lib";
 import { forEachKeyByPrefix } from "$lib/kv.server";
 import { sendEmail } from "$lib/email.server";
+import { dev } from "$app/environment";
 
 type Key = `magic:login:${string}:${string}`;
 
@@ -29,7 +30,7 @@ export async function generateLoginCode(event: RequestEvent, email: string) {
   const db = event.locals.db;
   const kv = event.platform?.env.KV;
 
-  if (!kv) throw new EmailAuthError(500);
+  if (!kv) return err({ status: 500 });
 
   const id = generateIdFromEntropySize(10);
 
@@ -39,52 +40,65 @@ export async function generateLoginCode(event: RequestEvent, email: string) {
     .where(eq(user.email, email))
     .get();
 
-  if (!existingUser) return id; // dummy
+  event.cookies.set("email_login_address", email, {
+    path: "/",
+    secure: !dev,
+    httpOnly: true,
+    maxAge: 60 * 10 // 10 min
+  });
+  event.cookies.set("email_login_id", id, {
+    path: "/",
+    secure: !dev,
+    httpOnly: true,
+    maxAge: 60 * 10 // 10 min
+  });
 
   // wrap the rest of the operations in `waitUntil` to mitigate timing attack
   event.platform?.context.waitUntil(
     (async () => {
-      await forEachKeyByPrefix(kv, Prefix.login(existingUser.id), (key) => kv.delete(key));
-
-      const code = generateRandomString(6, alphabet("0-9"));
-      await kv.put(Key.login(existingUser.id, id), code, { expirationTtl: 600 /* 10 min */ });
-
-      await sendEmail(event, {
-        to: [{ email, name: existingUser.name }],
-        subject: "[kokuchi.party] Login Code / ログインコード",
-        content: [
-          {
-            type: "text/plain",
-            value: `Your login code is: ${code}`
-          }
-        ]
-      });
+      if (existingUser) {
+        await forEachKeyByPrefix(kv, Prefix.login(existingUser.id), (key) => kv.delete(key));
+        const code = generateRandomString(6, alphabet("0-9"));
+        await kv.put(Key.login(existingUser.id, id), code, { expirationTtl: 600 /* 10 min */ });
+        await sendEmail(event, {
+          to: [{ email, name: existingUser.name }],
+          subject: "[kokuchi.party] Login Code / ログインコード",
+          content: [
+            {
+              type: "text/plain",
+              value: `Your login code is: ${code}`
+            }
+          ]
+        });
+      }
     })()
   );
 
-  return id;
+  return ok({});
 }
 
-export async function verifyLoginCode(
-  event: RequestEvent,
-  { email, id, code }: { email: string; id: string; code: string }
-) {
+export async function verifyLoginCode(event: RequestEvent, code: string) {
   const db = event.locals.db;
   const kv = event.platform?.env.KV;
 
-  if (!kv) throw new EmailAuthError(500);
+  if (!kv) return err({ status: 500, reason: "INTERNAL_ERROR" });
+
+  const id = event.cookies.get("email_login_id") ?? null;
+  const email = event.cookies.get("email_login_address") ?? null;
+  if (!id || !email) return err({ status: 400, reason: "UNAUTHORIZED" });
 
   const existingUser = await db
     .select({ id: user.id, email: user.email })
     .from(user)
     .where(eq(user.email, email))
     .get();
-  if (!existingUser || existingUser.email !== email)
-    return err({ reason: "INVALID_EMAIL" as const });
+  if (!existingUser) return err({ status: 400, reason: "INVALID_EMAIL" });
 
   const correctCode = await kv.get(Key.login(existingUser.id, id));
-  if (!correctCode || correctCode !== code) return err({ reason: "INVALID_CODE" as const });
+  if (!correctCode || correctCode !== code) return err({ status: 400, reason: "INVALID_CODE" });
 
   await kv.delete(Key.login(existingUser.id, id));
+  event.cookies.delete("email_login_id", { path: "/" });
+  event.cookies.delete("email_login_address", { path: "/" });
   return ok(existingUser);
 }

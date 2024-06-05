@@ -1,9 +1,9 @@
 export type Result<T, U = unknown> = ({ ok: true } & T) | ({ ok: false } & U);
 
-export const ok = <T extends object, U = never>(value: T) =>
+export const ok = <const T extends object, U = never>(value: T) =>
   ({ ...value, ok: true }) as Result<T, U>;
 
-export const err = <U extends object, T = never>(value: U) =>
+export const err = <const U extends object, T = never>(value: U) =>
   ({ ...value, ok: false }) as Result<T, U>;
 
 export function notNullOrUndefined<T>(x: T | null | undefined): x is T {

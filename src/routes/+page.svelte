@@ -9,9 +9,7 @@
     {#if data.user}
       <a href="/user/logout">Signout</a>
     {:else}
-      <a href="/user/auth/google">Sign In (Google)</a>
-      |
-      <a href="/user/login/email">Sign In (Email)</a>
+      <a href="/user/login">Sign In</a>
     {/if}
   </nav>
 </header>
