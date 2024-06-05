@@ -1,7 +1,7 @@
 import { dev } from "$app/environment";
 import type { Handle } from "@sveltejs/kit";
-import { initialize as initializeDB } from "$lib/server/db";
-import { initialize as initializeAuth } from "$lib/server/auth";
+import { initialize as initializeDB } from "$lib/db.server";
+import { initialize as initializeAuth } from "$lib/auth.server";
 
 export const handle = (async ({ event, resolve }) => {
   if (dev && !event.platform) {

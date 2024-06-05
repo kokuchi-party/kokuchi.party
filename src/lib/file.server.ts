@@ -11,9 +11,11 @@ import type { DrizzleD1Database } from "drizzle-orm/d1";
 import { base32crockford } from "@scure/base";
 import { imageDimensionsFromStream } from "image-dimensions";
 
-import { getUploadFolderName, type MimeType, type S3File } from "$lib/file";
 import { files } from "$schema";
-import type { Result } from "$lib";
+import { err, ok } from "$lib";
+import { getUploadFolderName, type MimeType } from "$lib/file";
+
+export * from "$lib/file";
 
 const client = new AwsClient({
   accessKeyId: S3_ACCESS_KEY,
@@ -49,13 +51,10 @@ export async function getImageDimensions(file: File) {
   return imageDimensionsFromStream(file.stream());
 }
 
-export async function create(
-  db: DrizzleD1Database,
-  file: File
-): Promise<Result<S3File, { status: number; message: string }>> {
+export async function create(db: DrizzleD1Database, file: File) {
   const hash = await calculateHash(file);
   const { mime, ext } = (await getFileType(file)) ?? {};
-  if (!mime || !ext) return { ok: false, status: 415, message: "Unsupported file type" };
+  if (!mime || !ext) return err({ status: 415, message: "Unsupported file type" });
 
   const folder = getUploadFolderName(mime);
   const name = ext ? `${hash}.${ext}` : hash;
@@ -70,11 +69,10 @@ export async function create(
   });
 
   if (!res.ok)
-    return {
-      ok: false,
+    return err({
       status: 500,
       message: "S3 upload failure"
-    };
+    });
 
   const sizes = await getImageDimensions(file);
 
@@ -91,8 +89,8 @@ export async function create(
       })
       .returning();
 
-    return { ...item[0], ok: true };
+    return ok(item[0]);
   } catch (e) {
-    return { ok: false, status: 500, message: "DB insertion failure" };
+    return err({ status: 500, message: "DB insertion failure" });
   }
 }

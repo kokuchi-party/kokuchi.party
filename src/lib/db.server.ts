@@ -12,7 +12,7 @@ declare global {
 }
 
 export async function initialize(event: RequestEvent) {
-  if (event.platform) {
+  if (event.platform && !event.locals.db) {
     const db = drizzle(event.platform.env.DB);
     event.locals.db = db;
   }

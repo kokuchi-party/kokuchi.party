@@ -2,12 +2,11 @@ import type { RequestEvent } from "@sveltejs/kit";
 import { Lucia, type User, type Session, type Register, generateIdFromEntropySize } from "lucia";
 import { and, eq, type InferSelectModel } from "drizzle-orm";
 import type { DrizzleD1Database } from "drizzle-orm/d1";
-import { Google } from "arctic";
 
 import { dev } from "$app/environment";
-import { D1KVAdapter } from "$lib/server/auth/adapter";
 import { oauth_account, user } from "$schema";
-import { AUTH_GOOGLE_ID, AUTH_GOOGLE_SECRET } from "$env/static/private";
+import { D1KVAdapter } from "$lib/auth/adapter.server";
+import { initialize as initializeGoogle } from "$lib/auth/google.server";
 
 type DatabaseUserAttributes = InferSelectModel<typeof user>;
 
@@ -21,11 +20,11 @@ declare module "lucia" {
 declare global {
   /* eslint-disable @typescript-eslint/no-namespace */
   namespace App {
+    interface Arctic {}
+
     interface Locals {
       lucia: Register["Lucia"];
-      arctic: {
-        google: Google;
-      };
+      arctic: Arctic;
       user: User | null;
       session: Session | null;
     }
@@ -53,18 +52,9 @@ function createLucia(d1: DrizzleD1Database, kv: KVNamespace) {
 export async function initialize(event: RequestEvent) {
   if (event.platform) {
     if (!event.locals.lucia) {
-      const lucia = createLucia(event.locals.db, event.platform.env.KV);
-      event.locals.lucia = lucia;
+      event.locals.lucia = createLucia(event.locals.db, event.platform.env.KV);
     }
-    if (!event.locals.arctic) {
-      const google = new Google(
-        AUTH_GOOGLE_ID,
-        AUTH_GOOGLE_SECRET,
-        `${event.url.origin}/auth/callback/google`
-      );
-      const arctic = { google };
-      event.locals.arctic = arctic;
-    }
+    await initializeGoogle(event);
     const { lucia } = event.locals;
 
     const sessionId = event.cookies.get(lucia.sessionCookieName);
@@ -93,14 +83,22 @@ export async function initialize(event: RequestEvent) {
   }
 }
 
+export interface LoginUserArgs {
+  provider_id: string;
+  provider_user_id: string;
+}
+
+export interface RegisterUserArgs extends LoginUserArgs {
+  name: string;
+  email: string;
+}
+
 export async function linkUser(
   event: RequestEvent,
   signedInUser: User,
-  { provider_id, provider_user_id }: { provider_id: string; provider_user_id: string }
+  { provider_id, provider_user_id }: LoginUserArgs
 ) {
   const db = event.locals.db;
-
-  // Log in as an existing user
   const existingAccount = await db
     .select()
     .from(oauth_account)
@@ -112,7 +110,6 @@ export async function linkUser(
     )
     .get();
   if (existingAccount) return false;
-
   await db.insert(oauth_account).values({
     provider_id,
     provider_user_id,
@@ -123,12 +120,7 @@ export async function linkUser(
 
 export async function loginOrRegisterUser(
   event: RequestEvent,
-  {
-    name,
-    email,
-    provider_id,
-    provider_user_id
-  }: { name: string; email: string; provider_id: string; provider_user_id: string }
+  { name, email, provider_id, provider_user_id }: RegisterUserArgs
 ) {
   const db = event.locals.db;
 

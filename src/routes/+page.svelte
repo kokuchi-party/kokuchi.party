@@ -7,11 +7,11 @@
 <header>
   <nav>
     {#if data.user}
-      <a href="/auth/logout">Signout</a>
+      <a href="/user/logout">Signout</a>
     {:else}
-      <a href="/auth/login/google">Sign In (Google)</a>
+      <a href="/user/auth/google">Sign In (Google)</a>
       |
-      <a href="/auth/login/email">Sign In (Email)</a>
+      <a href="/user/login/email">Sign In (Email)</a>
     {/if}
   </nav>
 </header>

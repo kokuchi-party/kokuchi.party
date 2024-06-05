@@ -1,6 +1,8 @@
 import { dev } from "$app/environment";
 import type { RequestEvent } from "@sveltejs/kit";
 
+export * from "$lib/email";
+
 interface EmailAddress {
   email: string;
   name?: string;

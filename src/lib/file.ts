@@ -1,8 +1,8 @@
 import type { MimeType } from "file-type";
 export type { MimeType } from "file-type";
 
-import type { files } from "../schema";
 import type { InferSelectModel } from "drizzle-orm";
+import type { files } from "$schema";
 import { PUBLIC_CDN_DOMAIN } from "$env/static/public";
 
 export type S3File = InferSelectModel<typeof files>;

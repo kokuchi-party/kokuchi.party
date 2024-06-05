@@ -3,7 +3,7 @@ import type { Adapter, DatabaseSession, DatabaseUser } from "lucia";
 import { eq } from "drizzle-orm";
 
 import { user } from "$schema";
-import { forEachKeyByPrefix } from "$lib/server/kv";
+import { forEachKeyByPrefix } from "$lib/kv.server";
 
 type Key = `session:${string}` | `session-by:${string}:${string}`;
 

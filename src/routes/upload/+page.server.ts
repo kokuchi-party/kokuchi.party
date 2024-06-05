@@ -1,7 +1,8 @@
 import { fail } from "@sveltejs/kit";
 import type { Actions } from "./$types";
+
 import { drizzle } from "drizzle-orm/d1";
-import { create } from "$lib/server/file";
+import { create } from "$lib/file.server";
 
 export const actions: Actions = {
   upload: async ({ platform, request, locals }) => {

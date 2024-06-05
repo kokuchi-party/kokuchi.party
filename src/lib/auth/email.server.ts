@@ -1,10 +1,11 @@
 import type { RequestEvent } from "@sveltejs/kit";
 import { generateIdFromEntropySize } from "lucia";
 import { generateRandomString, alphabet } from "oslo/crypto";
-import { forEachKeyByPrefix } from "../kv";
 import { user } from "$schema";
 import { eq } from "drizzle-orm";
-import { sendEmail } from "../email";
+import { err, ok } from "$lib";
+import { forEachKeyByPrefix } from "$lib/kv.server";
+import { sendEmail } from "$lib/email.server";
 
 type Key = `magic:login:${string}:${string}`;
 
@@ -78,11 +79,12 @@ export async function verifyLoginCode(
     .from(user)
     .where(eq(user.email, email))
     .get();
-  if (!existingUser || existingUser.email !== email) return false;
+  if (!existingUser || existingUser.email !== email)
+    return err({ reason: "INVALID_EMAIL" as const });
 
   const correctCode = await kv.get(Key.login(existingUser.id, id));
-  if (!correctCode || correctCode !== code) return false;
+  if (!correctCode || correctCode !== code) return err({ reason: "INVALID_CODE" as const });
 
   await kv.delete(Key.login(existingUser.id, id));
-  return existingUser.id;
+  return ok(existingUser);
 }

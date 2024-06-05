@@ -3,7 +3,7 @@ import type { Actions } from "./$types";
 
 import { RateLimiter } from "sveltekit-rate-limiter/server";
 import { validateEmail } from "$lib/email";
-import { generateLoginCode, verifyLoginCode } from "$lib/server/auth/email";
+import { generateLoginCode, verifyLoginCode } from "$lib/auth/email.server";
 
 import { dev } from "$app/environment";
 
@@ -52,13 +52,13 @@ export const actions: Actions = {
     if (!code || typeof code !== "string")
       return { email, emailSent: true, errorCode: "INVALID_CODE" as const };
 
-    const userId = await verifyLoginCode(event, { email, id, code });
-    if (!userId) return { email, emailSent: true, errorCode: "INVALID_CODE" as const };
+    const user = await verifyLoginCode(event, { email, id, code });
+    if (!user.ok) return { email, emailSent: true, errorCode: user.reason };
 
     event.cookies.delete("email_login_id", { path: "/" });
 
     const lucia = event.locals.lucia;
-    const session = await lucia.createSession(userId, {});
+    const session = await lucia.createSession(user.id, {});
     const sessionCookie = lucia.createSessionCookie(session.id);
     event.cookies.set(sessionCookie.name, sessionCookie.value, {
       path: ".",
