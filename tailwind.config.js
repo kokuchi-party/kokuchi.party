@@ -55,7 +55,35 @@ const config = {
         sm: "calc(var(--radius) - 4px)"
       },
       fontFamily: {
-        sans: [...fontFamily.sans]
+        sans: [...fontFamily.sans],
+        orbitron: "Orbitron Variable"
+      },
+      animation: {
+        "swing-in-top-fwd":
+          "swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) forwards",
+        blink: "blink 0.6s ease both"
+      },
+      keyframes: {
+        "swing-in-top-fwd": {
+          "0%": {
+            transform: "rotateX(-100deg)",
+            "transform-origin": "top",
+            opacity: "0"
+          },
+          to: {
+            transform: "rotateX(0deg)",
+            "transform-origin": "top",
+            opacity: "1"
+          }
+        },
+        blink: {
+          "0%,50%,to": {
+            opacity: "1"
+          },
+          "25%,75%": {
+            opacity: "0"
+          }
+        }
       }
     }
   }

@@ -16,7 +16,8 @@
     "migrate:remote": "dotenv cross-var 'wrangler d1 migrations apply $D1_DATABASE_NAME --remote'",
     "migrate:local": "dotenv cross-var 'wrangler d1 migrations apply $D1_DATABASE_NAME --local'",
     "gen:migration": "drizzle-kit generate:sqlite",
-    "gen:wrangler.toml": "envsub --all --env-file .env wrangler.base.toml wrangler.toml"
+    "gen:wrangler.toml": "envsub --all --env-file .env wrangler.base.toml wrangler.toml",
+    "shadcn": "shadcn-svelte"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240423.0",
@@ -42,6 +43,7 @@
     "prettier": "^3.1.1",
     "prettier-plugin-svelte": "^3.1.2",
     "prettier-plugin-tailwindcss": "^0.5.9",
+    "shadcn-svelte": "^0.10.6",
     "svelte": "^4.2.7",
     "svelte-check": "^3.6.0",
     "sveltekit-rate-limiter": "^0.5.1",
@@ -54,9 +56,11 @@
   },
   "type": "module",
   "dependencies": {
+    "@fontsource-variable/orbitron": "^5.0.19",
     "@scure/base": "^1.1.6",
     "arctic": "^1.8.1",
     "aws4fetch": "^1.0.18",
+    "bits-ui": "^0.21.10",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.30.10",
     "image-dimensions": "^2.3.0",
