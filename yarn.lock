@@ -85,7 +85,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workers-types@npm:^4.20231121.0, @cloudflare/workers-types@npm:^4.20240423.0":
+"@cloudflare/workers-types@npm:4.20240423.0, @cloudflare/workers-types@npm:^4.20231121.0":
   version: 4.20240423.0
   resolution: "@cloudflare/workers-types@npm:4.20240423.0"
   checksum: 10c0/a6130dae99abfd747a4f0632da89eefc68e9789e2d944282a3175cfcb92bfcac346f110bac82d5193abff7d4bac56b8347682cfda68b90aa4e00054bade150fa
@@ -865,7 +865,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource-variable/orbitron@npm:^5.0.19":
+"@fontsource-variable/orbitron@npm:5.0.19":
   version: 5.0.19
   resolution: "@fontsource-variable/orbitron@npm:5.0.19"
   checksum: 10c0/aa5fdcc1b48a0f6405648bb97b157206a73dbc85d23422c172505e223a5d59f129be11ae86990eba39fa63b2cd5d97cad990a82e8dea7477bb9f6296a382d8d2
@@ -991,7 +991,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@inlang/paraglide-js-adapter-vite@npm:^1.2.40":
+"@inlang/paraglide-js-adapter-vite@npm:1.2.40":
   version: 1.2.40
   resolution: "@inlang/paraglide-js-adapter-vite@npm:1.2.40"
   dependencies:
@@ -1906,7 +1906,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:^1.28.1":
+"@playwright/test@npm:1.43.1":
   version: 1.43.1
   resolution: "@playwright/test@npm:1.43.1"
   dependencies:
@@ -2036,7 +2036,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@scure/base@npm:^1.1.6":
+"@scure/base@npm:1.1.6":
   version: 1.1.6
   resolution: "@scure/base@npm:1.1.6"
   checksum: 10c0/237a46a1f45391fc57719154f14295db936a0b1562ea3e182dd42d7aca082dbb7062a28d6c49af16a7e478b12dae8a0fe678d921ea5056bcc30238d29eb05c55
@@ -2050,7 +2050,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/adapter-cloudflare@npm:^4.4.0":
+"@sveltejs/adapter-cloudflare@npm:4.4.0":
   version: 4.4.0
   resolution: "@sveltejs/adapter-cloudflare@npm:4.4.0"
   dependencies:
@@ -2064,7 +2064,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:^2.0.0":
+"@sveltejs/kit@npm:2.5.7":
   version: 2.5.7
   resolution: "@sveltejs/kit@npm:2.5.7"
   dependencies:
@@ -2103,7 +2103,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:^3.0.0":
+"@sveltejs/vite-plugin-svelte@npm:3.1.0":
   version: 3.1.0
   resolution: "@sveltejs/vite-plugin-svelte@npm:3.1.0"
   dependencies:
@@ -2167,7 +2167,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:^8.56.0":
+"@types/eslint@npm:8.56.10":
   version: 8.56.10
   resolution: "@types/eslint@npm:8.56.10"
   dependencies:
@@ -2232,7 +2232,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^7.0.0":
+"@typescript-eslint/eslint-plugin@npm:7.8.0":
   version: 7.8.0
   resolution: "@typescript-eslint/eslint-plugin@npm:7.8.0"
   dependencies:
@@ -2257,7 +2257,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^7.0.0":
+"@typescript-eslint/parser@npm:7.8.0":
   version: 7.8.0
   resolution: "@typescript-eslint/parser@npm:7.8.0"
   dependencies:
@@ -2495,7 +2495,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"arctic@npm:^1.8.1":
+"arctic@npm:1.8.1":
   version: 1.8.1
   resolution: "arctic@npm:1.8.1"
   dependencies:
@@ -2583,7 +2583,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.4.16":
+"autoprefixer@npm:10.4.19":
   version: 10.4.19
   resolution: "autoprefixer@npm:10.4.19"
   dependencies:
@@ -2610,7 +2610,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws4fetch@npm:^1.0.18":
+"aws4fetch@npm:1.0.18":
   version: 1.0.18
   resolution: "aws4fetch@npm:1.0.18"
   checksum: 10c0/4381256692eaf7e34878b6fe6c01b6d3a0cfe4f012ba09f8c33af9dc84a34c6396da9a478a0518873c74ed13b8b608f8d3c5d8e19c16dabe06f3aba83e5ac5bb
@@ -3491,7 +3491,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bits-ui@npm:^0.21.10":
+"bits-ui@npm:0.21.10":
   version: 0.21.10
   resolution: "bits-ui@npm:0.21.10"
   dependencies:
@@ -3777,7 +3777,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^2.1.1":
+"clsx@npm:2.1.1":
   version: 2.1.1
   resolution: "clsx@npm:2.1.1"
   checksum: 10c0/c4c8eb865f8c82baab07e71bfa8897c73454881c4f99d6bc81585aecd7c441746c1399d08363dc096c550cceaf97bd4ce1e8854e1771e9998d9f94c4fe075839
@@ -3961,7 +3961,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-var@npm:^1.1.0":
+"cross-var@npm:1.1.0":
   version: 1.1.0
   resolution: "cross-var@npm:1.1.0"
   dependencies:
@@ -4234,7 +4234,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv-cli@npm:^7.4.1":
+"dotenv-cli@npm:7.4.1":
   version: 7.4.1
   resolution: "dotenv-cli@npm:7.4.1"
   dependencies:
@@ -4271,7 +4271,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"drizzle-kit@npm:^0.20.17":
+"drizzle-kit@npm:0.20.17":
   version: 0.20.17
   resolution: "drizzle-kit@npm:0.20.17"
   dependencies:
@@ -4298,7 +4298,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"drizzle-orm@npm:^0.30.10":
+"drizzle-orm@npm:0.30.10":
   version: 0.30.10
   resolution: "drizzle-orm@npm:0.30.10"
   peerDependencies:
@@ -4442,7 +4442,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"envsub@npm:^4.1.0":
+"envsub@npm:4.1.0":
   version: 4.1.0
   resolution: "envsub@npm:4.1.0"
   dependencies:
@@ -4987,7 +4987,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:^9.1.0":
+"eslint-config-prettier@npm:9.1.0":
   version: 9.1.0
   resolution: "eslint-config-prettier@npm:9.1.0"
   peerDependencies:
@@ -4998,7 +4998,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-svelte@npm:^2.35.1":
+"eslint-plugin-svelte@npm:2.38.0":
   version: 2.38.0
   resolution: "eslint-plugin-svelte@npm:2.38.0"
   dependencies:
@@ -5041,7 +5041,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.56.0":
+"eslint@npm:8.57.0":
   version: 8.57.0
   resolution: "eslint@npm:8.57.0"
   dependencies:
@@ -5286,7 +5286,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-type@npm:^19.0.0":
+"file-type@npm:19.0.0":
   version: 19.0.0
   resolution: "file-type@npm:19.0.0"
   dependencies:
@@ -5349,52 +5349,52 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "flyer@workspace:."
   dependencies:
-    "@cloudflare/workers-types": "npm:^4.20240423.0"
-    "@fontsource-variable/orbitron": "npm:^5.0.19"
+    "@cloudflare/workers-types": "npm:4.20240423.0"
+    "@fontsource-variable/orbitron": "npm:5.0.19"
     "@inlang/paraglide-js": "npm:1.9.1"
-    "@inlang/paraglide-js-adapter-vite": "npm:^1.2.40"
-    "@playwright/test": "npm:^1.28.1"
-    "@scure/base": "npm:^1.1.6"
-    "@sveltejs/adapter-cloudflare": "npm:^4.4.0"
-    "@sveltejs/kit": "npm:^2.0.0"
-    "@sveltejs/vite-plugin-svelte": "npm:^3.0.0"
-    "@types/eslint": "npm:^8.56.0"
-    "@typescript-eslint/eslint-plugin": "npm:^7.0.0"
-    "@typescript-eslint/parser": "npm:^7.0.0"
-    arctic: "npm:^1.8.1"
-    autoprefixer: "npm:^10.4.16"
-    aws4fetch: "npm:^1.0.18"
-    bits-ui: "npm:^0.21.10"
-    clsx: "npm:^2.1.1"
-    cross-var: "npm:^1.1.0"
-    dotenv-cli: "npm:^7.4.1"
-    drizzle-kit: "npm:^0.20.17"
-    drizzle-orm: "npm:^0.30.10"
-    envsub: "npm:^4.1.0"
-    eslint: "npm:^8.56.0"
-    eslint-config-prettier: "npm:^9.1.0"
-    eslint-plugin-svelte: "npm:^2.35.1"
-    file-type: "npm:^19.0.0"
-    image-dimensions: "npm:^2.3.0"
-    lucia: "npm:^3.2.0"
-    npm-run-all: "npm:^4.1.5"
-    postcss: "npm:^8.4.32"
-    postcss-load-config: "npm:^5.0.2"
-    prettier: "npm:^3.1.1"
-    prettier-plugin-svelte: "npm:^3.1.2"
-    prettier-plugin-tailwindcss: "npm:^0.5.9"
-    shadcn-svelte: "npm:^0.10.6"
-    svelte: "npm:^4.2.7"
-    svelte-check: "npm:^3.6.0"
-    sveltekit-rate-limiter: "npm:^0.5.1"
-    tailwind-merge: "npm:^2.3.0"
-    tailwind-variants: "npm:^0.2.1"
-    tailwindcss: "npm:^3.3.6"
-    tslib: "npm:^2.4.1"
-    typescript: "npm:^5.0.0"
-    vite: "npm:^5.0.3"
-    wrangler: "npm:^3.53.0"
-    wrangler-proxy: "npm:^2.2.7"
+    "@inlang/paraglide-js-adapter-vite": "npm:1.2.40"
+    "@playwright/test": "npm:1.43.1"
+    "@scure/base": "npm:1.1.6"
+    "@sveltejs/adapter-cloudflare": "npm:4.4.0"
+    "@sveltejs/kit": "npm:2.5.7"
+    "@sveltejs/vite-plugin-svelte": "npm:3.1.0"
+    "@types/eslint": "npm:8.56.10"
+    "@typescript-eslint/eslint-plugin": "npm:7.8.0"
+    "@typescript-eslint/parser": "npm:7.8.0"
+    arctic: "npm:1.8.1"
+    autoprefixer: "npm:10.4.19"
+    aws4fetch: "npm:1.0.18"
+    bits-ui: "npm:0.21.10"
+    clsx: "npm:2.1.1"
+    cross-var: "npm:1.1.0"
+    dotenv-cli: "npm:7.4.1"
+    drizzle-kit: "npm:0.20.17"
+    drizzle-orm: "npm:0.30.10"
+    envsub: "npm:4.1.0"
+    eslint: "npm:8.57.0"
+    eslint-config-prettier: "npm:9.1.0"
+    eslint-plugin-svelte: "npm:2.38.0"
+    file-type: "npm:19.0.0"
+    image-dimensions: "npm:2.3.0"
+    lucia: "npm:3.2.0"
+    npm-run-all: "npm:4.1.5"
+    postcss: "npm:8.4.38"
+    postcss-load-config: "npm:5.0.3"
+    prettier: "npm:3.2.5"
+    prettier-plugin-svelte: "npm:3.2.3"
+    prettier-plugin-tailwindcss: "npm:0.5.14"
+    shadcn-svelte: "npm:0.10.6"
+    svelte: "npm:4.2.15"
+    svelte-check: "npm:3.7.0"
+    sveltekit-rate-limiter: "npm:0.5.1"
+    tailwind-merge: "npm:2.3.0"
+    tailwind-variants: "npm:0.2.1"
+    tailwindcss: "npm:3.4.3"
+    tslib: "npm:2.6.2"
+    typescript: "npm:5.4.5"
+    vite: "npm:5.2.10"
+    wrangler: "npm:3.53.0"
+    wrangler-proxy: "npm:2.2.7"
   languageName: unknown
   linkType: soft
 
@@ -5947,7 +5947,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"image-dimensions@npm:^2.3.0":
+"image-dimensions@npm:2.3.0":
   version: 2.3.0
   resolution: "image-dimensions@npm:2.3.0"
   bin:
@@ -6670,7 +6670,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucia@npm:^3.2.0":
+"lucia@npm:3.2.0":
   version: 3.2.0
   resolution: "lucia@npm:3.2.0"
   dependencies:
@@ -7200,7 +7200,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-run-all@npm:^4.1.5":
+"npm-run-all@npm:4.1.5":
   version: 4.1.5
   resolution: "npm-run-all@npm:4.1.5"
   dependencies:
@@ -7621,6 +7621,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss-load-config@npm:5.0.3":
+  version: 5.0.3
+  resolution: "postcss-load-config@npm:5.0.3"
+  dependencies:
+    lilconfig: "npm:^3.0.0"
+    yaml: "npm:^2.3.4"
+  peerDependencies:
+    jiti: ">=1.21.0"
+    postcss: ">=8.0.9"
+  peerDependenciesMeta:
+    jiti:
+      optional: true
+    postcss:
+      optional: true
+  checksum: 10c0/decb5363cead7dc72f664a7943f1cd88e252107b289261f50925101e864c7bb80a5c479e876609d8146c1ab6b52b961abb91cbb41768edc416eb9729555f0643
+  languageName: node
+  linkType: hard
+
 "postcss-load-config@npm:^3.1.4":
   version: 3.1.4
   resolution: "postcss-load-config@npm:3.1.4"
@@ -7654,24 +7672,6 @@ __metadata:
     ts-node:
       optional: true
   checksum: 10c0/3d7939acb3570b0e4b4740e483d6e555a3e2de815219cb8a3c8fc03f575a6bde667443aa93369c0be390af845cb84471bf623e24af833260de3a105b78d42519
-  languageName: node
-  linkType: hard
-
-"postcss-load-config@npm:^5.0.2":
-  version: 5.0.3
-  resolution: "postcss-load-config@npm:5.0.3"
-  dependencies:
-    lilconfig: "npm:^3.0.0"
-    yaml: "npm:^2.3.4"
-  peerDependencies:
-    jiti: ">=1.21.0"
-    postcss: ">=8.0.9"
-  peerDependenciesMeta:
-    jiti:
-      optional: true
-    postcss:
-      optional: true
-  checksum: 10c0/decb5363cead7dc72f664a7943f1cd88e252107b289261f50925101e864c7bb80a5c479e876609d8146c1ab6b52b961abb91cbb41768edc416eb9729555f0643
   languageName: node
   linkType: hard
 
@@ -7721,7 +7721,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.23, postcss@npm:^8.4.32, postcss@npm:^8.4.38":
+"postcss@npm:8.4.38, postcss@npm:^8.4.23, postcss@npm:^8.4.38":
   version: 8.4.38
   resolution: "postcss@npm:8.4.38"
   dependencies:
@@ -7749,7 +7749,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-svelte@npm:^3.1.2":
+"prettier-plugin-svelte@npm:3.2.3":
   version: 3.2.3
   resolution: "prettier-plugin-svelte@npm:3.2.3"
   peerDependencies:
@@ -7759,7 +7759,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:^0.5.9":
+"prettier-plugin-tailwindcss@npm:0.5.14":
   version: 0.5.14
   resolution: "prettier-plugin-tailwindcss@npm:0.5.14"
   peerDependencies:
@@ -7814,7 +7814,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.1.1":
+"prettier@npm:3.2.5":
   version: 3.2.5
   resolution: "prettier@npm:3.2.5"
   bin:
@@ -8358,7 +8358,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shadcn-svelte@npm:^0.10.6":
+"shadcn-svelte@npm:0.10.6":
   version: 0.10.6
   resolution: "shadcn-svelte@npm:0.10.6"
   dependencies:
@@ -8871,7 +8871,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-check@npm:^3.6.0":
+"svelte-check@npm:3.7.0":
   version: 3.7.0
   resolution: "svelte-check@npm:3.7.0"
   dependencies:
@@ -8964,7 +8964,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:^4.2.7":
+"svelte@npm:4.2.15":
   version: 4.2.15
   resolution: "svelte@npm:4.2.15"
   dependencies:
@@ -8986,7 +8986,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sveltekit-rate-limiter@npm:^0.5.1":
+"sveltekit-rate-limiter@npm:0.5.1":
   version: 0.5.1
   resolution: "sveltekit-rate-limiter@npm:0.5.1"
   dependencies:
@@ -9004,7 +9004,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-merge@npm:^2.2.0, tailwind-merge@npm:^2.3.0":
+"tailwind-merge@npm:2.3.0, tailwind-merge@npm:^2.2.0":
   version: 2.3.0
   resolution: "tailwind-merge@npm:2.3.0"
   dependencies:
@@ -9013,7 +9013,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-variants@npm:^0.2.1":
+"tailwind-variants@npm:0.2.1":
   version: 0.2.1
   resolution: "tailwind-variants@npm:0.2.1"
   dependencies:
@@ -9024,7 +9024,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.3.6":
+"tailwindcss@npm:3.4.3":
   version: 3.4.3
   resolution: "tailwindcss@npm:3.4.3"
   dependencies:
@@ -9179,7 +9179,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.2.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1":
+"tslib@npm:2.6.2, tslib@npm:^2.2.0, tslib@npm:^2.4.0":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 10c0/e03a8a4271152c8b26604ed45535954c0a45296e32445b4b87f8a5abdb2421f40b59b4ca437c4346af0f28179780d604094eb64546bee2019d903d01c6c19bdb
@@ -9261,7 +9261,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.0.0, typescript@npm:^5.0.3":
+"typescript@npm:5.4.5, typescript@npm:^5.0.3":
   version: 5.4.5
   resolution: "typescript@npm:5.4.5"
   bin:
@@ -9271,7 +9271,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^5.0.0#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.0.3#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^5.0.3#optional!builtin<compat/typescript>":
   version: 5.4.5
   resolution: "typescript@patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"
   bin:
@@ -9412,7 +9412,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.0.3":
+"vite@npm:5.2.10":
   version: 5.2.10
   resolution: "vite@npm:5.2.10"
   dependencies:
@@ -9594,14 +9594,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wrangler-proxy@npm:^2.2.7":
+"wrangler-proxy@npm:2.2.7":
   version: 2.2.7
   resolution: "wrangler-proxy@npm:2.2.7"
   checksum: 10c0/eb43ba80e212ea282daa51c6d03ed790942e3aa731a7d9078ec4b471053647c78739c9be8af3913e262c349b6eeccff6c49b0754c6ce040b0fc6d4e889422da9
   languageName: node
   linkType: hard
 
-"wrangler@npm:^3.53.0":
+"wrangler@npm:3.53.0":
   version: 3.53.0
   resolution: "wrangler@npm:3.53.0"
   dependencies:
