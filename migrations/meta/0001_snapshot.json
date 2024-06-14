@@ -1,8 +1,6 @@
 {
-  "version": "5",
+  "version": "6",
   "dialect": "sqlite",
-  "id": "1564bc73-0935-4b2b-be2c-4806ae000c27",
-  "prevId": "bb309eb8-fcc4-493e-9a7e-1d24dd0db148",
   "tables": {
     "files": {
       "name": "files",
@@ -99,15 +97,15 @@
         "oauth_account_user_id_user_id_fk": {
           "name": "oauth_account_user_id_user_id_fk",
           "tableFrom": "oauth_account",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -161,8 +159,9 @@
   },
   "enums": {},
   "_meta": {
-    "schemas": {},
     "tables": {},
     "columns": {}
-  }
+  },
+  "id": "1564bc73-0935-4b2b-be2c-4806ae000c27",
+  "prevId": "bb309eb8-fcc4-493e-9a7e-1d24dd0db148"
 }

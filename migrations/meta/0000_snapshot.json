@@ -1,8 +1,6 @@
 {
-  "version": "5",
+  "version": "6",
   "dialect": "sqlite",
-  "id": "bb309eb8-fcc4-493e-9a7e-1d24dd0db148",
-  "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "files": {
       "name": "files",
@@ -72,8 +70,9 @@
   },
   "enums": {},
   "_meta": {
-    "schemas": {},
     "tables": {},
     "columns": {}
-  }
+  },
+  "id": "bb309eb8-fcc4-493e-9a7e-1d24dd0db148",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

@@ -17,7 +17,7 @@
     "migrate:remote:run": "wrangler d1 migrations apply $D1_DATABASE_NAME --remote",
     "migrate:local": "dotenv -- yarn migrate:local:run",
     "migrate:local:run": "wrangler d1 migrations apply $D1_DATABASE_NAME --local",
-    "gen:migration": "drizzle-kit generate:sqlite",
+    "gen:migration": "drizzle-kit generate",
     "gen:wrangler.toml": "envsub --all --env-file .env wrangler.base.toml wrangler.toml",
     "shadcn": "shadcn-svelte",
     "postinstall": "paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide"
