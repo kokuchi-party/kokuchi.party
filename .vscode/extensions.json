@@ -7,5 +7,6 @@
     "esbenp.prettier-vscode",
     "me-dutour-mathieu.vscode-github-actions",
     "svelte.svelte-vscode",
+    "inlang.vs-code-extension"
   ]
 }

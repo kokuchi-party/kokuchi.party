@@ -6,6 +6,8 @@
   import type { ActionData } from "./$types";
   import { cn } from "$lib/utils";
 
+  import * as m from "$paraglide/messages";
+
   export let form: ActionData;
 
   let loading: boolean;
@@ -28,7 +30,7 @@
           };
         }}
       >
-        <label for="email">Email</label>
+        <label for="email">{m.label__email()}</label>
 
         <Input
           id="email"
@@ -41,27 +43,27 @@
         />
 
         <Button class="w-full" type="submit" disabled={loading || form?.reason === "RATE_LIMITED"}>
-          Get login code
+          {m.label__get_login_code()}
         </Button>
       </form>
 
-      <p>or</p>
+      <p>{m.label__or()}</p>
 
       <div class="w-full space-y-1">
         <Button href="/user/auth/google" class="w-full" variant="outline">
-          Sign in with Google
+          {m.label__sign_in_with_google()}
         </Button>
 
         <Button href="/user/auth/instagram" class="w-full" variant="outline">
-          Sign in with Instagram
+          {m.label__sign_in_with_instagram()}
         </Button>
       </div>
     </section>
 
     <section class="w-full space-y-2">
-      <h2>New to Kokuchi.party?</h2>
+      <h2>{m.h__new_to_kokuchiparty()}</h2>
 
-      <Button variant="outline" class="w-full">Create account</Button>
+      <Button variant="outline" class="w-full">{m.label__create_account()}</Button>
     </section>
   </section>
 </main>

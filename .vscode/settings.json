@@ -6,19 +6,10 @@
     }
   ],
   "svelte.enable-ts-plugin": true,
-  "tailwindCSS.classAttributes": [
-    "class",
-    ".+Class"
-  ],
+  "tailwindCSS.classAttributes": ["class", ".+Class"],
   "tailwindCSS.experimental.classRegex": [
-    [
-      "tv\\(([^)]*)\\)",
-      "(?:'|\"|`)([^']*)(?:'|\"|`)"
-    ],
-    [
-      "cn\\(([^)]*)\\)",
-      "(?:'|\"|`)([^']*)(?:'|\"|`)"
-    ]
+    ["tv\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
   "typescript.tsdk": "node_modules/typescript/lib",
   "[typescript]": {
@@ -29,5 +20,5 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  }
 }

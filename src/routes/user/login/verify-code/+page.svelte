@@ -6,6 +6,8 @@
   import type { ActionData } from "./$types";
   import { cn } from "$lib/utils";
 
+  import * as m from "$paraglide/messages";
+
   export let form: ActionData;
 
   let loading: boolean;
@@ -16,7 +18,7 @@
     <h1 class="font-orbitron text-3xl">Verify Code</h1>
 
     <section class="flex w-full flex-col items-center gap-4">
-      <p>A six-letter login code has been sent to your email (if you have registered).</p>
+      <p>{m.p__code_has_been_sent()}</p>
 
       <form
         class="w-full space-y-2"
@@ -30,7 +32,7 @@
           };
         }}
       >
-        <label for="email">Code</label>
+        <label for="email">{m.label__code()}</label>
 
         <Input
           name="code"
@@ -47,15 +49,15 @@
         />
 
         <Button class="w-full" type="submit" disabled={loading || form?.reason === "RATE_LIMITED"}>
-          Verify login code
+          {m.label__verify_login_code()}
         </Button>
       </form>
     </section>
 
     <section class="w-full space-y-2">
-      <h2>New to Kokuchi.party?</h2>
+      <h2>{m.h__new_to_kokuchiparty()}</h2>
 
-      <Button variant="outline" class="w-full">Create account</Button>
+      <Button variant="outline" class="w-full">{m.label__create_account()}</Button>
     </section>
   </section>
 </main>

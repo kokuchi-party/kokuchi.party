@@ -1,0 +1,13 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "label__email": "Email",
+  "label__get_login_code": "Get login code",
+  "label__or": "or",
+  "label__sign_in_with_google": "Sign in with Google",
+  "label__sign_in_with_instagram": "Sign in with Instagram",
+  "h__new_to_kokuchiparty": "New to Kokuchi.party?",
+  "label__create_account": "Create account",
+  "p__code_has_been_sent": "A six-letter login code has been sent to your email (if you have registered).",
+  "label__code": "Code",
+  "label__verify_login_code": "Verify login code"
+}

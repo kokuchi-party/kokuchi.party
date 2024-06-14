@@ -6,7 +6,7 @@
     "dev": "run-p -r dev:vite dev:wrangler",
     "dev:vite": "vite dev --host",
     "dev:wrangler": "wrangler dev node_modules/wrangler-proxy/dist/worker.js",
-    "build": "vite build",
+    "build": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide && vite build",
     "preview": "vite preview",
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -17,10 +17,13 @@
     "migrate:local": "dotenv cross-var 'wrangler d1 migrations apply $D1_DATABASE_NAME --local'",
     "gen:migration": "drizzle-kit generate:sqlite",
     "gen:wrangler.toml": "envsub --all --env-file .env wrangler.base.toml wrangler.toml",
-    "shadcn": "shadcn-svelte"
+    "shadcn": "shadcn-svelte",
+    "postinstall": "paraglide-js compile --project ./project.inlang --outdir ./src/paraglide"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240423.0",
+    "@inlang/paraglide-js": "1.9.1",
+    "@inlang/paraglide-js-adapter-vite": "^1.2.40",
     "@playwright/test": "^1.28.1",
     "@sveltejs/adapter-cloudflare": "^4.4.0",
     "@sveltejs/kit": "^2.0.0",
