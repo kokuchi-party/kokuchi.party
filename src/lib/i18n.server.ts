@@ -7,7 +7,7 @@ import {
   isAvailableLanguageTag,
   sourceLanguageTag,
   setLanguageTag
-} from "./paraglide/runtime.js";
+} from "$paraglide/runtime";
 import type { User } from "lucia";
 
 declare global {

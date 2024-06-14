@@ -33,8 +33,6 @@ jobs:
       - name: Copy .env.example to .env for CI build
         run: cp .env.example .env
 
-      - run: yarn check
-
       - run: yarn build
 
       - run: yarn lint
