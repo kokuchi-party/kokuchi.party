@@ -73,5 +73,5 @@
     "tailwind-merge": "2.3.0",
     "tailwind-variants": "0.2.1"
   },
-  "packageManager": "yarn@4.2.1"
+  "packageManager": "yarn@4.3.0"
 }
