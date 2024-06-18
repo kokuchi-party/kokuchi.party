@@ -4540,6 +4540,7 @@ __metadata:
     file-type: "npm:19.0.0"
     image-dimensions: "npm:2.3.0"
     lucia: "npm:3.2.0"
+    mode-watcher: "npm:0.3.1"
     npm-run-all: "npm:4.1.5"
     postcss: "npm:8.4.38"
     postcss-load-config: "npm:6.0.1"
@@ -5936,6 +5937,15 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: 10c0/46ea0f3ffa8bc6a5bc0c7081ffc3907777f0ed6516888d40a518c5111f8366d97d2678911ad1a6882bf592fa9de6c784fea32e1687bb94e1f4944170af48a5cf
+  languageName: node
+  linkType: hard
+
+"mode-watcher@npm:0.3.1":
+  version: 0.3.1
+  resolution: "mode-watcher@npm:0.3.1"
+  peerDependencies:
+    svelte: ^4.0.0 || ^5.0.0-next.1
+  checksum: 10c0/c6c38f5852dfdc8ea198622936452d6e9c87477b208ce2aeab15b2a40bf332b364f06f3fe467690e14501e6e21405d00f327564489240da08180b0e4bed46621
   languageName: node
   linkType: hard
 
