@@ -2215,9 +2215,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/kit@npm:2.5.11":
-  version: 2.5.11
-  resolution: "@sveltejs/kit@npm:2.5.11"
+"@sveltejs/kit@npm:2.5.16":
+  version: 2.5.16
+  resolution: "@sveltejs/kit@npm:2.5.16"
   dependencies:
     "@types/cookie": "npm:^0.6.0"
     cookie: "npm:^0.6.0"
@@ -2237,7 +2237,7 @@ __metadata:
     vite: ^5.0.3
   bin:
     svelte-kit: svelte-kit.js
-  checksum: 10c0/5ac086867972e604312369a26771dd8c1aad533b8a78725c423c1db3c5c17fab02bb8f77e4c936064a588c10655226d0146bb2dbc6987e922f5c049cc0a5582f
+  checksum: 10c0/e0742de264345afa59739df1d9f757d1679ae061c06d9313b7ed20fe8db7c364b999556344a3f1a21b554dafb31d66a49f8a549fc0257771deffdc49f5d06b2f
   languageName: node
   linkType: hard
 
@@ -4491,7 +4491,7 @@ __metadata:
     "@playwright/test": "npm:1.44.1"
     "@scure/base": "npm:1.1.7"
     "@sveltejs/adapter-cloudflare": "npm:4.4.1"
-    "@sveltejs/kit": "npm:2.5.11"
+    "@sveltejs/kit": "npm:2.5.16"
     "@sveltejs/vite-plugin-svelte": "npm:3.1.1"
     "@types/eslint": "npm:8.56.10"
     "@typescript-eslint/eslint-plugin": "npm:7.13.0"
