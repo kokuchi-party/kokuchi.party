@@ -7,7 +7,7 @@ import { generateLoginCode } from "$lib/auth/email.server";
 import { err } from "$lib";
 
 const generateLimiter = new RateLimiter({
-  IP: [1000, "d"], // IP address limiter
+  IP: [100, "d"], // IP address limiter
   IPUA: [10, "15m"] // IP + User Agent limiter
 });
 
@@ -21,10 +21,10 @@ export const actions: Actions = {
     const data = await event.request.formData();
     const email = data.get("email");
 
-    if (await generateLimiter.isLimited(event)) return err({ reason: "RATE_LIMITED" });
-
     if (!email || typeof email !== "string" || !validateEmail(email))
       return err({ reason: "INVALID_EMAIL" });
+
+    if (await generateLimiter.isLimited(event)) return err({ reason: "RATE_LIMITED" });
 
     const res = await generateLoginCode(event, email);
 

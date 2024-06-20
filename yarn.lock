@@ -4550,6 +4550,7 @@ __metadata:
     shadcn-svelte: "npm:0.10.7"
     svelte: "npm:4.2.18"
     svelte-check: "npm:3.8.0"
+    svelte-sonner: "npm:0.3.24"
     sveltekit-rate-limiter: "npm:0.5.1"
     tailwind-merge: "npm:2.3.0"
     tailwind-variants: "npm:0.2.1"
@@ -7770,6 +7771,15 @@ __metadata:
     typescript:
       optional: true
   checksum: 10c0/fe968ee1d599a2c59c5a695e23cd3c2d15c5c316ce76ae644908521476f2e81b69dcf0cd3492deeb0a06140af497f994e4baf524d3d2c93986fad1c9267524ae
+  languageName: node
+  linkType: hard
+
+"svelte-sonner@npm:0.3.24":
+  version: 0.3.24
+  resolution: "svelte-sonner@npm:0.3.24"
+  peerDependencies:
+    svelte: ">=3 <5"
+  checksum: 10c0/17bfc6b6aa83f9d46875c3b0f7bb88a992fd06722984bb18f9d2f2f066a9cf09a28dae2d2cfe9beda211bf2ddb735e8ae22e04ee531ab13e6adfdde6c0c8f9bd
   languageName: node
   linkType: hard
 

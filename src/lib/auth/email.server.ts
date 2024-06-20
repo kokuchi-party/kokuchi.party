@@ -77,11 +77,15 @@ export async function generateLoginCode(event: RequestEvent, email: string) {
   return ok({});
 }
 
+export function isCookieSet(event: RequestEvent) {
+  return !!event.cookies.get("email_login_id") && !!event.cookies.get("email_login_address");
+}
+
 export async function verifyLoginCode(event: RequestEvent, code: string) {
   const db = event.locals.db;
   const kv = event.platform?.env.KV;
 
-  if (!kv) return err({ status: 500, reason: "INTERNAL_ERROR" });
+  if (!kv) return err({ status: 500, reason: "INTERNAL_ERROR", message: "KV is unavailable" });
 
   const id = event.cookies.get("email_login_id") ?? null;
   const email = event.cookies.get("email_login_address") ?? null;

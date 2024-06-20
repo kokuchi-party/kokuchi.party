@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { toast } from "svelte-sonner";
   import { enhance } from "$app/forms";
 
   import Input from "$lib/components/ui/input/input.svelte";
@@ -11,6 +12,21 @@
   export let form: ActionData;
 
   let loading: boolean;
+
+  $: {
+    switch (form?.reason) {
+      case "INVALID_EMAIL": {
+        toast.error(m.toast__invalid_email());
+        break;
+      }
+      case "RATE_LIMITED": {
+        toast.error(m.toast__rate_limited());
+        break;
+      }
+      default:
+        break;
+    }
+  }
 </script>
 
 <main>

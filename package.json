@@ -70,6 +70,7 @@
     "image-dimensions": "2.3.0",
     "lucia": "3.2.0",
     "mode-watcher": "0.3.1",
+    "svelte-sonner": "0.3.24",
     "tailwind-merge": "2.3.0",
     "tailwind-variants": "0.2.1"
   },

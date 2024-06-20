@@ -9,5 +9,9 @@
   "label__create_account": "Create account",
   "p__code_has_been_sent": "A six-letter login code has been sent to your email (if you have registered).",
   "label__code": "Code",
-  "label__verify_login_code": "Verify login code"
+  "label__verify_login_code": "Verify login code",
+  "toast__invalid_email": "The email address is invalid.",
+  "toast__rate_limited": "Rate limited. Please try again later.",
+  "toast__invalid_code": "The login code is invalid.",
+  "toast__internal_error": "Internal error: {message}"
 }
