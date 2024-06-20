@@ -15,10 +15,6 @@
 
   $: {
     switch (form?.reason) {
-      case "INVALID_EMAIL": {
-        toast.error(m.toast__invalid_email());
-        break;
-      }
       case "RATE_LIMITED": {
         toast.error(m.toast__rate_limited());
         break;

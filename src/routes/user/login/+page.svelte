@@ -23,6 +23,10 @@
         toast.error(m.toast__rate_limited());
         break;
       }
+      case "INTERNAL_ERROR": {
+        toast.error(m.toast__internal_error({ message: form.message }));
+        break;
+      }
       default:
         break;
     }

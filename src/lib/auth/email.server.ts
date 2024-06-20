@@ -30,7 +30,7 @@ export async function generateLoginCode(event: RequestEvent, email: string) {
   const db = event.locals.db;
   const kv = event.platform?.env.KV;
 
-  if (!kv) return err({ status: 500 });
+  if (!kv) return err({ status: 500, reason: "INTERNAL_ERROR", message: "KV is unavailable" });
 
   const id = generateIdFromEntropySize(10);
 
@@ -96,7 +96,11 @@ export async function verifyLoginCode(event: RequestEvent, code: string) {
     .from(user)
     .where(eq(user.email, email))
     .get();
-  if (!existingUser) return err({ status: 400, reason: "INVALID_EMAIL" });
+  if (!existingUser)
+    return err({
+      status: 400,
+      reason: "INVALID_CODE" /* hide the fact that the user doesn't exist in the first place */
+    });
 
   const correctCode = await kv.get(Key.login(existingUser.id, id));
   if (!correctCode || correctCode !== code) return err({ status: 400, reason: "INVALID_CODE" });
