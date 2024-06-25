@@ -23,7 +23,7 @@
     "postinstall": "paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20240614.0",
+    "@cloudflare/workers-types": "4.20240620.0",
     "@inlang/paraglide-js": "1.9.1",
     "@inlang/paraglide-js-adapter-vite": "1.2.40",
     "@playwright/test": "1.44.1",
