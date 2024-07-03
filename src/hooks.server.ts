@@ -1,7 +1,7 @@
 import { dev } from "$app/environment";
-import type { Handle } from "@sveltejs/kit";
+import { redirect, type Handle } from "@sveltejs/kit";
 import { initialize as initializeDB } from "$lib/db.server";
-import { initialize as initializeAuth } from "$lib/auth.server";
+import { initialize as initializeAuth, setRedirectUrl } from "$lib/auth.server";
 import { handle as handleI18n } from "$lib/i18n.server";
 import { sequence } from "@sveltejs/kit/hooks";
 
@@ -20,6 +20,15 @@ const handleBase = (async ({ event, resolve }) => {
 
   await initializeDB(event);
   await initializeAuth(event);
+
+  if (
+    !event.locals.user &&
+    event.route.id?.startsWith("/(protected)/") &&
+    event.url.pathname.startsWith("/")
+  ) {
+    setRedirectUrl(event, event.url.pathname);
+    throw redirect(303, "/user/login");
+  }
 
   return resolve(event);
 }) satisfies Handle;
