@@ -29,7 +29,7 @@ export const actions: Actions = {
 
     const res = await generateLoginCode(event, email);
 
-    if (res.ok) throw redirect(302, "/user/login/verify-code");
+    if (res.ok) throw redirect(303, "/user/login/verify-code");
     return res;
   },
 
@@ -39,6 +39,6 @@ export const actions: Actions = {
     if (origin && typeof origin === "string" && origin.startsWith("/")) {
       setRedirectUrl(event, origin);
     }
-    throw redirect(302, "/user/login");
+    throw redirect(303, "/user/login");
   }
 };

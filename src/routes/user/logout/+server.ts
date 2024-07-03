@@ -1,7 +1,7 @@
 import { redirectBack, setRedirectUrl } from "$lib/auth.server";
 import type { RequestEvent } from "@sveltejs/kit";
 
-async function logout(event: RequestEvent) {
+async function logout(event: RequestEvent, method: "GET" | "POST") {
   const { lucia } = event.locals;
 
   if (!event.locals.session) {
@@ -14,11 +14,11 @@ async function logout(event: RequestEvent) {
     ...sessionCookie.attributes
   });
 
-  throw redirectBack(event);
+  throw redirectBack(event, method === "GET" ? 302 : 303);
 }
 
 export async function GET(event: RequestEvent): Promise<Response> {
-  return await logout(event);
+  return await logout(event, "GET");
 }
 
 export async function POST(event: RequestEvent) {
@@ -27,5 +27,5 @@ export async function POST(event: RequestEvent) {
   if (origin && typeof origin === "string" && origin.startsWith("/")) {
     setRedirectUrl(event, origin);
   }
-  return await logout(event);
+  return await logout(event, "POST");
 }

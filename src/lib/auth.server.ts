@@ -196,5 +196,8 @@ export function getRedirectUrl(e: RequestEvent, modifier?: (url: URL) => void) {
   return url.pathname + url.search + url.hash; // only return the local path
 }
 
-export const redirectBack = (...params: Parameters<typeof getRedirectUrl>) =>
-  redirect(302, getRedirectUrl(...params));
+export const redirectBack = (
+  e: RequestEvent,
+  status: Parameters<typeof redirect>[0] = 302,
+  modifier?: (url: URL) => void
+) => redirect(status, getRedirectUrl(e, modifier));

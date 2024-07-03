@@ -31,7 +31,7 @@ export const actions: Actions = {
     const res = await verifyLoginCode(event, code);
     if (!res.ok) {
       // Redirect if login code is not sent (should not happen here)
-      if (res.reason === "UNAUTHORIZED") throw redirect(302, "/user/login");
+      if (res.reason === "UNAUTHORIZED") throw redirect(303, "/user/login");
       return res;
     }
 
@@ -43,6 +43,6 @@ export const actions: Actions = {
       ...sessionCookie.attributes
     });
 
-    throw redirectBack(event);
+    throw redirectBack(event, 303);
   }
 };
