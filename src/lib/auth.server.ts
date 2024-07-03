@@ -1,4 +1,4 @@
-import type { RequestEvent } from "@sveltejs/kit";
+import { redirect, type RequestEvent } from "@sveltejs/kit";
 import { Lucia, type User, type Session, type Register, generateIdFromEntropySize } from "lucia";
 import { and, eq, type InferSelectModel } from "drizzle-orm";
 import type { DrizzleD1Database } from "drizzle-orm/d1";
@@ -163,3 +163,38 @@ export interface OpenIdUser {
   email: string;
   picture: string;
 }
+
+const cookieOption = {
+  httpOnly: true,
+  secure: !dev,
+  sameSite: "lax",
+  path: "/",
+  maxAge: 60 * 10 // 10 min
+} as const;
+
+export function setRedirectUrl<S extends `/${string}`>(e: RequestEvent, path: S | URL) {
+  const url = typeof path === "string" ? new URL(path, e.url.origin) : path;
+  e.cookies.set("redirect_url", url.pathname, cookieOption);
+}
+
+export function getRedirectUrl(e: RequestEvent, modifier?: (url: URL) => void) {
+  const value = e.cookies.get("redirect_url");
+  if (!value) return "/";
+  e.cookies.delete("redirect_url", cookieOption);
+  const url = new URL(value, e.url.origin);
+
+  if (modifier) modifier(url);
+
+  // prevent infinite loop
+  if (
+    url.pathname.startsWith("/user/auth") ||
+    url.pathname.startsWith("/user/login") ||
+    url.pathname.startsWith("/user/logout")
+  )
+    return "/";
+
+  return url.pathname + url.search + url.hash; // only return the local path
+}
+
+export const redirectBack = (...params: Parameters<typeof getRedirectUrl>) =>
+  redirect(302, getRedirectUrl(...params));

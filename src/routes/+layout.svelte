@@ -4,6 +4,7 @@
 
   import { ModeWatcher } from "mode-watcher";
   import { Toaster } from "$lib/components/ui/sonner";
+  import Header from "$lib/components/header.svelte";
   import { setLanguageTag } from "$paraglide/runtime";
 
   export let data;
@@ -12,4 +13,7 @@
 
 <ModeWatcher />
 <Toaster />
+
+<Header loggedIn={data.loggedIn} />
+
 <slot />

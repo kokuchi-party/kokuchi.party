@@ -1,7 +1,7 @@
-import { redirect } from "@sveltejs/kit";
+import { redirectBack, setRedirectUrl } from "$lib/auth.server";
 import type { RequestEvent } from "@sveltejs/kit";
 
-export async function GET(event: RequestEvent): Promise<Response> {
+async function logout(event: RequestEvent) {
   const { lucia } = event.locals;
 
   if (!event.locals.session) {
@@ -13,5 +13,19 @@ export async function GET(event: RequestEvent): Promise<Response> {
     path: ".",
     ...sessionCookie.attributes
   });
-  redirect(302, "/");
+
+  throw redirectBack(event);
+}
+
+export async function GET(event: RequestEvent): Promise<Response> {
+  return await logout(event);
+}
+
+export async function POST(event: RequestEvent) {
+  const data = await event.request.formData();
+  const origin = data.get("origin");
+  if (origin && typeof origin === "string" && origin.startsWith("/")) {
+    setRedirectUrl(event, origin);
+  }
+  return await logout(event);
 }

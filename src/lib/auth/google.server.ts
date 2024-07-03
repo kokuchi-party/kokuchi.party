@@ -88,7 +88,7 @@ export async function getRegisterUserArgs(event: RequestEvent) {
       // invalid code
       return err({ status: 400 });
     }
-    console.log(e);
+    console.error(e);
     return err({ status: 500 });
   }
 }

@@ -42,6 +42,7 @@
         class="w-full space-y-2"
         method="post"
         enctype="multipart/form-data"
+        action="?/submit"
         use:enhance={() => {
           loading = true;
           return (e) => {

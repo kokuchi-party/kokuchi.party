@@ -1,6 +1,6 @@
 import type { RequestEvent } from "@sveltejs/kit";
 import { err } from "$lib";
-import { linkUser, loginOrRegisterUser } from "$lib/auth.server";
+import { getRedirectUrl, linkUser, loginOrRegisterUser } from "$lib/auth.server";
 import { getRegisterUserArgs as getArgsGoogle } from "$lib/auth/google.server";
 
 async function getRegisterUserArgs(event: RequestEvent) {
@@ -22,10 +22,11 @@ export async function GET(event: RequestEvent): Promise<Response> {
     const signedInUser = event.locals.user;
     if (signedInUser) {
       const ok = await linkUser(event, signedInUser, args);
+      const redirectUrl = getRedirectUrl(event, (url) => url.searchParams.append("ok", String(ok)));
       return new Response(null, {
         status: 302,
         headers: {
-          Location: `/?ok=${ok}` // TODO: redirect to account settings
+          Location: redirectUrl
         }
       });
     } else {
@@ -36,15 +37,16 @@ export async function GET(event: RequestEvent): Promise<Response> {
         path: ".",
         ...sessionCookie.attributes
       });
+      const redirectUrl = getRedirectUrl(event);
       return new Response(null, {
         status: 302,
         headers: {
-          Location: "/"
+          Location: redirectUrl
         }
       });
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
     return new Response(null, { status: 500 });
   }
 }

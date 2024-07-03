@@ -26,6 +26,13 @@ export class EmailAuthError extends Error {
   }
 }
 
+const cookieOption = {
+  path: "/",
+  secure: !dev,
+  httpOnly: true,
+  maxAge: 60 * 10 // 10 min
+} as const;
+
 export async function generateLoginCode(event: RequestEvent, email: string) {
   const db = event.locals.db;
   const kv = event.platform?.env.KV;
@@ -40,18 +47,8 @@ export async function generateLoginCode(event: RequestEvent, email: string) {
     .where(eq(user.email, email))
     .get();
 
-  event.cookies.set("email_login_address", email, {
-    path: "/",
-    secure: !dev,
-    httpOnly: true,
-    maxAge: 60 * 10 // 10 min
-  });
-  event.cookies.set("email_login_id", id, {
-    path: "/",
-    secure: !dev,
-    httpOnly: true,
-    maxAge: 60 * 10 // 10 min
-  });
+  event.cookies.set("email_login_address", email, cookieOption);
+  event.cookies.set("email_login_id", id, cookieOption);
 
   // wrap the rest of the operations in `waitUntil` to mitigate timing attack
   event.platform?.context.waitUntil(
@@ -106,7 +103,7 @@ export async function verifyLoginCode(event: RequestEvent, code: string) {
   if (!correctCode || correctCode !== code) return err({ status: 400, reason: "INVALID_CODE" });
 
   await kv.delete(Key.login(existingUser.id, id));
-  event.cookies.delete("email_login_id", { path: "/" });
-  event.cookies.delete("email_login_address", { path: "/" });
+  event.cookies.delete("email_login_id", cookieOption);
+  event.cookies.delete("email_login_address", cookieOption);
   return ok(existingUser);
 }

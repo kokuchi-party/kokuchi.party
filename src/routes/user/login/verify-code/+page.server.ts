@@ -4,6 +4,7 @@ import type { Actions } from "./$types";
 import { RateLimiter } from "sveltekit-rate-limiter/server";
 import { isCookieSet, verifyLoginCode } from "$lib/auth/email.server";
 import { err } from "$lib";
+import { redirectBack } from "$lib/auth.server";
 
 const verifyLimiter = new RateLimiter({
   IP: [100, "d"], // IP address limiter
@@ -12,7 +13,7 @@ const verifyLimiter = new RateLimiter({
 
 export async function load(event: RequestEvent) {
   // Redirect if already logged in
-  if (event.locals.user) throw redirect(302, "/");
+  if (event.locals.user) throw redirectBack(event);
 
   // Redirect if login code is not sent
   if (!isCookieSet(event)) throw redirect(302, "/user/login");
@@ -30,7 +31,7 @@ export const actions: Actions = {
     const res = await verifyLoginCode(event, code);
     if (!res.ok) {
       // Redirect if login code is not sent (should not happen here)
-      if (res.reason === "UNAUTHORIZED") throw redirect(302, "/");
+      if (res.reason === "UNAUTHORIZED") throw redirect(302, "/user/login");
       return res;
     }
 
@@ -41,6 +42,7 @@ export const actions: Actions = {
       path: ".",
       ...sessionCookie.attributes
     });
-    throw redirect(302, "/");
+
+    throw redirectBack(event);
   }
 };
