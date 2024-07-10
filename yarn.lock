@@ -4299,6 +4299,7 @@ __metadata:
     file-type: "npm:19.0.0"
     image-dimensions: "npm:2.3.0"
     lucia: "npm:3.2.0"
+    lucide-svelte: "npm:0.407.0"
     mode-watcher: "npm:0.3.1"
     npm-run-all: "npm:4.1.5"
     postcss: "npm:8.4.38"
@@ -5414,6 +5415,15 @@ __metadata:
   dependencies:
     oslo: "npm:1.2.0"
   checksum: 10c0/f4667785c59a365b0251b8f25eb55110aa0c2716bb05c6e01b072b476b6f0a29f5b9c48739a02eaba65dd0690accddec6ab0038fb47bdcd11773434195531c91
+  languageName: node
+  linkType: hard
+
+"lucide-svelte@npm:0.407.0":
+  version: 0.407.0
+  resolution: "lucide-svelte@npm:0.407.0"
+  peerDependencies:
+    svelte: ^3 || ^4 || ^5.0.0-next.42
+  checksum: 10c0/12cec38d8dab6f7184739a03fb598216b8ad079d4080808ee7a4062c5683ebd1923f2f44ea495eddcbe319e2bd6260568334530f402b74b36c2f08ae76d4f1fe
   languageName: node
   linkType: hard
 
