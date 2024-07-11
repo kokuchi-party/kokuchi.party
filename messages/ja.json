@@ -13,5 +13,9 @@
   "toast__invalid_email": "メールアドレスが無効です。",
   "toast__rate_limited": "回数制限に達しています。しばらくしてからもう一度お試しください。",
   "toast__invalid_code": "ログインコードが無効です。",
-  "toast__internal_error": "内部エラー: {message}"
+  "toast__internal_error": "内部エラー: {message}",
+  "p__settings": "設定",
+  "p__signup": "新規登録",
+  "p__login": "ログイン",
+  "p__logout": "ログアウト"
 }

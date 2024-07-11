@@ -13,5 +13,9 @@
   "toast__invalid_email": "The email address is invalid.",
   "toast__rate_limited": "Rate limited. Please try again later.",
   "toast__invalid_code": "The login code is invalid.",
-  "toast__internal_error": "Internal error: {message}"
+  "toast__internal_error": "Internal error: {message}",
+  "p__settings": "Settings",
+  "p__signup": "Register",
+  "p__login": "Log in",
+  "p__logout": "Log out"
 }

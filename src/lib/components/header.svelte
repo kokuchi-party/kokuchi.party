@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { cn } from "$lib/utils";
   import { page } from "$app/stores";
   import Settings from "lucide-svelte/icons/settings";
   import SignUp from "lucide-svelte/icons/user-round-plus";
   import LogIn from "lucide-svelte/icons/log-in";
   import LogOut from "lucide-svelte/icons/log-out";
+  import { cn } from "$lib/utils";
   import { limitWidth } from "$lib/constant";
+  import * as m from "$paraglide/messages";
 
   let className: string | undefined = undefined;
 
@@ -28,13 +29,13 @@
     <ul class="flex items-center gap-4 md:gap-6 lg:gap-8">
       <li class="flex h-full w-10 flex-col items-center gap-[2px] text-muted-foreground lg:w-10">
         <Settings class="size-6 md:size-7 lg:size-8" />
-        <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">設定</p>
+        <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">{m.p__settings()}</p>
       </li>
 
       {#if userControl !== "logout"}
         <li class="flex h-full w-10 flex-col items-center gap-[2px] text-muted-foreground lg:w-10">
           <SignUp class="size-6 md:size-7 lg:size-8" />
-          <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">新規登録</p>
+          <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">{m.p__signup()}</p>
         </li>
       {/if}
       {#if userControl !== "none"}
@@ -50,10 +51,10 @@
             >
               {#if userControl === "login"}
                 <LogIn class="size-6 md:size-7 lg:size-8" />
-                <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">ログイン</p>
+                <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">{m.p__login()}</p>
               {:else}
                 <LogOut class="size-6 md:size-7 lg:size-8" />
-                <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">ログアウト</p>
+                <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">{m.p__logout()}</p>
               {/if}
             </button>
           </form>
