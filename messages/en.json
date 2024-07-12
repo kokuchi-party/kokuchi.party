@@ -17,5 +17,9 @@
   "p__settings": "Settings",
   "p__signup": "Register",
   "p__login": "Log in",
-  "p__logout": "Log out"
+  "p__logout": "Log out",
+  "label__light_mode": "Light Mode",
+  "label__dark_mode": "Dark Mode",
+  "label__account_settings": "Account Settings",
+  "p__dashboard": "Dashboard"
 }

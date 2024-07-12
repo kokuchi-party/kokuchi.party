@@ -1,14 +1,31 @@
 <script lang="ts">
   import { page } from "$app/stores";
+  import { enhance } from "$app/forms";
+
   import Settings from "lucide-svelte/icons/settings";
   import SignUp from "lucide-svelte/icons/user-round-plus";
   import LogIn from "lucide-svelte/icons/log-in";
   import LogOut from "lucide-svelte/icons/log-out";
+  import MoonStar from "lucide-svelte/icons/moon-star";
+  import Sun from "lucide-svelte/icons/sun";
+  import Languages from "lucide-svelte/icons/languages";
+  import UserSettings from "lucide-svelte/icons/user-round-cog";
+  import Calendar from "lucide-svelte/icons/calendar-fold";
+
   import { cn } from "$lib/utils";
   import { limitWidth } from "$lib/constant";
+
   import * as m from "$paraglide/messages";
+  import { languageTag } from "$paraglide/runtime";
+
+  import { toggleMode, mode } from "mode-watcher";
+
+  import Button from "$components/ui/button/button.svelte";
 
   let className: string | undefined = undefined;
+
+  $: darkmode = $mode === "dark";
+  $: lang = languageTag();
 
   export let loggedIn: boolean | undefined;
 
@@ -27,39 +44,143 @@
       <a href="/">Kokuchi.party</a>
     </h1>
     <ul class="flex items-center gap-4 md:gap-6 lg:gap-8">
-      <li class="flex h-full w-10 flex-col items-center gap-[2px] text-muted-foreground lg:w-10">
-        <Settings class="size-6 md:size-7 lg:size-8" />
-        <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">{m.p__settings()}</p>
-      </li>
-
-      {#if userControl !== "logout"}
-        <li class="flex h-full w-10 flex-col items-center gap-[2px] text-muted-foreground lg:w-10">
+      {#if userControl === "login"}
+        <!-- TODO: /user/register -->
+        <li class="flex h-full w-10 flex-col items-center gap-[2px] text-muted-foreground">
           <SignUp class="size-6 md:size-7 lg:size-8" />
           <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">{m.p__signup()}</p>
         </li>
-      {/if}
-      {#if userControl !== "none"}
+
         <li>
-          <form
-            method="post"
-            action={userControl === "login" ? "/user/login?/initiate" : "/user/logout"}
-          >
+          <form method="post" action="/user/login?/initiate" use:enhance>
             <input id="origin" name="origin" type="hidden" value={$page.url.pathname} />
             <button
-              class="flex h-full w-10 flex-col items-center gap-[2px] text-muted-foreground lg:w-10"
+              class="flex h-full w-10 flex-col items-center gap-[2px] text-muted-foreground"
               type="submit"
             >
-              {#if userControl === "login"}
-                <LogIn class="size-6 md:size-7 lg:size-8" />
-                <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">{m.p__login()}</p>
-              {:else}
-                <LogOut class="size-6 md:size-7 lg:size-8" />
-                <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">{m.p__logout()}</p>
-              {/if}
+              <LogIn class="size-6 md:size-7 lg:size-8" />
+              <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">{m.p__login()}</p>
             </button>
           </form>
         </li>
       {/if}
+
+      {#if userControl === "logout"}
+        <li>
+          <form method="post" action="/user/logout">
+            <input id="origin" name="origin" type="hidden" value={$page.url.pathname} />
+            <button
+              class="flex h-full w-10 flex-col items-center gap-[2px] text-muted-foreground"
+              type="submit"
+            >
+              <LogOut class="size-6 md:size-7 lg:size-8" />
+              <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">{m.p__logout()}</p>
+            </button>
+          </form>
+        </li>
+
+        <!-- TODO: /user/dashboard -->
+        <li class="flex h-full w-10 flex-col items-center gap-[2px] text-muted-foreground">
+          <Calendar class="size-6 md:size-7 lg:size-8" />
+          <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">{m.p__dashboard()}</p>
+        </li>
+      {/if}
+
+      <li class="group relative">
+        <button
+          id="menubutton"
+          aria-haspopup
+          aria-controls="menu"
+          class="flex h-full w-10 flex-col items-center gap-[2px] text-muted-foreground"
+        >
+          <Settings
+            aria-label="Settings"
+            class="size-6 group-focus-within:animate-spin md:size-7 lg:size-8"
+          />
+          <p class="whitespace-nowrap text-2xs font-medium lg:text-xs">{m.p__settings()}</p>
+        </button>
+
+        <div
+          id="menu"
+          role="menu"
+          aria-labelledby="menubutton"
+          class={cn(
+            "absolute right-0 mt-2 flex w-[180px] flex-col gap-3 rounded-md border bg-background p-3 shadow-lg",
+            "invisible opacity-0 transition-all duration-200 ease-in group-focus-within:visible group-focus-within:opacity-100 "
+          )}
+        >
+          <Button
+            role="menuitem"
+            variant="outline"
+            on:click={toggleMode}
+            class="yesscript flex justify-start gap-2"
+          >
+            <div aria-hidden role="presentation" class="size-4 shrink-0">
+              <Sun
+                class={cn(
+                  "absolute size-4 transition-all duration-100 ease-in",
+                  darkmode ? "invisible opacity-0" : "visible opacity-100"
+                )}
+              />
+              <MoonStar
+                class={cn(
+                  "absolute size-4 transition-all duration-100 ease-in",
+                  darkmode ? "visible opacity-100" : "invisible opacity-0"
+                )}
+              />
+            </div>
+            <p class="mx-auto text-xs">
+              {#if darkmode}
+                {m.label__dark_mode()}
+              {:else}
+                {m.label__light_mode()}
+              {/if}
+            </p>
+          </Button>
+
+          <noscript>
+            <Button
+              role="menuitem"
+              variant="outline"
+              class="flex w-full justify-start gap-2"
+              disabled
+            >
+              <Sun class="size-4 shrink-0" />
+              <p class="mx-auto text-xs">
+                {m.label__light_mode()}
+              </p>
+            </Button>
+          </noscript>
+
+          <Button
+            role="menuitem"
+            variant="outline"
+            data-sveltekit-reload
+            data-sveltekit-noscroll
+            href={`?lang=${lang === "en" ? "ja" : "en"}`}
+            class="flex justify-start gap-2"
+          >
+            <Languages aria-hidden class="size-4 shrink-0" />
+            <p class="mx-auto text-xs">
+              {#if lang === "en"}
+                日本語
+              {:else}
+                English
+              {/if}
+            </p>
+          </Button>
+
+          <hr />
+
+          <!-- TODO: /user/settings -->
+          <Button role="menuitem" class="flex justify-start gap-2">
+            <UserSettings aria-hidden class="size-4 shrink-0" />
+            <p class="mx-auto text-xs">
+              {m.label__account_settings()}
+            </p>
+          </Button>
+        </div>
+      </li>
     </ul>
   </nav>
 </header>

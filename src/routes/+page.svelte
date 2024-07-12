@@ -1,22 +1,11 @@
 <script lang="ts">
-  import { toggleMode } from "mode-watcher";
   import type { PageData } from "./$types";
+  import { limitWidth } from "$lib/constant";
 
   export let data: PageData;
 </script>
 
-<header>
-  <nav class="flex flex-col items-start">
-    {#if data.user}
-      <a href="/user/logout">Signout</a>
-    {:else}
-      <a href="/user/login">Sign In</a>
-    {/if}
-    <button on:click={toggleMode}> Toggle Theme </button>
-  </nav>
-</header>
-
-<main>
+<main class={limitWidth}>
   <ul>
     <li>Name: {data.user?.name}</li>
     <li>Email: {data.user?.email}</li>

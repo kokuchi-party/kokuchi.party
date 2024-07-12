@@ -11,6 +11,16 @@
   $: setLanguageTag(data.lang);
 </script>
 
+<svelte:head>
+  <noscript>
+    <style>
+      .yesscript {
+        display: none;
+      }
+    </style>
+  </noscript>
+</svelte:head>
+
 <ModeWatcher />
 <Toaster />
 

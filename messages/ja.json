@@ -17,5 +17,9 @@
   "p__settings": "設定",
   "p__signup": "新規登録",
   "p__login": "ログイン",
-  "p__logout": "ログアウト"
+  "p__logout": "ログアウト",
+  "label__light_mode": "ライトモード",
+  "label__dark_mode": "ダークモード",
+  "label__account_settings": "アカウント設定",
+  "p__dashboard": "イベント管理"
 }
