@@ -44,10 +44,12 @@
       <a href="/">Kokuchi.party</a>
     </h1>
     <ul class="flex items-center gap-4 md:gap-6 lg:gap-8">
-      <li>
-        <!-- TODO: /event/new -->
-        <Button class="mr-6 hidden w-[220px] md:flex">イベントを投稿する</Button>
-      </li>
+      {#if userControl !== "none"}
+        <li>
+          <!-- TODO: /event/new -->
+          <Button class="mr-6 hidden w-[220px] md:flex">イベントを投稿する</Button>
+        </li>
+      {/if}
 
       {#if userControl === "login"}
         <!-- TODO: /user/register -->
