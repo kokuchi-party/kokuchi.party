@@ -2668,16 +2668,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bits-ui@npm:0.21.10":
-  version: 0.21.10
-  resolution: "bits-ui@npm:0.21.10"
+"bits-ui@npm:0.21.12":
+  version: 0.21.12
+  resolution: "bits-ui@npm:0.21.12"
   dependencies:
     "@internationalized/date": "npm:^3.5.1"
     "@melt-ui/svelte": "npm:0.76.2"
     nanoid: "npm:^5.0.5"
   peerDependencies:
     svelte: ^4.0.0 || ^5.0.0-next.118
-  checksum: 10c0/a393e2e39d2696edb0b7ddf45880ab4161aecb8a41122692f4bfff92f8dd020f5956023ea74ee4792f182e2b0e7698c6eb972f5d8e97285588c209c605b39689
+  checksum: 10c0/98ed3f8b054d0e0df5ca217ec59af9fcbe712a6ce5f63837a9e982da9967e6e9ddb1aae518deb75cca3d8b13ac91f1937ba66636e7c0d28625935a5527578948
   languageName: node
   linkType: hard
 
@@ -4287,7 +4287,7 @@ __metadata:
     arctic: "npm:1.9.1"
     autoprefixer: "npm:10.4.19"
     aws4fetch: "npm:1.0.18"
-    bits-ui: "npm:0.21.10"
+    bits-ui: "npm:0.21.12"
     clsx: "npm:2.1.1"
     dotenv-cli: "npm:7.4.2"
     drizzle-kit: "npm:0.22.8"
