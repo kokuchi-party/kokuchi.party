@@ -1,7 +1,8 @@
 import { type RequestEvent } from "@sveltejs/kit";
+
 import { err } from "$lib";
-import { oauth, redirectBackResponse } from "$lib/auth.server";
-import { getRegisterUserArgs as getArgsGoogle } from "$lib/auth/google.server";
+import { oauth, redirectBackResponse } from "$lib/server/auth";
+import { getRegisterUserArgs as getArgsGoogle } from "$lib/server/auth/google";
 
 async function getRegisterUserArgs(event: RequestEvent) {
   switch (event.params.provider) {

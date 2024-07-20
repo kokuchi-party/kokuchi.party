@@ -1,26 +1,22 @@
 <script lang="ts">
-  import { page } from "$app/stores";
-  import { enhance } from "$app/forms";
-
-  import Settings from "lucide-svelte/icons/settings";
-  import SignUp from "lucide-svelte/icons/user-round-plus";
+  import Calendar from "lucide-svelte/icons/calendar-fold";
+  import Languages from "lucide-svelte/icons/languages";
   import LogIn from "lucide-svelte/icons/log-in";
   import LogOut from "lucide-svelte/icons/log-out";
   import MoonStar from "lucide-svelte/icons/moon-star";
+  import Settings from "lucide-svelte/icons/settings";
   import Sun from "lucide-svelte/icons/sun";
-  import Languages from "lucide-svelte/icons/languages";
   import UserSettings from "lucide-svelte/icons/user-round-cog";
-  import Calendar from "lucide-svelte/icons/calendar-fold";
+  import SignUp from "lucide-svelte/icons/user-round-plus";
+  import { mode, toggleMode } from "mode-watcher";
 
+  import { enhance } from "$app/forms";
+  import { page } from "$app/stores";
+  import Button from "$components/ui/button/button.svelte";
+  import { limitWidth } from "$lib/constants";
   import { cn } from "$lib/utils";
-  import { limitWidth } from "$lib/constant";
-
   import * as m from "$paraglide/messages";
   import { languageTag } from "$paraglide/runtime";
-
-  import { toggleMode, mode } from "mode-watcher";
-
-  import Button from "$components/ui/button/button.svelte";
 
   let className: string | undefined = undefined;
 

@@ -1,13 +1,13 @@
 <script lang="ts">
   import { toast } from "svelte-sonner";
+
   import { enhance } from "$app/forms";
-
-  import Input from "$lib/components/ui/input/input.svelte";
   import Button from "$lib/components/ui/button/button.svelte";
-  import type { ActionData } from "./$types";
+  import Input from "$lib/components/ui/input/input.svelte";
   import { cn } from "$lib/utils";
-
   import * as m from "$paraglide/messages";
+
+  import type { ActionData } from "./$types";
 
   export let form: ActionData;
 

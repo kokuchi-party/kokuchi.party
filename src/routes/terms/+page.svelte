@@ -1,11 +1,11 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
-  import { limitWidth, termRevised } from "$lib/constant";
-  import { cn } from "$lib/utils";
   import Button from "$components/ui/button/button.svelte";
-
+  import { limitWidth, termRevised } from "$lib/constants";
+  import { cn } from "$lib/utils";
   import * as m from "$paraglide/messages";
   import { languageTag } from "$paraglide/runtime";
+
+  import type { PageData } from "./$types";
 
   export let data: PageData;
 </script>

@@ -1,6 +1,7 @@
-import { isAuthAction, setAuthAction } from "$lib/auth.server";
-import { authorize as authorizeGoogle } from "$lib/auth/google.server";
 import type { RequestEvent } from "@sveltejs/kit";
+
+import { isAuthAction, setAuthAction } from "$lib/server/auth";
+import { authorize as authorizeGoogle } from "$lib/server/auth/google";
 
 export async function GET(event: RequestEvent) {
   const action = event.params.action;

@@ -1,12 +1,13 @@
 import type { RequestEvent } from "@sveltejs/kit";
-import { generateIdFromEntropySize } from "lucia";
-import { generateRandomString, alphabet } from "oslo/crypto";
-import { user } from "$schema";
 import { eq } from "drizzle-orm";
-import { err, ok } from "$lib";
-import { forEachKeyByPrefix } from "$lib/kv.server";
-import { sendEmail } from "$lib/email.server";
+import { generateIdFromEntropySize } from "lucia";
+import { alphabet, generateRandomString } from "oslo/crypto";
+
 import { dev } from "$app/environment";
+import { err, ok } from "$lib";
+import { sendEmail } from "$lib/server/email";
+import { forEachKeyByPrefix } from "$lib/server/kv";
+import { user } from "$schema";
 
 type Key = `magic:login:${string}:${string}`;
 

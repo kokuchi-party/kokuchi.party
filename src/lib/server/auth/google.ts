@@ -1,9 +1,10 @@
-import { Google, generateState, generateCodeVerifier, OAuth2RequestError } from "arctic";
 import { redirect, type RequestEvent } from "@sveltejs/kit";
-import type { RegisterUserArgs, OpenIdUser } from "$lib/auth.server";
+import { generateCodeVerifier, generateState, Google, OAuth2RequestError } from "arctic";
+
 import { dev } from "$app/environment";
 import { AUTH_GOOGLE_ID, AUTH_GOOGLE_SECRET } from "$env/static/private";
 import { err, ok } from "$lib";
+import type { OpenIdUser, RegisterUserArgs } from "$lib/server/auth";
 
 declare global {
   /* eslint-disable @typescript-eslint/no-namespace */

@@ -1,9 +1,8 @@
 <script lang="ts">
   import Copyleft from "lucide-svelte/icons/copyleft";
 
+  import { limitWidth } from "$lib/constants";
   import { cn } from "$lib/utils";
-  import { limitWidth } from "$lib/constant";
-
   import * as m from "$paraglide/messages";
 </script>
 

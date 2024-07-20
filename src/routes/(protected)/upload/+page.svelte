@@ -1,6 +1,6 @@
 <script>
   import { enhance } from "$app/forms";
-  import { getFileUrl } from "$lib/file";
+  import { getFileUrl } from "$lib/common/file";
 
   /** @type {import('./$types').ActionData} */
   export let form;

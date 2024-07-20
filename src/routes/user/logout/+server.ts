@@ -1,5 +1,6 @@
-import { redirectBack, setRedirectUrl } from "$lib/auth.server";
 import type { RequestEvent } from "@sveltejs/kit";
+
+import { redirectBack, setRedirectUrl } from "$lib/server/auth";
 
 async function logout(event: RequestEvent, method: "GET" | "POST") {
   const { lucia } = event.locals;

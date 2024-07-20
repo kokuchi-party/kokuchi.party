@@ -1,10 +1,11 @@
 import { redirect, type RequestEvent } from "@sveltejs/kit";
-import type { Actions } from "./$types";
-
 import { RateLimiter } from "sveltekit-rate-limiter/server";
-import { isCookieSet, verifyLoginCode } from "$lib/auth/email.server";
+
 import { err } from "$lib";
-import { redirectBack } from "$lib/auth.server";
+import { redirectBack } from "$lib/server/auth";
+import { isCookieSet, verifyLoginCode } from "$lib/server/auth/email";
+
+import type { Actions } from "./$types";
 
 const verifyLimiter = new RateLimiter({
   IP: [100, "d"], // IP address limiter

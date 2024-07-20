@@ -1,18 +1,18 @@
 import { redirect, type RequestEvent } from "@sveltejs/kit";
-import { Lucia, type User, type Session, type Register, generateIdFromEntropySize } from "lucia";
 import { and, eq, type InferSelectModel } from "drizzle-orm";
 import type { DrizzleD1Database } from "drizzle-orm/d1";
+import { generateIdFromEntropySize, Lucia, type Register, type Session, type User } from "lucia";
 
 import { dev } from "$app/environment";
-import { oauth_account, user } from "$schema";
 import { err, ok } from "$lib";
-import { isAuthAction, type AuthAction } from "$lib/auth";
-import { D1KVAdapter } from "$lib/auth/adapter.server";
-import { initialize as initializeGoogle } from "$lib/auth/google.server";
-import { termRevised } from "$lib/constant";
-import type { CookieOptions } from "$lib/cookie";
+import { type AuthAction, isAuthAction } from "$lib/common/auth";
+import type { CookieOptions } from "$lib/common/cookie";
+import { termRevised } from "$lib/constants";
+import { D1KVAdapter } from "$lib/server/auth/adapter";
+import { initialize as initializeGoogle } from "$lib/server/auth/google";
+import { oauth_account, user } from "$schema";
 
-export * from "$lib/auth";
+export * from "$lib/common/auth";
 
 type DatabaseUserAttributes = InferSelectModel<typeof user>;
 

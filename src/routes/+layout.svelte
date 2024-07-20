@@ -3,9 +3,10 @@
   import "../app.pcss";
 
   import { ModeWatcher } from "mode-watcher";
-  import { Toaster } from "$lib/components/ui/sonner";
-  import Header from "$lib/components/header.svelte";
+
   import Footer from "$lib/components/footer.svelte";
+  import Header from "$lib/components/header.svelte";
+  import { Toaster } from "$lib/components/ui/sonner";
   import { setLanguageTag } from "$paraglide/runtime";
 
   export let data;

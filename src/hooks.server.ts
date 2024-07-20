@@ -1,9 +1,10 @@
-import { dev } from "$app/environment";
-import { redirect, type Handle } from "@sveltejs/kit";
-import { initialize as initializeDB } from "$lib/db.server";
-import { initialize as initializeAuth, setRedirectUrl } from "$lib/auth.server";
-import { handle as handleI18n } from "$lib/i18n.server";
+import { type Handle, redirect } from "@sveltejs/kit";
 import { sequence } from "@sveltejs/kit/hooks";
+
+import { dev } from "$app/environment";
+import { initialize as initializeAuth, setRedirectUrl } from "$lib/server/auth";
+import { initialize as initializeDB } from "$lib/server/db";
+import { handle as handleI18n } from "$lib/server/i18n";
 
 const handleBase = (async ({ event, resolve }) => {
   if (dev && !event.platform) {

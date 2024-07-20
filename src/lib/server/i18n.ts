@@ -1,14 +1,14 @@
-import type { RequestEvent, Handle } from "@sveltejs/kit";
-
 import { negotiateLanguagePreferences } from "@inlang/paraglide-js/internal/adapter-utils";
-import {
-  availableLanguageTags,
-  type AvailableLanguageTag,
-  isAvailableLanguageTag,
-  sourceLanguageTag,
-  setLanguageTag
-} from "$paraglide/runtime";
+import type { Handle, RequestEvent } from "@sveltejs/kit";
 import type { User } from "lucia";
+
+import {
+  type AvailableLanguageTag,
+  availableLanguageTags,
+  isAvailableLanguageTag,
+  setLanguageTag,
+  sourceLanguageTag
+} from "$paraglide/runtime";
 
 declare global {
   /* eslint-disable @typescript-eslint/no-namespace */

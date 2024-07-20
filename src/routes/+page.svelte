@@ -1,7 +1,8 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
-  import { limitWidth } from "$lib/constant";
+  import { limitWidth } from "$lib/constants";
   import { cn } from "$lib/utils";
+
+  import type { PageData } from "./$types";
 
   export let data: PageData;
 </script>

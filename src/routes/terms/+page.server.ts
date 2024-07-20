@@ -1,10 +1,11 @@
-import type { PageServerLoad, Actions } from "./$types";
+import { eq } from "drizzle-orm";
 
 import { err } from "$lib";
-import { termRevised } from "$lib/constant";
+import { termRevised } from "$lib/constants";
+import { redirectBack } from "$lib/server/auth";
 import { user } from "$schema";
-import { eq } from "drizzle-orm";
-import { redirectBack } from "$lib/auth.server";
+
+import type { Actions, PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async (event) => {
   const mode = event.url.searchParams.get("mode");
