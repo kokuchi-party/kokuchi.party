@@ -21,5 +21,12 @@
   "label__light_mode": "ライトモード",
   "label__dark_mode": "ダークモード",
   "label__account_settings": "アカウント設定",
-  "p__dashboard": "イベント管理"
+  "p__dashboard": "イベント管理",
+  "p__read_and_accept_terms": "上記の利用規約をお読みいただき、同意してください。",
+  "label__accept_and_continue": "同意して続行",
+  "h__terms_of_service": "利用規約",
+  "p__last_updated": "最終更新：",
+  "a__tos": "利用規約",
+  "a__license": "ライセンス",
+  "a__about_us": "About Us"
 }

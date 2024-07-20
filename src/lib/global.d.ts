@@ -5,3 +5,7 @@ interface String {
   endsWith<S extends string>(searchString: S): this is `${string}${S}`;
   includes<S extends string>(searchString: S, position?: number): this is `${string}${S}${string}`;
 }
+
+interface ReadonlyArray {
+  includes(searchElement: unknown): searchElement is this[number];
+}

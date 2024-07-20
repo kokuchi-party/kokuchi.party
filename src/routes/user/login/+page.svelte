@@ -33,8 +33,8 @@
   }
 </script>
 
-<main>
-  <section class="mx-auto flex w-full max-w-80 flex-col items-center gap-8 p-6">
+<main class="flex grow flex-col items-center justify-center">
+  <section class="flex w-full max-w-80 flex-col items-center gap-8 p-6">
     <h1 class="font-orbitron text-3xl">Log In</h1>
 
     <section class="flex w-full flex-col items-center gap-4">
@@ -71,11 +71,11 @@
       <p>{m.label__or()}</p>
 
       <div class="w-full space-y-1">
-        <Button href="/user/auth/google" class="w-full" variant="outline">
+        <Button href="/user/auth/google/login" class="w-full" variant="outline">
           {m.label__sign_in_with_google()}
         </Button>
 
-        <Button href="/user/auth/instagram" class="w-full" variant="outline">
+        <Button href="/user/auth/instagram/login" class="w-full" variant="outline">
           {m.label__sign_in_with_instagram()}
         </Button>
       </div>

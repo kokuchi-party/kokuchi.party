@@ -5,8 +5,14 @@ import type { DrizzleD1Database } from "drizzle-orm/d1";
 
 import { dev } from "$app/environment";
 import { oauth_account, user } from "$schema";
+import { err, ok } from "$lib";
+import { isAuthAction, type AuthAction } from "$lib/auth";
 import { D1KVAdapter } from "$lib/auth/adapter.server";
 import { initialize as initializeGoogle } from "$lib/auth/google.server";
+import { termRevised } from "$lib/constant";
+import type { CookieOptions } from "$lib/cookie";
+
+export * from "$lib/auth";
 
 type DatabaseUserAttributes = InferSelectModel<typeof user>;
 
@@ -93,38 +99,27 @@ export interface RegisterUserArgs extends LoginUserArgs {
   email: string;
 }
 
-export async function linkUser(
-  event: RequestEvent,
-  signedInUser: User,
-  { provider_id, provider_user_id }: LoginUserArgs
-) {
-  const db = event.locals.db;
-  const existingAccount = await db
-    .select()
-    .from(oauth_account)
-    .where(
-      and(
-        eq(oauth_account.provider_id, provider_id),
-        eq(oauth_account.provider_user_id, provider_user_id)
-      )
-    )
-    .get();
-  if (existingAccount) return false;
-  await db.insert(oauth_account).values({
-    provider_id,
-    provider_user_id,
-    user_id: signedInUser.id
-  });
-  return true;
+const authActionCookie: CookieOptions = {
+  path: "/",
+  secure: !dev,
+  httpOnly: true,
+  sameSite: "lax",
+  maxAge: 60 * 10 // 10 min
+};
+
+export function setAuthAction(event: RequestEvent, action: AuthAction) {
+  event.cookies.set("auth_action", action, authActionCookie);
 }
 
-export async function loginOrRegisterUser(
+export async function oauth(
   event: RequestEvent,
   { name, email, provider_id, provider_user_id }: RegisterUserArgs
 ) {
+  const action = event.cookies.get("auth_action");
+  if (!isAuthAction(action)) return err({ reason: "INVALID_ACTION" });
+  event.cookies.delete("auth_action", authActionCookie);
   const db = event.locals.db;
 
-  // Log in as an existing user
   const existingAccount = await db
     .select()
     .from(oauth_account)
@@ -135,26 +130,76 @@ export async function loginOrRegisterUser(
       )
     )
     .get();
-  if (existingAccount) {
-    return existingAccount.user_id;
-  }
 
-  // Register a new user and a new OAuth account
-  const userId = generateIdFromEntropySize(10); // 16 characters long
-  await db.batch([
-    db.insert(user).values({
-      id: userId,
-      name,
-      email,
-      role: "user"
-    }),
-    db.insert(oauth_account).values({
+  // link a new OAuth account to an existing user
+  async function link() {
+    if (existingAccount) return err({ reason: "ALREADY_LINKED" });
+    const loggedInUser = event.locals.user;
+    if (!loggedInUser) return err({ reason: "NOT_LOGGED_IN" });
+    await db.insert(oauth_account).values({
       provider_id,
       provider_user_id,
-      user_id: userId
-    })
-  ]);
-  return userId;
+      user_id: loggedInUser.id
+    });
+    return ok({ id: loggedInUser.id, shouldReadTerms: false });
+  }
+
+  // log in as an existing user through an existing OAuth account
+  async function login() {
+    if (!existingAccount) return register(false);
+
+    const existingUser = await db
+      .select()
+      .from(user)
+      .where(eq(user.id, existingAccount.user_id))
+      .get();
+
+    if (!existingUser) {
+      // this only happens when the DB is corrupted
+      throw new Error("The OAuth account exists, but the corresponding user does not");
+    }
+
+    const shouldReadTerms = !existingUser.termsAccepted || existingUser.termsAccepted < termRevised;
+    return ok({ id: existingAccount.user_id, shouldReadTerms });
+  }
+
+  // register a new user and a new OAuth account
+  async function register(explicit: boolean) {
+    const id = generateIdFromEntropySize(10); // 16 characters long
+    await db.batch([
+      db.insert(user).values({
+        id,
+        name,
+        email,
+        role: "user",
+        termsAccepted: explicit ? new Date(Date.now()) : null
+      }),
+      db.insert(oauth_account).values({
+        provider_id,
+        provider_user_id,
+        user_id: id
+      })
+    ] as const);
+
+    // logged in without registration; needs to read and accept terms
+    if (!explicit) return ok({ id, shouldReadTerms: true });
+    // have already read & accepted terms before registration
+    else return ok({ id, shouldReadTerms: false });
+  }
+
+  switch (action) {
+    case "link": {
+      return { ...(await link()), action };
+    }
+
+    case "login": {
+      return { ...(await login()), action };
+    }
+
+    case "register": {
+      return { ...(await register(true)), action };
+    }
+  }
 }
 
 export interface OpenIdUser {
@@ -164,23 +209,23 @@ export interface OpenIdUser {
   picture: string;
 }
 
-const cookieOption = {
+const redirectUrlCookie: CookieOptions = {
   httpOnly: true,
   secure: !dev,
   sameSite: "lax",
   path: "/",
   maxAge: 60 * 10 // 10 min
-} as const;
+};
 
 export function setRedirectUrl<S extends `/${string}`>(e: RequestEvent, path: S | URL) {
   const url = typeof path === "string" ? new URL(path, e.url.origin) : path;
-  e.cookies.set("redirect_url", url.pathname, cookieOption);
+  e.cookies.set("redirect_url", url.pathname, redirectUrlCookie);
 }
 
-export function getRedirectUrl(e: RequestEvent, modifier?: (url: URL) => void) {
+function getRedirectUrl(e: RequestEvent, modifier?: (url: URL) => void) {
   const value = e.cookies.get("redirect_url");
   if (!value) return "/";
-  e.cookies.delete("redirect_url", cookieOption);
+  e.cookies.delete("redirect_url", redirectUrlCookie);
   const url = new URL(value, e.url.origin);
 
   if (modifier) modifier(url);
@@ -201,3 +246,9 @@ export const redirectBack = (
   status: Parameters<typeof redirect>[0] = 302,
   modifier?: (url: URL) => void
 ) => redirect(status, getRedirectUrl(e, modifier));
+
+export const redirectBackResponse = (
+  e: RequestEvent,
+  status: Parameters<typeof redirect>[0] = 302,
+  modifier?: (url: URL) => void
+) => new Response(null, { status, headers: { Location: getRedirectUrl(e, modifier) } });

@@ -21,5 +21,12 @@
   "label__light_mode": "Light Mode",
   "label__dark_mode": "Dark Mode",
   "label__account_settings": "Account Settings",
-  "p__dashboard": "Dashboard"
+  "p__dashboard": "Dashboard",
+  "p__read_and_accept_terms": "Please read and accept the terms of service above.",
+  "label__accept_and_continue": "Accept and continue",
+  "h__terms_of_service": "Terms of Service",
+  "p__last_updated": "Last Updated:",
+  "a__tos": "Terms of Service",
+  "a__license": "License",
+  "a__about_us": "About Us"
 }

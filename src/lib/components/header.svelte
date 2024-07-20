@@ -26,6 +26,11 @@
 
   $: darkmode = $mode === "dark";
   $: lang = languageTag();
+  $: langQuery = $page.url.searchParams;
+  $: {
+    langQuery.delete("lang");
+    langQuery.append("lang", lang === "en" ? "ja" : "en");
+  }
 
   export let loggedIn: boolean | undefined;
 
@@ -38,7 +43,7 @@
   export { className as class };
 </script>
 
-<header class={cn("h-15 w-full bg-background text-foreground lg:h-20", className)}>
+<header class={cn("sticky top-0 h-15 w-full bg-background text-foreground lg:h-20", className)}>
   <nav class={cn(limitWidth, "flex h-full items-center justify-between py-2 lg:py-3")}>
     <h1 class="font-orbitron text-lg leading-tight lg:text-4xl">
       <a href="/">Kokuchi.party</a>
@@ -164,7 +169,7 @@
             variant="outline"
             data-sveltekit-reload
             data-sveltekit-noscroll
-            href={`?lang=${lang === "en" ? "ja" : "en"}`}
+            href={`?${langQuery.toString()}`}
             class="flex justify-start gap-2"
           >
             <Languages aria-hidden class="size-4 shrink-0" />

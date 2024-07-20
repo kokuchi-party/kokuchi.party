@@ -5,6 +5,7 @@
   import { ModeWatcher } from "mode-watcher";
   import { Toaster } from "$lib/components/ui/sonner";
   import Header from "$lib/components/header.svelte";
+  import Footer from "$lib/components/footer.svelte";
   import { setLanguageTag } from "$paraglide/runtime";
 
   export let data;
@@ -27,3 +28,5 @@
 <Header loggedIn={data.loggedIn} />
 
 <slot />
+
+<Footer />

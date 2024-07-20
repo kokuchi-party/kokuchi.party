@@ -15,6 +15,13 @@
       "when": 1716826603032,
       "tag": "0001_keen_lilith",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1721487624029,
+      "tag": "0002_flawless_shadow_king",
+      "breakpoints": true
     }
   ]
 }

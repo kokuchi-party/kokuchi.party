@@ -33,8 +33,8 @@
   }
 </script>
 
-<main>
-  <section class="mx-auto flex w-full max-w-80 flex-col items-center gap-8 p-6">
+<main class="flex grow flex-col items-center justify-center">
+  <section class="flex w-full max-w-80 flex-col items-center gap-8 p-6">
     <h1 class="font-orbitron text-3xl">Verify Code</h1>
 
     <section class="flex w-full flex-col items-center gap-4">

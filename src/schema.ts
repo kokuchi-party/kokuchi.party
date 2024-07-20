@@ -4,7 +4,8 @@ export const user = sqliteTable("user", {
   id: text("id").notNull().primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull(),
-  role: text("role", { enum: ["user", "admin", "banned"] }).notNull()
+  role: text("role", { enum: ["user", "admin", "banned"] }).notNull(),
+  termsAccepted: integer("termsAccepted", { mode: "timestamp" })
 });
 
 export const oauth_account = sqliteTable(

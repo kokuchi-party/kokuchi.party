@@ -1,4 +1,5 @@
 import { fontFamily } from "tailwindcss/defaultTheme";
+import typography from "@tailwindcss/typography";
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -56,7 +57,8 @@ const config = {
       animation: {
         "swing-in-top-fwd":
           "swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) forwards",
-        blink: "blink 0.6s ease both"
+        blink: "blink 0.6s ease both",
+        "fade-in": "fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000)   both"
       },
       keyframes: {
         "swing-in-top-fwd": {
@@ -78,10 +80,41 @@ const config = {
           "25%,75%": {
             opacity: "0"
           }
+        },
+        "fade-in": {
+          "0%": {
+            opacity: "0"
+          },
+          to: {
+            opacity: "1"
+          }
+        }
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            "--tw-prose-body": "var(--foreground)",
+            "--tw-prose-headings": "var(--foreground)",
+            "--tw-prose-lead": "var(--muted-foreground)",
+            "--tw-prose-links": "var(--primary)",
+            "--tw-prose-bold": "var(--foreground)",
+            "--tw-prose-counters": "var(--foreground)",
+            "--tw-prose-bullets": "var(--foreground)",
+            "--tw-prose-hr": "var(--muted)",
+            "--tw-prose-quotes": "var(--foreground)",
+            "--tw-prose-quote-borders": "var(--muted)",
+            "--tw-prose-captions": "var(--muted)",
+            "--tw-prose-code": "var(--foreground)",
+            "--tw-prose-pre-code": "var(--muted)",
+            "--tw-prose-pre-bg": "var(--muted)",
+            "--tw-prose-th-borders": "var(--border)",
+            "--tw-prose-td-borders": "var(--border)"
+          }
         }
       }
     }
-  }
+  },
+  plugins: [typography]
 };
 
 export default config;

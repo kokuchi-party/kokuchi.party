@@ -1,6 +1,6 @@
-import type { RequestEvent } from "@sveltejs/kit";
+import { type RequestEvent } from "@sveltejs/kit";
 import { err } from "$lib";
-import { getRedirectUrl, linkUser, loginOrRegisterUser } from "$lib/auth.server";
+import { oauth, redirectBackResponse } from "$lib/auth.server";
 import { getRegisterUserArgs as getArgsGoogle } from "$lib/auth/google.server";
 
 async function getRegisterUserArgs(event: RequestEvent) {
@@ -19,32 +19,21 @@ export async function GET(event: RequestEvent): Promise<Response> {
   const lucia = event.locals.lucia;
 
   try {
-    const signedInUser = event.locals.user;
-    if (signedInUser) {
-      const ok = await linkUser(event, signedInUser, args);
-      const redirectUrl = getRedirectUrl(event, (url) => url.searchParams.append("ok", String(ok)));
-      return new Response(null, {
-        status: 302,
-        headers: {
-          Location: redirectUrl
-        }
-      });
-    } else {
-      const userId = await loginOrRegisterUser(event, args);
-      const session = await lucia.createSession(userId, {});
-      const sessionCookie = lucia.createSessionCookie(session.id);
-      event.cookies.set(sessionCookie.name, sessionCookie.value, {
-        path: ".",
-        ...sessionCookie.attributes
-      });
-      const redirectUrl = getRedirectUrl(event);
-      return new Response(null, {
-        status: 302,
-        headers: {
-          Location: redirectUrl
-        }
-      });
-    }
+    const res = await oauth(event, args);
+    if (!res.ok)
+      return redirectBackResponse(event, 302, (url) => url.searchParams.append("err", res.reason));
+
+    const session = await lucia.createSession(res.id, {});
+    const sessionCookie = lucia.createSessionCookie(session.id);
+    event.cookies.set(sessionCookie.name, sessionCookie.value, {
+      path: ".",
+      ...sessionCookie.attributes
+    });
+
+    if (res.shouldReadTerms)
+      return new Response(null, { status: 302, headers: { Location: "/terms?mode=accept" } });
+
+    return redirectBackResponse(event, 302);
   } catch (e) {
     console.error(e);
     return new Response(null, { status: 500 });
