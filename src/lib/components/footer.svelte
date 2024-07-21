@@ -29,7 +29,7 @@
       limitWidth,
       "min-h-15 p-4 lg:min-h-20",
       "text-muted-foreground",
-      "flex h-full flex-col-reverse items-center justify-between gap-y-5 lg:flex-row"
+      "flex h-full flex-col-reverse items-center justify-between gap-y-3 sm:flex-row lg:gap-y-5"
     )}
   >
     <div class="flex h-fit items-end gap-1 text-xs">

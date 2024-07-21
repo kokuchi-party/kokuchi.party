@@ -28,5 +28,6 @@
   "p__last_updated": "最終更新：",
   "a__tos": "利用規約",
   "a__license": "ライセンス",
-  "a__about_us": "About Us"
+  "a__about_us": "About Us",
+  "label__submit_event": "イベントを投稿する"
 }
