@@ -32,6 +32,7 @@ declare global {
   namespace App {
     interface Locals {
       lang: AvailableLanguageTag;
+      locale: Intl.Locale;
     }
   }
   /* eslint-enable @typescript-eslint/no-namespace */
@@ -92,6 +93,7 @@ export const handle = (async ({ event, resolve }) => {
 
   setLanguageTag(lang);
   event.locals.lang = lang;
+  event.locals.locale = new Intl.Locale(lang);
 
   return resolve(event, {
     transformPageChunk({ done, html }) {

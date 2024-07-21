@@ -20,7 +20,6 @@
   import { limitWidth, termRevised } from "$lib/constants";
   import { cn } from "$lib/utils";
   import * as m from "$paraglide/messages";
-  import { languageTag } from "$paraglide/runtime";
 
   import type { PageData } from "./$types";
 
@@ -33,10 +32,8 @@
       <h1 class="mb-2">{m.h__terms_of_service()}</h1>
       <p class="mt-2 text-xs text-muted-foreground">
         {m.p__last_updated()}
-        <time
-          datetime={`${termRevised.getUTCFullYear()}-${termRevised.getUTCMonth() + 1}-${termRevised.getUTCDay()}`}
-        >
-          {termRevised.toLocaleDateString(new Intl.Locale(languageTag()))}
+        <time datetime={termRevised.toISOString()}>
+          {termRevised.toLocaleDateString(new Intl.Locale(data.lang))}
         </time>
       </p>
     </hgroup>
