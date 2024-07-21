@@ -57,7 +57,10 @@ export const actions: Actions = {
     if (!userId) return err({ reason: "NOT_LOGGED_IN" });
 
     const db = event.locals.db;
-    const res = await db.update(user).set({ id: userId, termsAccepted: new Date(Date.now()) });
+    const res = await db
+      .update(user)
+      .set({ termsAccepted: new Date(Date.now()) })
+      .where(eq(user.id, userId));
 
     if (res.success) throw redirectBack(event, 302);
   }
