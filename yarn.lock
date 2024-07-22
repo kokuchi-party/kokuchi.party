@@ -2634,10 +2634,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws4fetch@npm:1.0.18":
-  version: 1.0.18
-  resolution: "aws4fetch@npm:1.0.18"
-  checksum: 10c0/4381256692eaf7e34878b6fe6c01b6d3a0cfe4f012ba09f8c33af9dc84a34c6396da9a478a0518873c74ed13b8b608f8d3c5d8e19c16dabe06f3aba83e5ac5bb
+"aws4fetch@npm:1.0.19":
+  version: 1.0.19
+  resolution: "aws4fetch@npm:1.0.19"
+  checksum: 10c0/7b7d4992e02a63bbdaf820c2342007477572501295ebc6a5c98b1a502c7c988a83cdb93fed067bf463d25b32a0858f547ad83200a3286947f64a3171bb3a4bbd
   languageName: node
   linkType: hard
 
@@ -4310,7 +4310,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:7.15.0"
     arctic: "npm:1.9.1"
     autoprefixer: "npm:10.4.19"
-    aws4fetch: "npm:1.0.18"
+    aws4fetch: "npm:1.0.19"
     bits-ui: "npm:0.21.12"
     clsx: "npm:2.1.1"
     dotenv-cli: "npm:7.4.2"

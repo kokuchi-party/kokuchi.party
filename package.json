@@ -65,7 +65,7 @@
     "@fontsource-variable/orbitron": "5.0.19",
     "@scure/base": "1.1.7",
     "arctic": "1.9.1",
-    "aws4fetch": "1.0.18",
+    "aws4fetch": "1.0.19",
     "bits-ui": "0.21.12",
     "clsx": "2.1.1",
     "drizzle-orm": "0.31.2",
