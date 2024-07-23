@@ -2519,12 +2519,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"arctic@npm:1.9.1":
-  version: 1.9.1
-  resolution: "arctic@npm:1.9.1"
+"arctic@npm:1.9.2":
+  version: 1.9.2
+  resolution: "arctic@npm:1.9.2"
   dependencies:
     oslo: "npm:1.2.0"
-  checksum: 10c0/3b4f491231c35aae18f45687aea7ab3567452fc2e55285bd9ade54d3a6af90d8aa8639199896cb5b0abe4a21d1d5b628e569135d610a3ab50934a5cd978962e7
+  checksum: 10c0/af104b2c5955ed9b6e76e185bcb0f5fbc7e62b59cc41bd649aeeb15555746a75dbb14adf448708838bbe4ff6f12274faa3a4661c4a958aaa4d497fa4fa97a4ed
   languageName: node
   linkType: hard
 
@@ -4313,7 +4313,7 @@ __metadata:
     "@types/eslint": "npm:8.56.10"
     "@typescript-eslint/eslint-plugin": "npm:7.16.1"
     "@typescript-eslint/parser": "npm:7.15.0"
-    arctic: "npm:1.9.1"
+    arctic: "npm:1.9.2"
     autoprefixer: "npm:10.4.19"
     aws4fetch: "npm:1.0.19"
     bits-ui: "npm:0.21.12"
