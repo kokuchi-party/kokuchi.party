@@ -30,6 +30,8 @@
     <Agpl />
   </section>
 
+  <hr class="w-full" />
+
   <section class="prose prose-sm mx-auto w-full max-w-full">
     <h2>{m.h2__third_party_packages()}</h2>
     <p>{m.p__third_party_packages()}</p>
