@@ -29,5 +29,7 @@
   "a__tos": "利用規約",
   "a__license": "ライセンス",
   "a__about_us": "About Us",
-  "label__submit_event": "イベントを投稿する"
+  "label__submit_event": "イベントを投稿する",
+  "h2__third_party_packages": "サードパーティのパッケージ",
+  "p__third_party_packages": "Kokuchi.party は以下のサードパーティ パッケージを使用しています。"
 }

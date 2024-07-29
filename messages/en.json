@@ -29,5 +29,7 @@
   "a__tos": "Terms of Service",
   "a__license": "License",
   "a__about_us": "About Us",
-  "label__submit_event": "Submit Your Party"
+  "label__submit_event": "Submit Your Party",
+  "h2__third_party_packages": "Third-party packages",
+  "p__third_party_packages": "Kokuchi.party uses the following third-party packages."
 }

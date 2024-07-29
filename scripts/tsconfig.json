@@ -1,0 +1,10 @@
+{
+  "extends": ["@tsconfig/strictest"],
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "module": "NodeNext",
+    "allowArbitraryExtensions": true
+  }
+}

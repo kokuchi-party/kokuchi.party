@@ -19,7 +19,8 @@ const config = {
     alias: {
       $schema: "src/schema.ts",
       $paraglide: "src/lib/paraglide",
-      $components: "src/lib/components"
+      $components: "src/lib/components",
+      $: "src"
     }
   }
 };
