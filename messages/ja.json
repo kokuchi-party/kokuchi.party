@@ -31,5 +31,9 @@
   "a__about_us": "About Us",
   "label__submit_event": "イベントを投稿する",
   "h2__third_party_packages": "サードパーティのパッケージ",
-  "p__third_party_packages": "Kokuchi.party は以下のサードパーティ パッケージを使用しています。"
+  "p__third_party_packages": "Kokuchi.party は以下のサードパーティ パッケージを使用しています。",
+  "p__error_400": "リクエストの結果エラーが発生しました。",
+  "p__error_401": "このページを表示するにはログインする必要があります。",
+  "p__error_403": "このページを閲覧する権限がありません。",
+  "p__error_404": "お探しのページは見つかりませんでした。"
 }
