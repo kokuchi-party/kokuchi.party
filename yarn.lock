@@ -85,10 +85,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudflare/workers-types@npm:4.20240620.0":
-  version: 4.20240620.0
-  resolution: "@cloudflare/workers-types@npm:4.20240620.0"
-  checksum: 10c0/bd3bd43e4ebf5e66020d6d05ebafd42cefa1d25c7ec047750c88839aecc14f1d544c4dbe7c6f0a27cd40189e823f504b11b6e4620d6989e5afecbf7ac33baaad
+"@cloudflare/workers-types@npm:4.20240725.0":
+  version: 4.20240725.0
+  resolution: "@cloudflare/workers-types@npm:4.20240725.0"
+  checksum: 10c0/0c094aa975c69b0856fcb49eede81f587627cc0a999c5fa30c49ac3ceeb7aaa66415421a59816d65d7f1a7ecbfd3991329960db02e09095556386943924180c8
   languageName: node
   linkType: hard
 
@@ -4321,7 +4321,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "flyer@workspace:."
   dependencies:
-    "@cloudflare/workers-types": "npm:4.20240620.0"
+    "@cloudflare/workers-types": "npm:4.20240725.0"
     "@fontsource-variable/orbitron": "npm:5.0.19"
     "@inlang/paraglide-js": "npm:1.11.0"
     "@inlang/paraglide-js-adapter-vite": "npm:1.2.40"
