@@ -74,7 +74,7 @@
     "@scure/base": "1.1.7",
     "arctic": "1.9.2",
     "aws4fetch": "1.0.19",
-    "bits-ui": "0.21.12",
+    "bits-ui": "0.21.13",
     "clsx": "2.1.1",
     "drizzle-orm": "0.32.0",
     "image-dimensions": "2.3.0",
