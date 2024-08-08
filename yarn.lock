@@ -4354,7 +4354,7 @@ __metadata:
     license-checker-rseidelsohn: "npm:4.3.0"
     lucia: "npm:3.2.0"
     lucide-svelte: "npm:0.407.0"
-    mode-watcher: "npm:0.3.1"
+    mode-watcher: "npm:0.4.1"
     npm-run-all: "npm:4.1.5"
     postcss: "npm:8.4.39"
     postcss-load-config: "npm:6.0.1"
@@ -5843,12 +5843,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mode-watcher@npm:0.3.1":
-  version: 0.3.1
-  resolution: "mode-watcher@npm:0.3.1"
+"mode-watcher@npm:0.4.1":
+  version: 0.4.1
+  resolution: "mode-watcher@npm:0.4.1"
   peerDependencies:
     svelte: ^4.0.0 || ^5.0.0-next.1
-  checksum: 10c0/c6c38f5852dfdc8ea198622936452d6e9c87477b208ce2aeab15b2a40bf332b364f06f3fe467690e14501e6e21405d00f327564489240da08180b0e4bed46621
+  checksum: 10c0/977afd53132fc4755e7e1ee39bbcd2f8636a303e010d5a93694a03703e0d57f683c38a6a939b9c110872954645e5d12935dd0b5fe87e8e45821f7d722206da7c
   languageName: node
   linkType: hard
 
