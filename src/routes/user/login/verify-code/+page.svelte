@@ -58,7 +58,7 @@
       <p>{m.p__code_has_been_sent()}</p>
 
       <form
-        class="w-full space-y-2"
+        class="w-full"
         method="post"
         enctype="multipart/form-data"
         use:enhance={() => {
@@ -69,7 +69,7 @@
           };
         }}
       >
-        <label for="email">{m.label__code()}</label>
+        <label for="code" class="mb-1 text-xs text-muted-foreground">{m.label__code()}</label>
 
         <Input
           name="code"
@@ -82,7 +82,7 @@
           pattern="[0-9][0-9][0-9][0-9][0-9][0-9]"
           autocomplete="one-time-code"
           autofocus
-          class={cn(form?.reason === "INVALID_CODE" && "animate-blink")}
+          class={cn("mb-2", form?.reason === "INVALID_CODE" && "animate-blink")}
         />
 
         <Button class="w-full" type="submit" disabled={loading || form?.reason === "RATE_LIMITED"}>
@@ -94,7 +94,9 @@
     <section class="w-full space-y-2">
       <h2>{m.h__new_to_kokuchiparty()}</h2>
 
-      <Button variant="outline" class="w-full">{m.label__create_account()}</Button>
+      <Button href="/user/register" variant="outline" class="w-full"
+        >{m.label__create_account()}</Button
+      >
     </section>
   </section>
 </main>

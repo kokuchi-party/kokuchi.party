@@ -19,12 +19,13 @@ import { redirect, type RequestEvent } from "@sveltejs/kit";
 import { RateLimiter } from "sveltekit-rate-limiter/server";
 
 import { err } from "$lib";
-import { redirectBack } from "$lib/server/auth";
-import { isLoginCookieSet, verifyLoginCode } from "$lib/server/auth/email";
+import { validateEmail } from "$lib/common/email";
+import { redirectBack, setRedirectUrl } from "$lib/server/auth";
+import { generateRegisterLink } from "$lib/server/auth/email";
 
 import type { Actions } from "./$types";
 
-const verifyLimiter = new RateLimiter({
+const generateLimiter = new RateLimiter({
   IP: [100, "d"], // IP address limiter
   IPUA: [10, "15m"] // IP + User Agent limiter
 });
@@ -32,35 +33,35 @@ const verifyLimiter = new RateLimiter({
 export async function load(event: RequestEvent) {
   // Redirect if already logged in
   if (event.locals.user) throw redirectBack(event);
-
-  // Redirect if login code is not sent
-  if (!isLoginCookieSet(event)) throw redirect(302, "/user/login");
 }
 
 export const actions: Actions = {
-  async default(event) {
+  async submit(event) {
     const data = await event.request.formData();
+    const type = data.get("type");
 
-    const code = data.get("code");
-    if (!code || typeof code !== "string") return err({ reason: "INVALID_CODE" });
+    if (!(["email", "google", "instagram"] as const).includes(type))
+      return err({ reason: "INVALID_TYPE" });
 
-    if (await verifyLimiter.isLimited(event)) return err({ reason: "RATE_LIMITED" });
+    const terms = data.get("terms");
+    if (terms !== "on") return err({ reason: "CONSENT_REQUIRED" });
 
-    const res = await verifyLoginCode(event, code);
-    if (!res.ok) {
-      // Redirect if login code is not sent (should not happen here)
-      if (res.reason === "UNAUTHORIZED") throw redirect(303, "/user/login");
-      return res;
+    if (type !== "email") throw redirect(303, `/user/auth/${type}/register`);
+
+    const email = data.get("email");
+    if (!email || typeof email !== "string" || !validateEmail(email))
+      return err({ reason: "INVALID_EMAIL" });
+
+    if (await generateLimiter.isLimited(event)) return err({ reason: "RATE_LIMITED" });
+    return await generateRegisterLink(event, email);
+  },
+
+  async initiate(event) {
+    const data = await event.request.formData();
+    const origin = data.get("origin");
+    if (origin && typeof origin === "string" && origin.startsWith("/")) {
+      setRedirectUrl(event, origin);
     }
-
-    const lucia = event.locals.lucia;
-    const session = await lucia.createSession(res.id, {});
-    const sessionCookie = lucia.createSessionCookie(session.id);
-    event.cookies.set(sessionCookie.name, sessionCookie.value, {
-      path: ".",
-      ...sessionCookie.attributes
-    });
-
-    throw redirectBack(event, 303);
+    throw redirect(303, "/user/register");
   }
 };

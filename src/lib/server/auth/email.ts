@@ -26,10 +26,11 @@ import { sendEmail } from "$lib/server/email";
 import { forEachKeyByPrefix } from "$lib/server/kv";
 import { user } from "$schema";
 
-type Key = `magic:login:${string}:${string}`;
+type Key = `magic:login:${string}:${string}` | `magic:register:${string}`;
 
 const Key = {
-  login: (userId: string, id: string) => `magic:login:${userId}:${id}`
+  login: (userId: string, id: string) => `magic:login:${userId}:${id}`,
+  register: (id: string) => `magic:register:${id}`
 } as const satisfies Record<string, (...args: string[]) => Key>;
 
 const Prefix = {
@@ -44,7 +45,7 @@ export class EmailAuthError extends Error {
   }
 }
 
-const cookieOption = {
+const loginCookieOption = {
   path: "/",
   secure: !dev,
   httpOnly: true,
@@ -65,8 +66,8 @@ export async function generateLoginCode(event: RequestEvent, email: string) {
     .where(eq(user.email, email))
     .get();
 
-  event.cookies.set("email_login_address", email, cookieOption);
-  event.cookies.set("email_login_id", id, cookieOption);
+  event.cookies.set("email_login_address", email, loginCookieOption);
+  event.cookies.set("email_login_id", id, loginCookieOption);
 
   // wrap the rest of the operations in `waitUntil` to mitigate timing attack
   event.platform?.context.waitUntil(
@@ -92,7 +93,7 @@ export async function generateLoginCode(event: RequestEvent, email: string) {
   return ok({});
 }
 
-export function isCookieSet(event: RequestEvent) {
+export function isLoginCookieSet(event: RequestEvent) {
   return !!event.cookies.get("email_login_id") && !!event.cookies.get("email_login_address");
 }
 
@@ -121,7 +122,68 @@ export async function verifyLoginCode(event: RequestEvent, code: string) {
   if (!correctCode || correctCode !== code) return err({ status: 400, reason: "INVALID_CODE" });
 
   await kv.delete(Key.login(existingUser.id, id));
-  event.cookies.delete("email_login_id", cookieOption);
-  event.cookies.delete("email_login_address", cookieOption);
+  event.cookies.delete("email_login_id", loginCookieOption);
+  event.cookies.delete("email_login_address", loginCookieOption);
   return ok(existingUser);
+}
+
+export async function generateRegisterLink(event: RequestEvent, email: string) {
+  const db = event.locals.db;
+  const kv = event.platform?.env.KV;
+
+  if (!kv) return err({ status: 500, reason: "INTERNAL_ERROR", message: "KV is unavailable" });
+
+  const existingUser = await db
+    .select({ id: user.id, name: user.name })
+    .from(user)
+    .where(eq(user.email, email))
+    .get();
+
+  // wrap the rest of the operations in `waitUntil` to mitigate timing attack
+  event.platform?.context.waitUntil(
+    (async () => {
+      if (!existingUser) {
+        const id = generateIdFromEntropySize(25);
+        await kv.put(Key.register(id), email, { expirationTtl: 3600 /* 1 hour */ });
+        await sendEmail(event, {
+          to: [{ email }],
+          subject: "[kokuchi.party] Registration Link / 登録リンク",
+          content: [
+            {
+              type: "text/plain",
+              value: `Your registration link is: ${event.url.origin}/user/register/${id}`
+            }
+          ]
+        });
+      }
+    })()
+  );
+
+  return ok({});
+}
+
+export async function getEmailById(event: RequestEvent, id: string) {
+  const kv = event.platform?.env.KV;
+  if (!kv) return err({ status: 500, reason: "INTERNAL_ERROR", message: "KV is unavailable" });
+
+  const email = await kv.get(Key.register(id), { type: "text" });
+  if (!email) return err({ reason: "INVALID_LINK" });
+  return ok({ email });
+}
+
+export async function verifyRegisterLink(event: RequestEvent, id: string) {
+  const res = await getEmailById(event, id);
+  if (!res.ok) return res;
+  const { email } = res;
+
+  const db = event.locals.db;
+
+  const existingUser = await db
+    .select({ id: user.id, name: user.name })
+    .from(user)
+    .where(eq(user.email, email))
+    .get();
+  if (existingUser) return err({ reason: "ALREADY_REGISTERED" });
+
+  return ok({ email });
 }

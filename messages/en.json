@@ -35,5 +35,7 @@
   "p__error_400": "Your request resulted in an error.",
   "p__error_401": "You must be signed in to see this page.",
   "p__error_403": "You are not allowed to see this page.",
-  "p__error_404": "The page you were looking for does not exist."
+  "p__error_404": "The page you were looking for does not exist.",
+  "label__send_verification_link": "Send registration link",
+  "toast__consent_required": "Please read and agree to the terms."
 }

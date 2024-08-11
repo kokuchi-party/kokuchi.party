@@ -214,9 +214,39 @@ export async function oauth(
     }
 
     case "register": {
+      if (existingAccount) return { ...(await login()), action };
       return { ...(await register(true)), action };
     }
   }
+}
+
+export async function registerWithEmail(
+  event: RequestEvent,
+  { name, email }: { name: string; email: string }
+) {
+  const db = event.locals.db;
+
+  const existingUser = await db
+    .select({ id: user.id, name: user.name })
+    .from(user)
+    .where(eq(user.email, email))
+    .get();
+  if (existingUser) return err({ reason: "ALREADY_REGISTERED" });
+
+  const id = generateIdFromEntropySize(10); // 16 characters long
+  const res = await db
+    .insert(user)
+    .values({
+      id,
+      name,
+      email,
+      role: "user",
+      termsAccepted: new Date(Date.now())
+    })
+    .onConflictDoNothing();
+
+  if (!res.success) return err({ reason: "DB_INSERTION_FAILURE" });
+  return ok({ id });
 }
 
 export interface OpenIdUser {
@@ -251,7 +281,8 @@ function getRedirectUrl(e: RequestEvent, modifier?: (url: URL) => void) {
   if (
     url.pathname.startsWith("/user/auth") ||
     url.pathname.startsWith("/user/login") ||
-    url.pathname.startsWith("/user/logout")
+    url.pathname.startsWith("/user/logout") ||
+    url.pathname.startsWith("/user/register")
   )
     return "/";
 

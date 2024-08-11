@@ -20,7 +20,7 @@ import { integer, primaryKey, sqliteTable, text } from "drizzle-orm/sqlite-core"
 export const user = sqliteTable("user", {
   id: text("id").notNull().primaryKey(),
   name: text("name").notNull(),
-  email: text("email").notNull(),
+  email: text("email").notNull().unique(),
   role: text("role", { enum: ["user", "admin", "banned"] }).notNull(),
   termsAccepted: integer("termsAccepted", { mode: "timestamp" })
 });
