@@ -19,6 +19,7 @@ import { error, type RequestEvent } from "@sveltejs/kit";
 
 import { getAccountName } from "$/lib/common/email";
 import { getEmailById, register, verifyRegisterLink } from "$/lib/server/auth/email";
+import { validate } from "$/lib/server/turnstile";
 import { err } from "$lib";
 import { redirectBack } from "$lib/server/auth";
 
@@ -47,6 +48,11 @@ export const actions: Actions = {
     const { email } = res;
 
     const data = await event.request.formData();
+    const token = data.get("cf-turnstile-response");
+    if (!token || typeof token !== "string") return err({ reason: "CAPTCHA_FAILED" });
+    const captcha = await validate(token);
+    if (!captcha.ok) return err({ reason: "CAPTCHA_FAILED" });
+
     const name = data.get("name");
     if (!name || typeof name !== "string" || name.length === 0)
       return err({ reason: "INVALID_NAME" });

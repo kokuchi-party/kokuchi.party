@@ -57,7 +57,7 @@
 <main class="relative flex grow flex-col items-center justify-center">
   <section
     class={cn(
-      "flex w-full max-w-80 flex-col items-center gap-8 p-6",
+      "flex w-full max-w-[348px] flex-col items-center gap-8 p-6",
       "visible opacity-100 transition-all duration-200 ease-in",
       form?.ok && "invisible opacity-0"
     )}
@@ -163,7 +163,7 @@
 
   <section
     class={cn(
-      "absolute flex w-full max-w-80 flex-col gap-8 p-6",
+      "absolute flex w-full max-w-[348px] flex-col gap-8 p-6",
       "invisible opacity-0 transition-all duration-200 ease-in",
       form?.ok && "visible opacity-100"
     )}

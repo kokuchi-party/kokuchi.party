@@ -16,10 +16,15 @@
 -->
 
 <script lang="ts">
+  import { mode } from "mode-watcher";
+  import { Turnstile } from "svelte-turnstile";
+
   import { enhance } from "$app/forms";
+  import { PUBLIC_TURNSTILE_SITE_KEY } from "$env/static/public";
   import Button from "$lib/components/ui/button/button.svelte";
   import Input from "$lib/components/ui/input/input.svelte";
   import * as m from "$paraglide/messages";
+  import { languageTag } from "$paraglide/runtime";
 
   import type { PageData } from "./$types";
 
@@ -27,7 +32,7 @@
 </script>
 
 <main class="relative flex grow flex-col items-center justify-center">
-  <section class="flex w-full max-w-80 animate-fade-in flex-col items-center gap-8 p-6">
+  <section class="flex w-full max-w-[348px] animate-fade-in flex-col items-center gap-8 p-6">
     <h1 class="font-orbitron text-3xl">Register</h1>
     <form
       class="flex w-full flex-col items-center gap-4"
@@ -64,14 +69,15 @@
 
         <label for="name" class="mb-1 text-xs text-muted-foreground">{m.label__name()}</label>
 
-        <Input
-          id="name"
-          name="name"
-          type="text"
-          required
-          minlength={1}
-          value={data.name}
-          class="mb-2"
+        <Input id="name" name="name" type="text" required minlength={1} value={data.name} />
+      </div>
+
+      <div class="h-[65px] w-[300px] bg-muted">
+        <Turnstile
+          appearance="always"
+          theme={$mode ?? "auto"}
+          language={languageTag()}
+          siteKey={PUBLIC_TURNSTILE_SITE_KEY}
         />
       </div>
 

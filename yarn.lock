@@ -4367,6 +4367,7 @@ __metadata:
     svelte: "npm:4.2.18"
     svelte-check: "npm:3.8.0"
     svelte-sonner: "npm:0.3.24"
+    svelte-turnstile: "npm:0.7.1"
     sveltekit-rate-limiter: "npm:0.5.2"
     tailwind-merge: "npm:2.4.0"
     tailwind-variants: "npm:0.2.1"
@@ -7844,6 +7845,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"svelte-turnstile@npm:0.7.1":
+  version: 0.7.1
+  resolution: "svelte-turnstile@npm:0.7.1"
+  dependencies:
+    turnstile-types: "npm:^1.2.1"
+  peerDependencies:
+    svelte: ^3.58.0 || ^4.0.0
+  checksum: 10c0/7b4ec4f0b370d46ac462ffca47e8cf137a559fa752064d04e00f4642576e56fdbd10ce603f431737b231d5e856221c1f5d2884de6dea27e5e5b2b1855cc8b2a0
+  languageName: node
+  linkType: hard
+
 "svelte@npm:4.2.18":
   version: 4.2.18
   resolution: "svelte@npm:4.2.18"
@@ -8076,6 +8088,13 @@ __metadata:
   bin:
     tsx: dist/cli.mjs
   checksum: 10c0/9df52264f88be00ca473e7d7eda43bb038cc09028514996b864db78645e9cd297c71485f0fdd4985464d6dc46424f8bef9f8c4bd56692c4fcf4d71621ae21763
+  languageName: node
+  linkType: hard
+
+"turnstile-types@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "turnstile-types@npm:1.2.1"
+  checksum: 10c0/29ec8ba702c5f4ee5617611a733c9a10722099e90bbe6aa08d1a6c1c4a9c05bde691ce307286a9f4d1698d9b376df88f74041ce335e8df4b7e5c2b0c2e0fb99e
   languageName: node
   linkType: hard
 
