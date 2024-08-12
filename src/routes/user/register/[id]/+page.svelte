@@ -31,8 +31,8 @@
   export let data: PageData;
 </script>
 
-<main class="relative flex grow flex-col items-center justify-center">
-  <section class="flex w-full max-w-80 animate-fade-in flex-col items-center gap-8 p-6">
+<main class="flex grow flex-col items-center justify-center">
+  <section class="flex w-full max-w-[348px] animate-fade-in flex-col items-center gap-8 p-6">
     <h1 class="font-orbitron text-3xl">Register</h1>
     <form
       class="flex w-full flex-col items-center gap-4"

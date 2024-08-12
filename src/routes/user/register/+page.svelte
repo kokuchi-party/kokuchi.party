@@ -54,7 +54,7 @@
   }
 </script>
 
-<main class="relative flex grow flex-col items-center justify-center">
+<main class="flex grow flex-col items-center justify-center">
   <section
     class={cn(
       "flex w-full max-w-[348px] flex-col items-center gap-8 p-6",
