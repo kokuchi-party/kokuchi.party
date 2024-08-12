@@ -25,8 +25,8 @@ import { isLoginCookieSet, verifyLoginCode } from "$lib/server/auth/email";
 import type { Actions } from "./$types";
 
 const verifyLimiter = new RateLimiter({
-  IP: [100, "d"], // IP address limiter
-  IPUA: [10, "15m"] // IP + User Agent limiter
+  IP: [25, "d"], // IP address limiter
+  IPUA: [5, "10m"] // IP + User Agent limiter
 });
 
 export async function load(event: RequestEvent) {

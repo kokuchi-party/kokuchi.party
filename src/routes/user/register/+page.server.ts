@@ -26,8 +26,8 @@ import { generateRegisterLink } from "$lib/server/auth/email";
 import type { Actions } from "./$types";
 
 const generateLimiter = new RateLimiter({
-  IP: [100, "d"], // IP address limiter
-  IPUA: [10, "15m"] // IP + User Agent limiter
+  IP: [10, "d"], // IP address limiter
+  IPUA: [3, "15m"] // IP + User Agent limiter
 });
 
 export async function load(event: RequestEvent) {
