@@ -61,6 +61,7 @@ export const actions: Actions = {
       ...sessionCookie.attributes
     });
 
+    if (res.shouldReadTerms) throw redirect(302, "/terms?mode=accept");
     throw redirectBack(event, 303);
   }
 };

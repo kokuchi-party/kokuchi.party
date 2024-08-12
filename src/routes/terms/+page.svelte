@@ -17,7 +17,7 @@
 
 <script lang="ts">
   import Button from "$components/ui/button/button.svelte";
-  import { limitWidth, termRevised } from "$lib/constants";
+  import { limitWidth, termsRevised } from "$lib/constants";
   import { cn } from "$lib/utils";
   import * as m from "$paraglide/messages";
 
@@ -32,8 +32,8 @@
       <h1 class="mb-2">{m.h__terms_of_service()}</h1>
       <p class="mt-2 text-xs text-muted-foreground">
         {m.p__last_updated()}
-        <time datetime={termRevised.toISOString()}>
-          {termRevised.toLocaleDateString(new Intl.Locale(data.lang))}
+        <time datetime={termsRevised.toISOString()}>
+          {termsRevised.toLocaleDateString(new Intl.Locale(data.lang))}
         </time>
       </p>
     </hgroup>

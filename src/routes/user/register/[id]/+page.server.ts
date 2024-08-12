@@ -18,9 +18,9 @@
 import { error, type RequestEvent } from "@sveltejs/kit";
 
 import { getAccountName } from "$/lib/common/email";
-import { getEmailById, verifyRegisterLink } from "$/lib/server/auth/email";
+import { getEmailById, register, verifyRegisterLink } from "$/lib/server/auth/email";
 import { err } from "$lib";
-import { redirectBack, registerWithEmail } from "$lib/server/auth";
+import { redirectBack } from "$lib/server/auth";
 
 import type { Actions } from "./$types";
 
@@ -51,7 +51,7 @@ export const actions: Actions = {
     if (!name || typeof name !== "string" || name.length === 0)
       return err({ reason: "INVALID_NAME" });
 
-    const res2 = await registerWithEmail(event, { name, email });
+    const res2 = await register(event, { name, email });
     if (!res2.ok) return res2;
 
     const lucia = event.locals.lucia;

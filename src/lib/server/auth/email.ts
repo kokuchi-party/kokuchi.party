@@ -20,6 +20,7 @@ import { eq } from "drizzle-orm";
 import { generateIdFromEntropySize } from "lucia";
 import { alphabet, generateRandomString } from "oslo/crypto";
 
+import { termsRevised } from "$/lib/constants";
 import { dev } from "$app/environment";
 import { err, ok } from "$lib";
 import { sendEmail } from "$lib/server/email";
@@ -108,7 +109,7 @@ export async function verifyLoginCode(event: RequestEvent, code: string) {
   if (!id || !email) return err({ status: 400, reason: "UNAUTHORIZED" });
 
   const existingUser = await db
-    .select({ id: user.id, email: user.email })
+    .select({ id: user.id, email: user.email, termsAccepted: user.termsAccepted })
     .from(user)
     .where(eq(user.email, email))
     .get();
@@ -124,7 +125,9 @@ export async function verifyLoginCode(event: RequestEvent, code: string) {
   await kv.delete(Key.login(existingUser.id, id));
   event.cookies.delete("email_login_id", loginCookieOption);
   event.cookies.delete("email_login_address", loginCookieOption);
-  return ok(existingUser);
+
+  const shouldReadTerms = !existingUser.termsAccepted || existingUser.termsAccepted < termsRevised;
+  return ok({ ...existingUser, shouldReadTerms });
 }
 
 export async function generateRegisterLink(event: RequestEvent, email: string) {
@@ -186,4 +189,30 @@ export async function verifyRegisterLink(event: RequestEvent, id: string) {
   if (existingUser) return err({ reason: "ALREADY_REGISTERED" });
 
   return ok({ email });
+}
+
+export async function register(
+  event: RequestEvent,
+  { name, email }: { name: string; email: string }
+) {
+  const db = event.locals.db;
+
+  const existingUser = await db
+    .select({ id: user.id, name: user.name })
+    .from(user)
+    .where(eq(user.email, email))
+    .get();
+  if (existingUser) return err({ reason: "ALREADY_REGISTERED" });
+
+  const id = generateIdFromEntropySize(10); // 16 characters long
+  const res = await db.insert(user).values({
+    id,
+    name,
+    email,
+    role: "user",
+    termsAccepted: new Date(Date.now())
+  });
+
+  if (!res.success) return err({ reason: "DB_INSERTION_FAILURE" });
+  return ok({ id });
 }

@@ -24,7 +24,7 @@ import { dev } from "$app/environment";
 import { err, ok } from "$lib";
 import { type AuthAction, isAuthAction } from "$lib/common/auth";
 import type { CookieOptions } from "$lib/common/cookie";
-import { termRevised } from "$lib/constants";
+import { termsRevised } from "$lib/constants";
 import { D1KVAdapter } from "$lib/server/auth/adapter";
 import { initialize as initializeGoogle } from "$lib/server/auth/google";
 import { oauth_account, user } from "$schema";
@@ -176,7 +176,8 @@ export async function oauth(
       throw new Error("The OAuth account exists, but the corresponding user does not");
     }
 
-    const shouldReadTerms = !existingUser.termsAccepted || existingUser.termsAccepted < termRevised;
+    const shouldReadTerms =
+      !existingUser.termsAccepted || existingUser.termsAccepted < termsRevised;
     return ok({ id: existingAccount.user_id, shouldReadTerms });
   }
 
@@ -218,35 +219,6 @@ export async function oauth(
       return { ...(await register(true)), action };
     }
   }
-}
-
-export async function registerWithEmail(
-  event: RequestEvent,
-  { name, email }: { name: string; email: string }
-) {
-  const db = event.locals.db;
-
-  const existingUser = await db
-    .select({ id: user.id, name: user.name })
-    .from(user)
-    .where(eq(user.email, email))
-    .get();
-  if (existingUser) return err({ reason: "ALREADY_REGISTERED" });
-
-  const id = generateIdFromEntropySize(10); // 16 characters long
-  const res = await db
-    .insert(user)
-    .values({
-      id,
-      name,
-      email,
-      role: "user",
-      termsAccepted: new Date(Date.now())
-    })
-    .onConflictDoNothing();
-
-  if (!res.success) return err({ reason: "DB_INSERTION_FAILURE" });
-  return ok({ id });
 }
 
 export interface OpenIdUser {
