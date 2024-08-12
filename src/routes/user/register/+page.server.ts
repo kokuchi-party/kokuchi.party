@@ -40,8 +40,7 @@ export const actions: Actions = {
     const data = await event.request.formData();
     const type = data.get("type");
 
-    if (!(["email", "google", "instagram"] as const).includes(type))
-      return err({ reason: "INVALID_TYPE" });
+    if (!(["email", "google"] as const).includes(type)) return err({ reason: "INVALID_TYPE" });
 
     const terms = data.get("terms");
     if (terms !== "on") return err({ reason: "CONSENT_REQUIRED" });

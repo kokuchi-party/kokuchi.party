@@ -140,17 +140,6 @@
         >
           {m.label__register_via_google()}
         </Button>
-
-        <Button
-          type="submit"
-          value="instagram"
-          name="type"
-          class="w-full"
-          variant="outline"
-          disabled={loading}
-        >
-          {m.label__register_via_instagram()}
-        </Button>
       </div>
     </form>
 

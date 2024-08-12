@@ -91,10 +91,6 @@
         <Button href="/user/auth/google/login" class="w-full" variant="outline">
           {m.label__sign_in_with_google()}
         </Button>
-
-        <Button href="/user/auth/instagram/login" class="w-full" variant="outline">
-          {m.label__sign_in_with_instagram()}
-        </Button>
       </div>
     </section>
 
