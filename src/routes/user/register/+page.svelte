@@ -78,9 +78,11 @@
     >
       <div class="space-y-2">
         <p class="text-sm">
-          Please read and accept our <a class="text-primary underline" href="/terms" target="_blank"
-            >Terms of Service</a
-          > before creating a new account.
+          {m.p__accept_tos_1()}
+          <a class="text-primary underline" href="/terms" target="_blank"
+            >{m.p__accept_tos_inner()}</a
+          >
+          {m.p__accept_tos_2()}
         </p>
 
         <div class="flex items-center gap-2">
@@ -96,7 +98,7 @@
             class={cn(
               "h-6 align-middle text-sm",
               form?.reason === "CONSENT_REQUIRED" && "animate-blink"
-            )}>I have read and agree to the terms</label
+            )}>{m.label__accept_terms()}</label
           >
         </div>
       </div>
@@ -136,7 +138,7 @@
           variant="outline"
           disabled={loading}
         >
-          Register with Google
+          {m.label__register_via_google()}
         </Button>
 
         <Button
@@ -147,15 +149,15 @@
           variant="outline"
           disabled={loading}
         >
-          Register with Instagram
+          {m.label__register_via_instagram()}
         </Button>
       </div>
     </form>
 
     <section class="w-full space-y-2">
-      <h2>Already have an account?</h2>
+      <h2>{m.h__already_have_an_account()}</h2>
 
-      <Button href="/user/login" variant="outline" class="w-full">Sign in</Button>
+      <Button href="/user/login" variant="outline" class="w-full">{m.label__sign_in()}</Button>
     </section>
   </section>
 
@@ -169,11 +171,11 @@
     <h1 class="font-orbitron text-3xl">Email Sent</h1>
 
     <div class="w-full space-y-2">
-      <p>Please check your inbox and click on the received link to confirm your registration.</p>
+      <p>{m.p__check_your_inbox()}</p>
 
-      <p>The link will expire after 1 hour.</p>
+      <p>{m.p__link_expire()}</p>
     </div>
 
-    <p class="text-sm text-muted-foreground">(You can safely close this page.)</p>
+    <p class="text-sm text-muted-foreground">({m.p__can_close_this_page()})</p>
   </section>
 </main>

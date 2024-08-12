@@ -37,5 +37,19 @@
   "p__error_403": "You are not allowed to see this page.",
   "p__error_404": "The page you were looking for does not exist.",
   "label__send_verification_link": "Send registration link",
-  "toast__consent_required": "Please read and agree to the terms."
+  "toast__consent_required": "Please read and agree to the terms.",
+  "p__accept_tos_1": "Please read and accept our",
+  "p__accept_tos_2": "before creating a new account.",
+  "p__accept_tos_inner": "Terms of Service",
+  "label__accept_terms": "I have read and agree to the terms",
+  "label__register_via_instagram": "Register via Instagram Account",
+  "label__register_via_google": "Register via Google Account",
+  "h__already_have_an_account": "Already have an account?",
+  "label__sign_in": "Sign in",
+  "p__check_your_inbox": "Please check your inbox and click on the received link to confirm your registration.",
+  "p__link_expire": "The link will expire after 1 hour.",
+  "p__can_close_this_page": "You can safely close this page.",
+  "label__name": "Name",
+  "label__register_and_continue": "Register and Continue",
+  "p__registration_not_yet_complete": "The registration is not yet complete. Please press the button above to activate your account."
 }

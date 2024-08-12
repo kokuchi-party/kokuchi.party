@@ -37,9 +37,11 @@
     >
       <div class="space-y-2">
         <p class="text-sm">
-          Please read and accept our <a class="text-primary underline" href="/terms" target="_blank"
-            >Terms of Service</a
-          > before creating a new account.
+          {m.p__accept_tos_1()}
+          <a class="text-primary underline" href="/terms" target="_blank"
+            >{m.p__accept_tos_inner()}</a
+          >
+          {m.p__accept_tos_2()}
         </p>
 
         <div class="flex items-center gap-2">
@@ -51,9 +53,7 @@
             checked
             class="h-4 w-4 rounded border-border bg-background text-primary accent-primary disabled:accent-primary/50"
           />
-          <label for="terms" class="h-6 align-middle text-sm"
-            >I have read and agree to the terms</label
-          >
+          <label for="terms" class="h-6 align-middle text-sm">{m.label__accept_terms()}</label>
         </div>
       </div>
 
@@ -62,7 +62,7 @@
 
         <Input id="email" name="email" type="email" disabled value={data.email} class="mb-2" />
 
-        <label for="name" class="mb-1 text-xs text-muted-foreground">Name</label>
+        <label for="name" class="mb-1 text-xs text-muted-foreground">{m.label__name()}</label>
 
         <Input
           id="name"
@@ -75,11 +75,10 @@
         />
       </div>
 
-      <Button class="w-full" type="submit" name="type">Register and Continue</Button>
+      <Button class="w-full" type="submit" name="type">{m.label__register_and_continue()}</Button>
 
       <p class="text-sm text-muted-foreground">
-        The registration is not yet complete. Please press the button above to activate your
-        account.
+        {m.p__registration_not_yet_complete()}
       </p>
     </form>
   </section>
