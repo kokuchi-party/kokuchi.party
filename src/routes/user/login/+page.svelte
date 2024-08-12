@@ -51,12 +51,12 @@
 </script>
 
 <main class="flex grow flex-col items-center justify-center">
-  <section class="flex w-full max-w-80 flex-col items-center gap-8 p-6">
+  <section class="flex w-full max-w-[348px] flex-col items-center gap-8 p-6">
     <h1 class="font-orbitron text-3xl">Log In</h1>
 
     <section class="flex w-full flex-col items-center gap-4">
       <form
-        class="w-full space-y-2"
+        class="w-full"
         method="post"
         enctype="multipart/form-data"
         action="?/submit"
@@ -68,7 +68,7 @@
           };
         }}
       >
-        <label for="email">{m.label__email()}</label>
+        <label for="email" class="mb-1 text-xs text-muted-foreground">{m.label__email()}</label>
 
         <Input
           id="email"
@@ -77,7 +77,7 @@
           placeholder="you@example.com"
           required
           minlength={1}
-          class={cn(form?.reason === "INVALID_EMAIL" && "animate-blink")}
+          class={cn("mb-2", form?.reason === "INVALID_EMAIL" && "animate-blink")}
         />
 
         <Button class="w-full" type="submit" disabled={loading || form?.reason === "RATE_LIMITED"}>
@@ -85,9 +85,9 @@
         </Button>
       </form>
 
-      <p>{m.label__or()}</p>
+      <p class="leading-none">{m.label__or()}</p>
 
-      <div class="w-full space-y-1">
+      <div class="w-full space-y-2">
         <Button href="/user/auth/google/login" class="w-full" variant="outline">
           {m.label__sign_in_with_google()}
         </Button>
@@ -101,7 +101,9 @@
     <section class="w-full space-y-2">
       <h2>{m.h__new_to_kokuchiparty()}</h2>
 
-      <Button variant="outline" class="w-full">{m.label__create_account()}</Button>
+      <Button href="/user/register" variant="outline" class="w-full"
+        >{m.label__create_account()}</Button
+      >
     </section>
   </section>
 </main>

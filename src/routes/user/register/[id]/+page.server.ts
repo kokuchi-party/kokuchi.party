@@ -15,53 +15,59 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import { redirect, type RequestEvent } from "@sveltejs/kit";
-import { RateLimiter } from "sveltekit-rate-limiter/server";
+import { error, type RequestEvent } from "@sveltejs/kit";
 
+import { getAccountName } from "$/lib/common/email";
+import { getEmailById, register, verifyRegisterLink } from "$/lib/server/auth/email";
+import { validate } from "$/lib/server/turnstile";
 import { err } from "$lib";
 import { redirectBack } from "$lib/server/auth";
-import { isLoginCookieSet, verifyLoginCode } from "$lib/server/auth/email";
 
 import type { Actions } from "./$types";
-
-const verifyLimiter = new RateLimiter({
-  IP: [25, "d"], // IP address limiter
-  IPUA: [5, "10m"] // IP + User Agent limiter
-});
 
 export async function load(event: RequestEvent) {
   // Redirect if already logged in
   if (event.locals.user) throw redirectBack(event);
 
-  // Redirect if login code is not sent
-  if (!isLoginCookieSet(event)) throw redirect(302, "/user/login");
+  const id = event.params.id;
+  if (!id) throw error(404, "Invalid ID");
+
+  const res = await verifyRegisterLink(event, id);
+  if (!res.ok) throw error(404, "Invalid ID");
+
+  return { ...res, name: getAccountName(res.email) };
 }
 
 export const actions: Actions = {
   async default(event) {
+    const id = event.params.id;
+    if (!id) throw error(404, "Invalid ID");
+
+    const res = await getEmailById(event, id);
+    if (!res.ok) throw error(404, "Invalid ID");
+    const { email } = res;
+
     const data = await event.request.formData();
+    const token = data.get("cf-turnstile-response");
+    if (!token || typeof token !== "string") return err({ reason: "CAPTCHA_FAILED" });
+    const captcha = await validate(token);
+    if (!captcha.ok) return err({ reason: "CAPTCHA_FAILED" });
 
-    const code = data.get("code");
-    if (!code || typeof code !== "string") return err({ reason: "INVALID_CODE" });
+    const name = data.get("name");
+    if (!name || typeof name !== "string" || name.length === 0)
+      return err({ reason: "INVALID_NAME" });
 
-    if (await verifyLimiter.isLimited(event)) return err({ reason: "RATE_LIMITED" });
-
-    const res = await verifyLoginCode(event, code);
-    if (!res.ok) {
-      // Redirect if login code is not sent (should not happen here)
-      if (res.reason === "UNAUTHORIZED") throw redirect(303, "/user/login");
-      return res;
-    }
+    const res2 = await register(event, { name, email });
+    if (!res2.ok) return res2;
 
     const lucia = event.locals.lucia;
-    const session = await lucia.createSession(res.id, {});
+    const session = await lucia.createSession(res2.id, {});
     const sessionCookie = lucia.createSessionCookie(session.id);
     event.cookies.set(sessionCookie.name, sessionCookie.value, {
       path: ".",
       ...sessionCookie.attributes
     });
 
-    if (res.shouldReadTerms) throw redirect(302, "/terms?mode=accept");
     throw redirectBack(event, 303);
   }
 };

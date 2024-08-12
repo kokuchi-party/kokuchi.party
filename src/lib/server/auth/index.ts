@@ -24,7 +24,7 @@ import { dev } from "$app/environment";
 import { err, ok } from "$lib";
 import { type AuthAction, isAuthAction } from "$lib/common/auth";
 import type { CookieOptions } from "$lib/common/cookie";
-import { termRevised } from "$lib/constants";
+import { termsRevised } from "$lib/constants";
 import { D1KVAdapter } from "$lib/server/auth/adapter";
 import { initialize as initializeGoogle } from "$lib/server/auth/google";
 import { oauth_account, user } from "$schema";
@@ -176,7 +176,8 @@ export async function oauth(
       throw new Error("The OAuth account exists, but the corresponding user does not");
     }
 
-    const shouldReadTerms = !existingUser.termsAccepted || existingUser.termsAccepted < termRevised;
+    const shouldReadTerms =
+      !existingUser.termsAccepted || existingUser.termsAccepted < termsRevised;
     return ok({ id: existingAccount.user_id, shouldReadTerms });
   }
 
@@ -214,6 +215,7 @@ export async function oauth(
     }
 
     case "register": {
+      if (existingAccount) return { ...(await login()), action };
       return { ...(await register(true)), action };
     }
   }
@@ -251,7 +253,8 @@ function getRedirectUrl(e: RequestEvent, modifier?: (url: URL) => void) {
   if (
     url.pathname.startsWith("/user/auth") ||
     url.pathname.startsWith("/user/login") ||
-    url.pathname.startsWith("/user/logout")
+    url.pathname.startsWith("/user/logout") ||
+    url.pathname.startsWith("/user/register")
   )
     return "/";
 

@@ -45,3 +45,11 @@ export function validateEmail(email: string): boolean {
 
   return true;
 }
+
+export function getAccountName(email: string): string {
+  const atIndex = email.indexOf("@");
+  if (atIndex <= 0) return email;
+
+  const localPart = email.slice(0, atIndex);
+  return localPart;
+}

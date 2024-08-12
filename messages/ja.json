@@ -35,5 +35,21 @@
   "p__error_400": "リクエストの結果エラーが発生しました。",
   "p__error_401": "このページを表示するにはログインする必要があります。",
   "p__error_403": "このページを閲覧する権限がありません。",
-  "p__error_404": "お探しのページは見つかりませんでした。"
+  "p__error_404": "お探しのページは見つかりませんでした。",
+  "label__send_verification_link": "登録リンクを送信",
+  "toast__consent_required": "利用規約をお読みいただき、同意してください。",
+  "p__accept_tos_1": "新しいアカウントを作成する前に、",
+  "p__accept_tos_2": "を必ずお読みいただき、同意してください。",
+  "p__accept_tos_inner": "利用規約",
+  "label__accept_terms": "利用規約を読み、同意します",
+  "label__register_via_instagram": "Instagramアカウントで登録",
+  "label__register_via_google": "Googleアカウントで登録",
+  "h__already_have_an_account": "すでにアカウントをお持ちですか？",
+  "label__sign_in": "ログイン",
+  "p__check_your_inbox": "受信トレイを確認し、メールに記載のリンクをクリックして登録を続行してください。",
+  "p__link_expire": "リンクは1時間後に期限切れになります。",
+  "p__can_close_this_page": "このページは安全に閉じることができます。",
+  "label__name": "名前",
+  "label__register_and_continue": "登録して続行",
+  "p__registration_not_yet_complete": "登録はまだ完了していません。アカウントを有効化するには、上のボタンを押してください。"
 }

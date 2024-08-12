@@ -18,7 +18,7 @@
 import { eq } from "drizzle-orm";
 
 import { err } from "$lib";
-import { termRevised } from "$lib/constants";
+import { termsRevised } from "$lib/constants";
 import { redirectBack } from "$lib/server/auth";
 import { user } from "$schema";
 
@@ -41,7 +41,7 @@ export const load: PageServerLoad = async (event) => {
       if (!existingUser) return fallback();
 
       const shouldReadTerms =
-        !existingUser.termsAccepted || existingUser.termsAccepted < termRevised;
+        !existingUser.termsAccepted || existingUser.termsAccepted < termsRevised;
 
       return { mode: shouldReadTerms ? ("accept" as const) : undefined };
     }

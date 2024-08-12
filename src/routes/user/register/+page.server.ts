@@ -21,13 +21,13 @@ import { RateLimiter } from "sveltekit-rate-limiter/server";
 import { err } from "$lib";
 import { validateEmail } from "$lib/common/email";
 import { redirectBack, setRedirectUrl } from "$lib/server/auth";
-import { generateLoginCode } from "$lib/server/auth/email";
+import { generateRegisterLink } from "$lib/server/auth/email";
 
 import type { Actions } from "./$types";
 
 const generateLimiter = new RateLimiter({
-  IP: [25, "d"], // IP address limiter
-  IPUA: [5, "10m"] // IP + User Agent limiter
+  IP: [10, "d"], // IP address limiter
+  IPUA: [3, "15m"] // IP + User Agent limiter
 });
 
 export async function load(event: RequestEvent) {
@@ -37,18 +37,23 @@ export async function load(event: RequestEvent) {
 
 export const actions: Actions = {
   async submit(event) {
-    if (await generateLimiter.isLimited(event)) return err({ reason: "RATE_LIMITED" });
-
     const data = await event.request.formData();
-    const email = data.get("email");
+    const type = data.get("type");
 
+    if (!(["email", "google", "instagram"] as const).includes(type))
+      return err({ reason: "INVALID_TYPE" });
+
+    const terms = data.get("terms");
+    if (terms !== "on") return err({ reason: "CONSENT_REQUIRED" });
+
+    if (type !== "email") throw redirect(303, `/user/auth/${type}/register`);
+
+    const email = data.get("email");
     if (!email || typeof email !== "string" || !validateEmail(email))
       return err({ reason: "INVALID_EMAIL" });
 
-    const res = await generateLoginCode(event, email);
-
-    if (res.ok) throw redirect(303, "/user/login/verify-code");
-    return res;
+    if (await generateLimiter.isLimited(event)) return err({ reason: "RATE_LIMITED" });
+    return await generateRegisterLink(event, email);
   },
 
   async initiate(event) {
@@ -57,6 +62,6 @@ export const actions: Actions = {
     if (origin && typeof origin === "string" && origin.startsWith("/")) {
       setRedirectUrl(event, origin);
     }
-    throw redirect(303, "/user/login");
+    throw redirect(303, "/user/register");
   }
 };
