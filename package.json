@@ -58,7 +58,7 @@
     "spdx-expression-parse": "4.0.0",
     "spdx-license-list": "6.9.0",
     "svelte": "4.2.18",
-    "svelte-check": "3.8.0",
+    "svelte-check": "3.8.5",
     "svelte-turnstile": "0.7.1",
     "sveltekit-rate-limiter": "0.5.2",
     "tailwindcss": "3.4.9",
