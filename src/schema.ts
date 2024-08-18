@@ -17,6 +17,8 @@
 
 import { integer, primaryKey, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
+import type { RangedNumber } from "$lib/common/range";
+
 export const user = sqliteTable("user", {
   id: text("id").notNull().primaryKey(),
   name: text("name").notNull(),
@@ -48,6 +50,31 @@ export const media = sqliteTable("media", {
   size: integer("size").notNull(),
   width: integer("width"),
   height: integer("height"),
+  user_id: text("user_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" })
+});
+
+export type TimeOnly = { hour: RangedNumber<0, 24>; minute: RangedNumber<0, 60> };
+
+export const venue = sqliteTable("venue", {
+  id: integer("id").primaryKey(),
+  name: text("name").notNull(),
+  url: text("url"),
+  online: integer("online", { mode: "boolean" }).notNull().default(false),
+  verified: integer("verified", { mode: "boolean" }).notNull().default(false),
+  user_id: text("user_id").references(() => user.id, { onDelete: "cascade" })
+});
+
+export const event = sqliteTable("event", {
+  id: text("id").notNull().primaryKey(),
+  name: text("name").notNull(),
+  date: integer("date", { mode: "timestamp" }).notNull(),
+  open_time: text("door_time", { mode: "json" }).$type<TimeOnly>().notNull(),
+  start_time: text("open_time", { mode: "json" }).$type<TimeOnly>(),
+  media_id: text("media_id")
+    .notNull()
+    .references(() => media.id, { onDelete: "cascade" }),
   user_id: text("user_id")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" })

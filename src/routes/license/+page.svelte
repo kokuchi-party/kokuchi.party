@@ -16,11 +16,11 @@
 -->
 
 <script lang="ts">
+  import licenses from "$/data/licenses.json";
   import { limitWidth } from "$lib/constants";
   import { cn } from "$lib/utils";
   import * as m from "$paraglide/messages";
 
-  import licenses from "../../licenses.json";
   import Agpl from "./agpl.svelte";
   import Spdx from "./spdx.svelte";
 </script>

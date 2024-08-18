@@ -28,12 +28,12 @@ import checker from "license-checker-rseidelsohn";
 import parse from "spdx-expression-parse";
 import licensesMap from "spdx-license-list";
 
-import { type LicenseExpr, type Licenses } from "../src/licenses.json";
+import { type LicenseExpr, type Licenses } from "../src/data/licenses.json";
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const outputFile = path.join(__dirname, "..", "src", "licenses.json");
+const outputFile = path.join(__dirname, "..", "src", "data", "licenses.json");
 const output: Licenses = {
   packages: {},
   licenses: {}

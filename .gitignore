@@ -24,7 +24,3 @@ vite.config.ts.timestamp-*
 .wrangler
 wrangler.toml
 
-############################
-# Auto-generated
-############################
-src/licenses.json
