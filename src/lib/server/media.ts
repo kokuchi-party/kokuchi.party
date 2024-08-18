@@ -19,6 +19,7 @@ import { base32crockford } from "@scure/base";
 import { AwsClient } from "aws4fetch";
 import type { DrizzleD1Database } from "drizzle-orm/d1";
 import { imageDimensionsFromStream } from "image-dimensions";
+import type { User } from "lucia";
 
 import {
   S3_ACCESS_KEY,
@@ -28,10 +29,10 @@ import {
   S3_SECRET_KEY
 } from "$env/static/private";
 import { err, ok } from "$lib";
-import { getUploadFolderName, type MimeType } from "$lib/common/file";
-import { files } from "$schema";
+import { getUploadFolderName, type MimeType } from "$lib/common/media";
+import { media } from "$schema";
 
-export * from "$lib/common/file";
+export * from "$lib/common/media";
 
 const client = new AwsClient({
   accessKeyId: S3_ACCESS_KEY,
@@ -67,7 +68,7 @@ export async function getImageDimensions(file: File) {
   return imageDimensionsFromStream(file.stream());
 }
 
-export async function create(db: DrizzleD1Database, file: File) {
+export async function create(user: User, db: DrizzleD1Database, file: File) {
   const hash = await calculateHash(file);
   const { mime, ext } = (await getFileType(file)) ?? {};
   if (!mime || !ext) return err({ status: 415, message: "Unsupported file type" });
@@ -90,18 +91,20 @@ export async function create(db: DrizzleD1Database, file: File) {
       message: "S3 upload failure"
     });
 
-  const sizes = await getImageDimensions(file);
+  const { width, height } = (await getImageDimensions(file)) ?? {};
 
   try {
     const item = await db
-      .insert(files)
+      .insert(media)
       .values({
         folder,
         hash,
         ext,
         size: file.size,
         mime,
-        ...sizes
+        width,
+        height,
+        user_id: user.id
       })
       .returning();
 

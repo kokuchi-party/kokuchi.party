@@ -39,7 +39,7 @@ export const oauth_account = sqliteTable(
   })
 );
 
-export const files = sqliteTable("files", {
+export const media = sqliteTable("media", {
   id: integer("id").primaryKey(),
   folder: text("folder"),
   hash: text("hash").notNull(),
@@ -47,5 +47,8 @@ export const files = sqliteTable("files", {
   mime: text("mime").notNull(),
   size: integer("size").notNull(),
   width: integer("width"),
-  height: integer("height")
+  height: integer("height"),
+  user_id: text("user_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" })
 });
