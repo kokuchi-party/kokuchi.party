@@ -17,6 +17,7 @@
 
 import { type RequestEvent } from "@sveltejs/kit";
 
+import { setGlobalToast } from "$/lib/server/globalToast";
 import { err } from "$lib";
 import { oauth, redirectBackResponse } from "$lib/server/auth";
 import { getRegisterUserArgs as getArgsGoogle } from "$lib/server/auth/google";
@@ -38,8 +39,17 @@ export async function GET(event: RequestEvent): Promise<Response> {
 
   try {
     const res = await oauth(event, args);
-    if (!res.ok)
+    if (!res.ok) {
+      // user with the same email exists
+      if (res.reason === "ALREADY_REGISTERED") {
+        setGlobalToast(event, "OAUTH_REGISTRATION_WITH_EXISTING_EMAIL");
+        return new Response(null, {
+          status: 302,
+          headers: { Location: "/user/login" }
+        });
+      }
       return redirectBackResponse(event, 302, (url) => url.searchParams.append("err", res.reason));
+    }
 
     const session = await lucia.createSession(res.id, {});
     const sessionCookie = lucia.createSessionCookie(session.id);

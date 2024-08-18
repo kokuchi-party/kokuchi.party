@@ -49,5 +49,6 @@
   "p__can_close_this_page": "このページは安全に閉じることができます。",
   "label__name": "名前",
   "label__register_and_continue": "登録して続行",
-  "p__registration_not_yet_complete": "登録はまだ完了していません。アカウントを有効化するには、上のボタンを押してください。"
+  "p__registration_not_yet_complete": "登録はまだ完了していません。アカウントを有効化するには、上のボタンを押してください。",
+  "global_toast__OAUTH_REGISTRATION_WITH_EXISTING_EMAIL": "メールでのログインコード認証をお試しください。"
 }

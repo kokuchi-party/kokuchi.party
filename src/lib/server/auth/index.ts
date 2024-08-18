@@ -183,6 +183,9 @@ export async function oauth(
 
   // register a new user and a new OAuth account
   async function register(explicit: boolean) {
+    const existingUser = await db.select().from(user).where(eq(user.email, email)).get();
+    if (existingUser) return err({ reason: "ALREADY_REGISTERED", email });
+
     const id = generateIdFromEntropySize(10); // 16 characters long
     await db.batch([
       db.insert(user).values({

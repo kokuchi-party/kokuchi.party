@@ -49,5 +49,6 @@
   "p__can_close_this_page": "You can safely close this page.",
   "label__name": "Name",
   "label__register_and_continue": "Register and Continue",
-  "p__registration_not_yet_complete": "The registration is not yet complete. Please press the button above to activate your account."
+  "p__registration_not_yet_complete": "The registration is not yet complete. Please press the button above to activate your account.",
+  "global_toast__OAUTH_REGISTRATION_WITH_EXISTING_EMAIL": "Try signing in with a login code via email."
 }

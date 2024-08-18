@@ -20,6 +20,8 @@
   import "../app.pcss";
 
   import { ModeWatcher } from "mode-watcher";
+  import { onMount } from "svelte";
+  import { toast } from "svelte-sonner";
 
   import Footer from "$lib/components/footer.svelte";
   import Header from "$lib/components/header.svelte";
@@ -28,6 +30,12 @@
 
   export let data;
   $: setLanguageTag(data.lang);
+
+  onMount(() => {
+    if (data.globalToast) {
+      toast.info(data.globalToast);
+    }
+  });
 </script>
 
 <svelte:head>

@@ -15,14 +15,20 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import { getGlobalToast } from "$/lib/server/globalToast";
+import * as m from "$paraglide/messages";
+import type { AvailableLanguageTag } from "$paraglide/runtime";
 
-export const load = async (e) => {
-  const globalToast = getGlobalToast(e);
+const globalToastTags = ["OAUTH_REGISTRATION_WITH_EXISTING_EMAIL"] as const;
 
-  return {
-    globalToast,
-    lang: e.locals.lang,
-    loggedIn: !!e.locals.user
-  };
-};
+export type GlobalToastTag = (typeof globalToastTags)[number];
+
+export function isGlobalToastTag(s: string): s is GlobalToastTag {
+  return globalToastTags.includes(s);
+}
+
+export function getMessage(t: GlobalToastTag, languageTag?: AvailableLanguageTag) {
+  switch (t) {
+    case "OAUTH_REGISTRATION_WITH_EXISTING_EMAIL":
+      return m.global_toast__OAUTH_REGISTRATION_WITH_EXISTING_EMAIL(undefined, { languageTag });
+  }
+}
