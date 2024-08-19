@@ -25,7 +25,7 @@
     "postinstall": "run-p gen:paraglide gen:licenses.json"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "4.20240729.0",
+    "@cloudflare/workers-types": "4.20240815.0",
     "@inlang/paraglide-js": "1.11.0",
     "@inlang/paraglide-js-adapter-vite": "1.2.40",
     "@playwright/test": "1.44.1",
