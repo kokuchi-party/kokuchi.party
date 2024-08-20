@@ -4367,7 +4367,7 @@ __metadata:
     svelte: "npm:4.2.18"
     svelte-check: "npm:3.8.5"
     svelte-sonner: "npm:0.3.24"
-    svelte-turnstile: "npm:0.7.1"
+    svelte-turnstile: "npm:0.8.0"
     sveltekit-rate-limiter: "npm:0.5.2"
     tailwind-merge: "npm:2.4.0"
     tailwind-variants: "npm:0.2.1"
@@ -7843,14 +7843,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-turnstile@npm:0.7.1":
-  version: 0.7.1
-  resolution: "svelte-turnstile@npm:0.7.1"
+"svelte-turnstile@npm:0.8.0":
+  version: 0.8.0
+  resolution: "svelte-turnstile@npm:0.8.0"
   dependencies:
-    turnstile-types: "npm:^1.2.1"
+    turnstile-types: "npm:^1.2.2"
   peerDependencies:
     svelte: ^3.58.0 || ^4.0.0
-  checksum: 10c0/7b4ec4f0b370d46ac462ffca47e8cf137a559fa752064d04e00f4642576e56fdbd10ce603f431737b231d5e856221c1f5d2884de6dea27e5e5b2b1855cc8b2a0
+  checksum: 10c0/d87ad390bbfd6428a423f24bcb45d40ff079e87392236c14d94f6526314fa5150154bf9f352f5f345c5481d0714eec512ef0cfb7b869eeb7d6964a40ea7393f9
   languageName: node
   linkType: hard
 
@@ -8089,10 +8089,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turnstile-types@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "turnstile-types@npm:1.2.1"
-  checksum: 10c0/29ec8ba702c5f4ee5617611a733c9a10722099e90bbe6aa08d1a6c1c4a9c05bde691ce307286a9f4d1698d9b376df88f74041ce335e8df4b7e5c2b0c2e0fb99e
+"turnstile-types@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "turnstile-types@npm:1.2.2"
+  checksum: 10c0/e434bdb57bff8d8be8b7d2ac159a277dce67d8d6480d639d625fdfeda5004798e8c533d0b39350516184061f7db024da64a456088cfa057da8430f6751689aca
   languageName: node
   linkType: hard
 
