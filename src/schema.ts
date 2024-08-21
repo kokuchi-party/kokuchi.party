@@ -18,6 +18,7 @@
 import { integer, primaryKey, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 import type { RangedNumber } from "$lib/common/range";
+import type { AdditionalTicket, PrimaryTicket } from "$lib/common/ticket";
 
 export const user = sqliteTable("user", {
   id: text("id").notNull().primaryKey(),
@@ -72,6 +73,10 @@ export const event = sqliteTable("event", {
   date: integer("date", { mode: "timestamp" }).notNull(),
   open_time: text("door_time", { mode: "json" }).$type<TimeOnly>().notNull(),
   start_time: text("open_time", { mode: "json" }).$type<TimeOnly>(),
+  content: text("content").notNull(),
+  primary_ticket: text("primary_ticket", { mode: "json" }).$type<PrimaryTicket>().notNull(),
+  additional_tickets: text("additional_tickets", { mode: "json" }).$type<AdditionalTicket[]>(),
+  links: text("links", { mode: "json" }).$type<string[]>(),
   media_id: text("media_id")
     .notNull()
     .references(() => media.id, { onDelete: "cascade" }),

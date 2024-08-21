@@ -36,6 +36,20 @@
       "when": 1724218467886,
       "tag": "0004_confused_king_bedlam",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1724233751807,
+      "tag": "0005_harsh_warhawk",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1724233867738,
+      "tag": "0006_event-fts5",
+      "breakpoints": true
     }
   ]
 }
