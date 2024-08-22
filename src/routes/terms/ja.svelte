@@ -1,113 +1,41 @@
-<h2 id="acceptance">あせぷたんす of Terms</h2>
-<p>
-  <strong>"We run this hosted version of Taguette and you can use it under those terms."</strong>
-</p>
-
-<p>
-  The Example.org Team ("us", "our", "we") provides the information on the hosted version of
-  Taguette (<code>taguette.example.org</code>, "the App") as provided in these Terms of Service
-  ("TOS"). We may update the TOS at
-  <a href="https://example.org/tos"><code>https://example.org/tos</code></a>. The information on
-  this site and your use of it is subject to the most recent version of the TOS posted.
-</p>
-
-<h2 id="description">Description of Service</h2>
-<p><strong>"We store your data, so that you can see it."</strong></p>
-
-<p>
-  We will provide you with access to the App. New features that augment or enhance the current
-  version of the App shall be subject to the TOS. We will store your data and present it only to you
-  and the people you add as collaborators on your projects. By putting your data in the App, you
-  grant us a license to store, archive, parse, display, and make copies of your data, as necessary
-  to run the App. We will backup all data daily to Amazon Web Services, in encrypted form only. We
-  do not share or sell your data, and you retain all copyright on it.
-</p>
-
-<h2 id="warranties">Disclaimer of Warranties</h2>
-<p>
-  <strong
-    >"We will do our best not to lose your data and keep this service up, but we cannot guarantee
-    that we won't make a mistake or run out of money."</strong
-  >
-</p>
-
-<p>
-  Relying on this App is at your own risk. You expressly understand and agree that: The App is
-  provided on an "as is" and "as available" basis. We expressly disclaim all warranties of any kind,
-  whether express or implied. We make no warranty that the App will meet your requirements and that
-  service will be uninterrupted, timely, secure, or error-free.
-</p>
-
-<h2 id="privacy">Privacy Policy</h2>
-<p><strong>"We won't share your information, that would be rude."</strong></p>
-
-<p>
-  We will not share or sell any personal information you provide on the App. We will not use it for
-  any purpose except to log you in (e.g. your username and password), send you a password reset link
-  (e.g. an email address, which you can optionally provide), and for diagnostics and normal
-  operation of a web server (IP address, browser information). By creating an account, you
-  explicitly consent to our processing of such information within the meaning of the GDPR.
-</p>
-
-<p>
-  We do not use any trackers on the App, such as Google Analytics or AdSense. We do use two cookies:
-  one when you log in to the app (to identify your account), and one as a cross-scripting protective
-  measure. Those are not "third-party" or "tracking" cookies.
-</p>
-
-<p>The App depends on additional services from:</p>
-<ul>
-  <li>
-    OVH, who hosts the physical machine running Taguette and where all data is kept (in Roubaix,
-    France)
-  </li>
-  <li>
-    <a href="https://api.sendgrid.com/privacy.html">SendGrid</a>, used to send password-reset links
-    via email, should you or someone else request such a link in the App. We provide them with your
-    email address in that situation
-  </li>
-  <li>
-    <a href="https://sentry.io/privacy/">Sentry</a>, used to collect and analyze error reports. They
-    may incidentally receive personal information or other pieces of your data when errors occur
-  </li>
-  <li>
-    Amazon Web Services, who stores backups of the App, in encrypted form only (doesn't have access
-    to personal information or data)
-  </li>
-</ul>
-
-<h2 id="conduct">Conduct</h2>
-<p><strong>"Only upload/transmit materials that you have the rights to."</strong></p>
-
-<p>
-  You understand that all information, data, and/or other materials ("Content") are the sole
-  responsibility of the person from whom such Content originated. This means that you, and not us,
-  are entirely responsible for all Content that you upload or otherwise make available via the App.
-  We do not control the Content posted via the App and under no circumstances will we be liable in
-  any way for any Content.
-</p>
-
-<h2 id="termination">Termination</h2>
-<p>
-  <strong
-    >"If you want to cancel this agreement, just close your account. We can cancel it too."</strong
-  >
-</p>
-
-<p>You agree that we may terminate your access to the App for violations of the TOS.</p>
-
-<p>
-  Users can remove their data at any time as well as delete their account at any time. Given that we
-  backup data from the App daily, your data and account information will be in the App's backups for
-  a short period. We will not share any of your data hosted on the App with anyone else.
-</p>
-
-<h2 id="liability">Limitation of Liability</h2>
-<p><strong>"We aren't liable for what you do on the App, you are."</strong></p>
-
-<p>
-  You expressly understand and agree that we shall not be liable to you for any direct, indirect,
-  incidental, special, consequential or exemplary damages, including, but not limited to, damages
-  for goodwill, use, data or other intangible losses resulting from the use or the inability to use
-  the App.
-</p>
+<h2 id="general-provisions">第1条（総則）</h2>
+<ol type="1">
+  <li>本規約は、kokuchi.party（以下「当サイト」といいます）の利用条件を定めるものです。ユーザーは本規約に同意の上、当サイトを利用するものとします。</li>
+  <li>本規約は、当サイトが提供する全てのサービスに適用されます。</li>
+</ol>
+<h2 id="prohibited-conduct">第2条（禁止事項）</h2>
+<p>ユーザーは、当サイトの利用に際し、以下の行為を行ってはなりません。</p>
+<ol type="1">
+  <li>著作権や商標権など、他者の知的財産権を侵害する行為</li>
+  <li>他者を中傷する、または不適切な内容を投稿する行為</li>
+  <li>スパム行為、広告目的の投稿</li>
+  <li>不正アクセスやシステムの妨害行為</li>
+  <li>他者へのなりすまし行為</li>
+  <li>法令または公序良俗に反する行為</li>
+</ol>
+<h2 id="user-provided-content">第3条（ユーザーのコンテンツ）</h2>
+<ol type="1">
+  <li>ユーザーが当サイトに投稿したコンテンツ（イベント情報、コメント等）の著作権はユーザーに帰属します。ただし、ユーザーは当サイトに対して、投稿内容を無償で使用する権利を許諾するものとします。</li>
+  <li>ユーザーは、自らが投稿するコンテンツについて、法的責任を負うものとします。</li>
+</ol>
+<h2 id="privacy-and-handling-of-personal-information">第4条（プライバシーと個人情報の取り扱い）</h2>
+<ol type="1">
+  <li>当サイトは、ユーザーの個人情報を適切に保護し、利用いたします。</li>
+  <li>当サイトは、ユーザーから提供された個人情報を第三者に提供しません。ただし、法令に基づく場合を除きます。</li>
+</ol>
+<h2 id="limitation-of-liability">第5条（責任の制限）</h2>
+<ol type="1">
+  <li>当サイトは、ユーザーが投稿したイベント情報の正確性や信頼性について、一切の責任を負いません。</li>
+  <li>当サイトの利用により発生した損害について、運営者は一切の責任を負いません。</li>
+</ol>
+<h2 id="changes-to-services-and-terms">第6条（サービス内容および利用規約の変更）</h2>
+<ol type="1">
+  <li>当サイトは、ユーザーへの事前通知をもって、サービス内容の変更または中断・終了を行うことができるものとします。</li>
+  <li>当サイトは、必要に応じて、本規約を変更できます。規約変更後、ユーザーが当サイトを利用した場合、変更後の規約に同意したものとみなされます。</li>
+  <li>本規約の変更は、当サイト上での告知をもって行われるものとします。</li>
+</ol>
+<h2 id="governing-law-and-jurisdiction">第7条（準拠法と裁判管轄）</h2>
+<ol type="1">
+  <li>本規約は、日本法に準拠し、解釈されるものとします。</li>
+  <li>当サイトに関連して生じた紛争については、当サイト管理者の所在地を管轄する裁判所を専属的合意管轄とします。</li>
+</ol>
