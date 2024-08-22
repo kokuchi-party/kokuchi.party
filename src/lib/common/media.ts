@@ -26,11 +26,11 @@ export type { MimeType } from "file-type";
 import type { InferSelectModel } from "drizzle-orm";
 
 import { PUBLIC_CDN_DOMAIN } from "$env/static/public";
-import type { files } from "$schema";
+import type { media } from "$schema";
 
-export type S3File = InferSelectModel<typeof files>;
+export type Media = InferSelectModel<typeof media>;
 
-export function getFileUrl({ folder, hash, ext }: S3File) {
+export function getMediaUrl({ folder, hash, ext }: Media) {
   return folder
     ? `https://${PUBLIC_CDN_DOMAIN}/${folder}/${hash}.${ext}`
     : `https://${PUBLIC_CDN_DOMAIN}/${hash}.${ext}`;

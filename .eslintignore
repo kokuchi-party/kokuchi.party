@@ -16,3 +16,4 @@ yarn.lock
 # Ignore auto-generated files
 migrations/
 src/lib/paraglide/
+src/data/*.json

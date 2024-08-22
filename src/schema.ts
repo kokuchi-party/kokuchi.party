@@ -17,6 +17,9 @@
 
 import { integer, primaryKey, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
+import type { RangedNumber } from "$lib/common/range";
+import type { AdditionalTicket, PrimaryTicket } from "$lib/common/ticket";
+
 export const user = sqliteTable("user", {
   id: text("id").notNull().primaryKey(),
   name: text("name").notNull(),
@@ -39,7 +42,7 @@ export const oauth_account = sqliteTable(
   })
 );
 
-export const files = sqliteTable("files", {
+export const media = sqliteTable("media", {
   id: integer("id").primaryKey(),
   folder: text("folder"),
   hash: text("hash").notNull(),
@@ -47,5 +50,37 @@ export const files = sqliteTable("files", {
   mime: text("mime").notNull(),
   size: integer("size").notNull(),
   width: integer("width"),
-  height: integer("height")
+  height: integer("height"),
+  user_id: text("user_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" })
+});
+
+export type TimeOnly = { hour: RangedNumber<0, 24>; minute: RangedNumber<0, 60> };
+
+export const venue = sqliteTable("venue", {
+  id: integer("id").primaryKey(),
+  name: text("name").notNull(),
+  url: text("url"),
+  online: integer("online", { mode: "boolean" }).notNull().default(false),
+  verified: integer("verified", { mode: "boolean" }).notNull().default(false),
+  user_id: text("user_id").references(() => user.id, { onDelete: "cascade" })
+});
+
+export const event = sqliteTable("event", {
+  id: text("id").notNull().primaryKey(),
+  name: text("name").notNull(),
+  date: integer("date", { mode: "timestamp" }).notNull(),
+  open_time: text("door_time", { mode: "json" }).$type<TimeOnly>().notNull(),
+  start_time: text("open_time", { mode: "json" }).$type<TimeOnly>(),
+  content: text("content").notNull(),
+  primary_ticket: text("primary_ticket", { mode: "json" }).$type<PrimaryTicket>().notNull(),
+  additional_tickets: text("additional_tickets", { mode: "json" }).$type<AdditionalTicket[]>(),
+  links: text("links", { mode: "json" }).$type<string[]>(),
+  media_id: text("media_id")
+    .notNull()
+    .references(() => media.id, { onDelete: "cascade" }),
+  user_id: text("user_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" })
 });

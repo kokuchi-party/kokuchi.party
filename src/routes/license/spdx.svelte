@@ -21,7 +21,7 @@
 -->
 
 <script lang="ts">
-  import type { LicenseExpr, Licenses } from "$/licenses.json";
+  import type { LicenseExpr, Licenses } from "$/data/licenses.json";
 
   export let expr: LicenseExpr;
 

@@ -102,3 +102,5 @@ export const handle = (async ({ event, resolve }) => {
     }
   });
 }) satisfies Handle;
+
+export * from "$lib/common/i18n";

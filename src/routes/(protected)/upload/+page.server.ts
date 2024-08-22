@@ -18,7 +18,7 @@
 import { fail } from "@sveltejs/kit";
 import { drizzle } from "drizzle-orm/d1";
 
-import { create } from "$lib/server/file";
+import { create } from "$/lib/server/media";
 
 import type { Actions } from "./$types";
 
@@ -35,8 +35,7 @@ export const actions: Actions = {
     if (!file || typeof file === "string") return fail(400, { message: "The file is invalid" });
 
     const db = drizzle(d1);
-    const res = await create(db, file);
-    console.log(JSON.stringify(res));
+    const res = await create(user, db, file);
 
     if (res.ok) return res;
     return fail(res.status, { message: res.message });

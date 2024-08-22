@@ -16,8 +16,8 @@
 -->
 
 <script>
+  import { getMediaUrl } from "$/lib/common/media";
   import { enhance } from "$app/forms";
-  import { getFileUrl } from "$lib/common/file";
 
   /** @type {import('./$types').ActionData} */
   export let form;
@@ -31,7 +31,7 @@
 
   <div class="space-y-2">
     {#if form?.ok}
-      <a href={getFileUrl(form)}>Uploaded</a>
+      <a href={getMediaUrl(form)}>Uploaded</a>
     {/if}
     {JSON.stringify(form)}
   </div>
