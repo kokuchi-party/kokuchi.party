@@ -54,7 +54,7 @@
     "prettier": "3.3.3",
     "prettier-plugin-svelte": "3.2.5",
     "prettier-plugin-tailwindcss": "0.6.5",
-    "shadcn-svelte": "0.12.1",
+    "shadcn-svelte": "0.13.0",
     "spdx-expression-parse": "4.0.0",
     "spdx-license-list": "6.9.0",
     "svelte": "4.2.18",
