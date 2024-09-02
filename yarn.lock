@@ -4353,7 +4353,7 @@ __metadata:
     lucide-svelte: "npm:0.428.0"
     mode-watcher: "npm:0.4.1"
     npm-run-all: "npm:4.1.5"
-    postcss: "npm:8.4.39"
+    postcss: "npm:8.4.44"
     postcss-load-config: "npm:6.0.1"
     prettier: "npm:3.3.3"
     prettier-plugin-svelte: "npm:3.2.5"
@@ -6588,14 +6588,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.39":
-  version: 8.4.39
-  resolution: "postcss@npm:8.4.39"
+"postcss@npm:8.4.44":
+  version: 8.4.44
+  resolution: "postcss@npm:8.4.44"
   dependencies:
     nanoid: "npm:^3.3.7"
     picocolors: "npm:^1.0.1"
     source-map-js: "npm:^1.2.0"
-  checksum: 10c0/16f5ac3c4e32ee76d1582b3c0dcf1a1fdb91334a45ad755eeb881ccc50318fb8d64047de4f1601ac96e30061df203f0f2e2edbdc0bfc49b9c57bc9fb9bedaea3
+  checksum: 10c0/53c33338261a3d4f4198f8893e9dfe8b828d8d9186142ee85f02d228f04245c5bbe31239411a357a556ad20ed96f28db24d0921d63edc428fdc9133289371a1d
   languageName: node
   linkType: hard
 
