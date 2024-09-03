@@ -52,7 +52,7 @@
     "postcss": "8.4.44",
     "postcss-load-config": "6.0.1",
     "prettier": "3.3.3",
-    "prettier-plugin-svelte": "3.2.5",
+    "prettier-plugin-svelte": "3.2.6",
     "prettier-plugin-tailwindcss": "0.6.5",
     "shadcn-svelte": "0.13.0",
     "spdx-expression-parse": "4.0.0",
