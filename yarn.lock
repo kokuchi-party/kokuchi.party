@@ -4356,7 +4356,7 @@ __metadata:
     eslint-plugin-svelte: "npm:2.41.0"
     file-type: "npm:19.4.1"
     image-dimensions: "npm:2.3.0"
-    license-checker-rseidelsohn: "npm:4.3.0"
+    license-checker-rseidelsohn: "npm:4.4.1"
     lucia: "npm:3.2.0"
     lucide-svelte: "npm:0.428.0"
     mode-watcher: "npm:0.4.1"
@@ -5379,9 +5379,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"license-checker-rseidelsohn@npm:4.3.0":
-  version: 4.3.0
-  resolution: "license-checker-rseidelsohn@npm:4.3.0"
+"license-checker-rseidelsohn@npm:4.4.1":
+  version: 4.4.1
+  resolution: "license-checker-rseidelsohn@npm:4.4.1"
   dependencies:
     chalk: "npm:4.1.2"
     debug: "npm:^4.3.4"
@@ -5396,7 +5396,7 @@ __metadata:
     treeify: "npm:^1.1.0"
   bin:
     license-checker-rseidelsohn: bin/license-checker-rseidelsohn
-  checksum: 10c0/e09ede6174413d5081cd25a302fdd8130036dcf08995e2eaf7f5bac82d240a1bed1c5630e1e606351254b4197305a4f350b56e19cc0e76b48eac78cff120682c
+  checksum: 10c0/6687a5e2c1f7ad9ead6038135ede660e21bf11653b24a5b434df74fa7f2f69819fd1d220572d1cfdfeff1ab23079a50a092d17eb1e807942ef1fcd5637abbfd0
   languageName: node
   linkType: hard
 
