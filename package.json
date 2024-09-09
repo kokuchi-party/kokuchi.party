@@ -80,7 +80,7 @@
     "drizzle-orm": "0.32.0",
     "image-dimensions": "2.3.0",
     "lucia": "3.2.0",
-    "lucide-svelte": "0.428.0",
+    "lucide-svelte": "0.439.0",
     "mode-watcher": "0.4.1",
     "svelte-sonner": "0.3.24",
     "tailwind-merge": "2.4.0",
