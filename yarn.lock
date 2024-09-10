@@ -4342,7 +4342,7 @@ __metadata:
     image-dimensions: "npm:2.3.0"
     license-checker-rseidelsohn: "npm:4.3.0"
     lucia: "npm:3.2.0"
-    lucide-svelte: "npm:0.428.0"
+    lucide-svelte: "npm:0.439.0"
     mode-watcher: "npm:0.4.1"
     npm-run-all: "npm:4.1.5"
     postcss: "npm:8.4.44"
@@ -5549,12 +5549,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-svelte@npm:0.428.0":
-  version: 0.428.0
-  resolution: "lucide-svelte@npm:0.428.0"
+"lucide-svelte@npm:0.439.0":
+  version: 0.439.0
+  resolution: "lucide-svelte@npm:0.439.0"
   peerDependencies:
     svelte: ^3 || ^4 || ^5.0.0-next.42
-  checksum: 10c0/2ca7e560a4ec8f3b5ec7184f3866718c1af1879f5f8060d7ca97f471be57dc21c35d27643c13042d0c88d15f369effe62a99eff6d9bd395b7bb3bcb9f42fab58
+  checksum: 10c0/8dcc132ddcd90e4fd7ecd13d7dbe2cfccb6185c2262a05a01eb07f71d4bfb451d9ec68057f6196a5cf5a64e1095db75a5fccd3acdba3007a3a32aaf150efbe9d
   languageName: node
   linkType: hard
 
