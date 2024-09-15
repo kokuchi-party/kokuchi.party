@@ -23,8 +23,7 @@
 <ol type="1">
   <li>
     The copyright of the content (such as event information, comments, etc.) posted by users on the
-    Site belongs to the users. However, users grant the Site a royalty-free license to use the
-    posted content.
+    Site belongs to the users. However, users allow the Site to use the posted content.
   </li>
   <li>Users are responsible for the legality of the content they post.</li>
 </ol>
@@ -32,10 +31,20 @@
   Article 4 (Privacy and Handling of Personal Information)
 </h2>
 <ol type="1">
-  <li>The Site will appropriately protect and use users’ personal information.</li>
   <li>
-    The Site will not provide users’ personal information to third parties, except as required by
-    law.
+    The Site will not share or sell any personal information provided by users except for when it is
+    based on laws and regulations. The Site will not use it for any purpose except for logging in
+    and send non-marketing operational emails (e.g. email adderess), and for diagnostics and normal
+    operation of a web server (e.g. IP address, browser information).
+  </li>
+  <li>
+    By creating an account, the user explicitly consent to The Site's processing of such information
+    within the meaning of the GDPR.
+  </li>
+  <li>
+    The Site do not use any trackers on the App, such as Google Analytics or AdSense. The Site do
+    use several cookies for operational purposes (e.g. logging user in, storing user preferences).
+    Those are not "third-party" or "tracking" cookies.
   </li>
 </ol>
 <h2 id="limitation-of-liability">Article 5 (Limitation of Liability)</h2>
