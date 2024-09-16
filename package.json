@@ -72,7 +72,7 @@
   "type": "module",
   "dependencies": {
     "@fontsource-variable/orbitron": "5.0.21",
-    "@scure/base": "1.1.7",
+    "@scure/base": "1.1.8",
     "arctic": "1.9.2",
     "aws4fetch": "1.0.20",
     "bits-ui": "0.21.13",
