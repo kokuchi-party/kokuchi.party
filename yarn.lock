@@ -4608,7 +4608,7 @@ __metadata:
     svelte-check: "npm:4.0.1"
     svelte-sonner: "npm:0.3.24"
     svelte-turnstile: "npm:0.8.0"
-    sveltekit-rate-limiter: "npm:0.5.2"
+    sveltekit-rate-limiter: "npm:0.6.1"
     tailwind-merge: "npm:2.4.0"
     tailwind-variants: "npm:0.2.1"
     tailwindcss: "npm:3.4.9"
@@ -7966,14 +7966,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sveltekit-rate-limiter@npm:0.5.2":
-  version: 0.5.2
-  resolution: "sveltekit-rate-limiter@npm:0.5.2"
+"sveltekit-rate-limiter@npm:0.6.1":
+  version: 0.6.1
+  resolution: "sveltekit-rate-limiter@npm:0.6.1"
   dependencies:
     "@isaacs/ttlcache": "npm:^1.4.1"
   peerDependencies:
     "@sveltejs/kit": 1.x || 2.x
-  checksum: 10c0/ff3000d3cb694ad57d52ff45e8dc8f129223869e2524ec80dc7d5ec3e21dd68794ff4ec02f8a9ff8905e781c791ca27f078222855382f5d25eadd59fd0150701
+  checksum: 10c0/1f774cd620e892fb88251900ff1be29cce363e6b783374b7335c86e8a1d73ad6eb795d9236f54efe22af780aaf36dc1381b3eda3028ae281542ec6d51dcc3ee1
   languageName: node
   linkType: hard
 
