@@ -4606,7 +4606,7 @@ __metadata:
     spdx-license-list: "npm:6.9.0"
     svelte: "npm:4.2.19"
     svelte-check: "npm:4.0.1"
-    svelte-sonner: "npm:0.3.24"
+    svelte-sonner: "npm:0.3.28"
     svelte-turnstile: "npm:0.8.0"
     sveltekit-rate-limiter: "npm:0.6.1"
     tailwind-merge: "npm:2.4.0"
@@ -7924,12 +7924,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-sonner@npm:0.3.24":
-  version: 0.3.24
-  resolution: "svelte-sonner@npm:0.3.24"
+"svelte-sonner@npm:0.3.28":
+  version: 0.3.28
+  resolution: "svelte-sonner@npm:0.3.28"
   peerDependencies:
-    svelte: ">=3 <5"
-  checksum: 10c0/17bfc6b6aa83f9d46875c3b0f7bb88a992fd06722984bb18f9d2f2f066a9cf09a28dae2d2cfe9beda211bf2ddb735e8ae22e04ee531ab13e6adfdde6c0c8f9bd
+    svelte: ^3.0.0 || ^4.0.0 || ^5.0.0-next.1
+  checksum: 10c0/47db67b3a4c7c31be620e16c1bc88b392e8e8d8434e9e314efc771776c24ea35ebd69b196f2d5376b2526db839ddba4cc41e6da0c0b457b7f6d5253724741499
   languageName: node
   linkType: hard
 
