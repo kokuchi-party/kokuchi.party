@@ -1047,10 +1047,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource-variable/orbitron@npm:5.0.21":
-  version: 5.0.21
-  resolution: "@fontsource-variable/orbitron@npm:5.0.21"
-  checksum: 10c0/55fb204d858f6b5283fb50607d5c2243b9136a33624c663a1503cb1b474dbdfae925eec9b99e5be925d2a1241c1f19ae22ed44b061154d28378d8e72e032c197
+"@fontsource-variable/orbitron@npm:5.1.0":
+  version: 5.1.0
+  resolution: "@fontsource-variable/orbitron@npm:5.1.0"
+  checksum: 10c0/44cae7d0f8862dfb30174d6741e893bcd5e0f81ac5beb121d87d2508ba404e1ffd334fd6377a032bc49077d118b414fe3cf06ad84e87c4f020fc141c7064c168
   languageName: node
   linkType: hard
 
@@ -4562,7 +4562,7 @@ __metadata:
   resolution: "flyer@workspace:."
   dependencies:
     "@cloudflare/workers-types": "npm:4.20240815.0"
-    "@fontsource-variable/orbitron": "npm:5.0.21"
+    "@fontsource-variable/orbitron": "npm:5.1.0"
     "@inlang/paraglide-js": "npm:1.11.2"
     "@inlang/paraglide-js-adapter-vite": "npm:1.2.40"
     "@playwright/test": "npm:1.44.1"
