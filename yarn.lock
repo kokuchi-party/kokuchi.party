@@ -2064,6 +2064,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@oslojs/asn1@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@oslojs/asn1@npm:1.0.0"
+  dependencies:
+    "@oslojs/binary": "npm:1.0.0"
+  checksum: 10c0/993856b931cb0087fa6a6323f09de388aa20fbab3322acdb178a7c35fcd05983c44c7a47bac7364cd96b45125c27586265e8fc9fec733d3183ffc56b6bec2634
+  languageName: node
+  linkType: hard
+
+"@oslojs/binary@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@oslojs/binary@npm:1.0.0"
+  checksum: 10c0/d416a393af23f42b50c6f8412a3a6d94a84707c2006511abce1c4bed680c22ed2247ccb442b09237fa78ca06c355875573d1c08ccba2942f292ec0534310e4f8
+  languageName: node
+  linkType: hard
+
+"@oslojs/crypto@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@oslojs/crypto@npm:1.0.1"
+  dependencies:
+    "@oslojs/asn1": "npm:1.0.0"
+    "@oslojs/binary": "npm:1.0.0"
+  checksum: 10c0/a1b3e4875f3df8bf357dd2b59e1d55ced099227bbeb0975b48bf8e001002780575c5df9e7c174bcc42f89713ed9ad4a965e181e835ff569ccaa3b258781a615b
+  languageName: node
+  linkType: hard
+
+"@oslojs/encoding@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@oslojs/encoding@npm:1.1.0"
+  checksum: 10c0/5553a0974dca60e1a8b247b7b97abcb141cc7ee4e22444f424a07921d6a5f76a43c316f3ee669222787fdef6549f8749cc6d68ff5a631e2542521c56fe36417f
+  languageName: node
+  linkType: hard
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -4592,7 +4625,7 @@ __metadata:
     file-type: "npm:19.5.0"
     image-dimensions: "npm:2.3.0"
     license-checker-rseidelsohn: "npm:4.3.0"
-    lucia: "npm:3.2.0"
+    lucia: "npm:3.2.1"
     lucide-svelte: "npm:0.439.0"
     mode-watcher: "npm:0.4.1"
     npm-run-all: "npm:4.1.5"
@@ -5791,12 +5824,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucia@npm:3.2.0":
-  version: 3.2.0
-  resolution: "lucia@npm:3.2.0"
+"lucia@npm:3.2.1":
+  version: 3.2.1
+  resolution: "lucia@npm:3.2.1"
   dependencies:
-    oslo: "npm:1.2.0"
-  checksum: 10c0/f4667785c59a365b0251b8f25eb55110aa0c2716bb05c6e01b072b476b6f0a29f5b9c48739a02eaba65dd0690accddec6ab0038fb47bdcd11773434195531c91
+    "@oslojs/crypto": "npm:^1.0.1"
+    "@oslojs/encoding": "npm:^1.1.0"
+  checksum: 10c0/144012eb92ed800b0465839f2e533f80423590b09be95b1710aaa6f671ca3540bad2a0616c4f65876980fcaa4a13a4525368c3d4bb8036f548409df10881a11a
   languageName: node
   linkType: hard
 
