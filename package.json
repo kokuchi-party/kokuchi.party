@@ -62,7 +62,7 @@
     "svelte-turnstile": "0.8.0",
     "sveltekit-rate-limiter": "0.6.1",
     "tailwindcss": "3.4.9",
-    "tslib": "2.6.3",
+    "tslib": "2.7.0",
     "tsx": "4.19.1",
     "typescript": "5.5.4",
     "vite": "5.4.8",
