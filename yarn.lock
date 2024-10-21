@@ -4655,7 +4655,7 @@ __metadata:
     tailwind-merge: "npm:2.4.0"
     tailwind-variants: "npm:0.2.1"
     tailwindcss: "npm:3.4.9"
-    tslib: "npm:2.6.3"
+    tslib: "npm:2.8.0"
     tsx: "npm:4.19.1"
     typescript: "npm:5.5.4"
     vite: "npm:5.4.8"
@@ -8200,10 +8200,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.6.3":
-  version: 2.6.3
-  resolution: "tslib@npm:2.6.3"
-  checksum: 10c0/2598aef53d9dbe711af75522464b2104724d6467b26a60f2bdac8297d2b5f1f6b86a71f61717384aa8fd897240467aaa7bcc36a0700a0faf751293d1331db39a
+"tslib@npm:2.8.0":
+  version: 2.8.0
+  resolution: "tslib@npm:2.8.0"
+  checksum: 10c0/31e4d14dc1355e9b89e4d3c893a18abb7f90b6886b089c2da91224d0a7752c79f3ddc41bc1aa0a588ac895bd97bb99c5bc2bfdb2f86de849f31caeb3ba79bbe5
   languageName: node
   linkType: hard
 
