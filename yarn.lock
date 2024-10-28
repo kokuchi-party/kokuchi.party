@@ -2265,9 +2265,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/adapter-cloudflare@npm:4.7.2":
-  version: 4.7.2
-  resolution: "@sveltejs/adapter-cloudflare@npm:4.7.2"
+"@sveltejs/adapter-cloudflare@npm:4.7.4":
+  version: 4.7.4
+  resolution: "@sveltejs/adapter-cloudflare@npm:4.7.4"
   dependencies:
     "@cloudflare/workers-types": "npm:^4.20231121.0"
     esbuild: "npm:^0.21.5"
@@ -2275,7 +2275,7 @@ __metadata:
   peerDependencies:
     "@sveltejs/kit": ^2.0.0
     wrangler: ^3.28.4
-  checksum: 10c0/eefafa31245e03f37c857e495099a29b1c6b080f05be71d537b0322fc6e5d60b00a37afa9b6ea368ea069b484e1ec691bf84ad04b1ea7b6b8c4020335bd1237d
+  checksum: 10c0/bcdc93ed6043c7026febfa4b18ed554964d2c804e2d26496358d3a0ee87dd15b4f1d6ae44b8a5ea11fe852538013b779bc5272b4fc5ce7beaa68cd6228ca0e7f
   languageName: node
   linkType: hard
 
@@ -4610,7 +4610,7 @@ __metadata:
     "@inlang/paraglide-js-adapter-vite": "npm:1.2.40"
     "@playwright/test": "npm:1.44.1"
     "@scure/base": "npm:1.1.8"
-    "@sveltejs/adapter-cloudflare": "npm:4.7.2"
+    "@sveltejs/adapter-cloudflare": "npm:4.7.4"
     "@sveltejs/kit": "npm:2.5.18"
     "@sveltejs/vite-plugin-svelte": "npm:3.1.2"
     "@tailwindcss/typography": "npm:0.5.13"
